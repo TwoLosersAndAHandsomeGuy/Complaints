@@ -1,0 +1,12 @@
+.top {
+	margin: 20px auto 0px;
+	width: 1100px;
+	height: 70px;
+}
+.logo {
+	margin-right: 70px;
+	float: left;
+}
+.top-ul a{
+	font-size: 18px;
+}

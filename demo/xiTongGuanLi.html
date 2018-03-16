@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="Cache-Control" content="no-transform " />
+	<title>舆情管理</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<link href="../resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="../resources/dropkick/dropkick.css" rel="stylesheet" type="text/css" />
+	<link href="../resources/easyui/easyui.css" rel="stylesheet" type="text/css" />
+	<link href="../resources/css/default.css" rel="stylesheet" type="text/css" />
+	<link href="../resources/css/themes.css" rel="stylesheet" type="text/css" />
+	<link href="../resources/css/myCss.css" rel="stylesheet" type="text/css" />
+	<link href="../resources/bootstrap/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript" src="../resources/js/jquery.1.11.3.min.js"></script>
+	<script type="text/javascript" src="../resources/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../resources/dropkick/jquery.dropkick-min.js"></script>
+	<script type="text/javascript" src="../resources/easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="../resources/js/frame.js"></script>
+	<script type="text/javascript" src="../resources/js/mySelectWin.js"></script>
+	<script type="text/javascript" src="../resources/bootstrap/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="../resources/bootstrap/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+
+	<script type="text/javascript">
+
+	</script>
+</head>
+<body>
+
+	<div class="top">
+		<div class="logo">
+			<a id="head" href="#"><img src="../resources/images/logo.png"></a>
+		</div>
+		<ul class="nav nav-pills top-ul">
+			<li><a href="#">首页</a></li>
+			<li><a href="message__.html">消息传阅</a></li>
+			<li><a href="yuQingGuanLi.html">舆情管理</a></li>
+			<li><a href="#">诉讼管理</a></li>
+			<li><a href="#">报表展示</a></li>
+			<li><a href="#">数据分析</a></li>
+			<li class="active"><a href="xiTongGuanLi.html">系统管理</a></li>
+		</ul>  
+	</div>
+	<div class="main-frame2" style="margin: auto;width: 1090px;" >
+		<ul class="nav nav-tabs">
+			<li class="active"><a onclick="NavTab(this)" href="xitongguanli.html">菜单</a></li>
+			<li><a onclick="NavTab(this)" href="#">角色</a></li>
+			<li><a onclick="NavTab(this)" href="#">人员权限</a></li>
+			<li><a onclick="NavTab(this)" href="#">患者信息</a></li>
+			<li><a onclick="NavTab(this)" href="#">投诉分类</a></li>
+			<li><a onclick="NavTab(this)" href="#">数据字典</a></li>
+		</ul>
+
+		<div class="table-normal">
+			<div class="table-toolbar">
+				<div class="btn-toolbar">
+					<ul>
+						<li><button type="button" class="btn btn-default" onclick="addFunc();">
+							<span class="glyphicon glyphicon-ok"></span>启用</button>
+						</li>
+						<li><button type="button" class="btn btn-default" onclick="addFunc();">
+							<span class="glyphicon glyphicon-remove"></span>禁用</button>
+						</li>
+						<li><button type="button" class="btn btn-default">
+							<span class="glyphicon glyphicon-save"></span> 导出数据</button>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
+				<thead>
+					<tr>
+						<th>编号</th>
+						<th>舆情发生日期</th>
+						<th>投诉人姓名</th>
+						<th>投诉人电话</th>
+						<th>舆情平台</th>
+						<th>处理状态</th>
+						<th>记录人</th>
+						<th>记录时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><a title="详情" class="toggle-tooltip" href="#" onclick="addFunc(1);">YQ201801-001</a></td>
+						<td>2018-01-24</td>
+						<td>张三</td>
+						<td>13098765456</td>
+						<td>微博</td>
+						<td>已归档</td>
+						<td>王老实</td>
+						<td>2018-1-24</td>
+					</tr>
+					<tr>
+						<td><a title="详情" class="toggle-tooltip" href="#" onclick="addFunc(2);">YQ201801-002</a></td>
+						<td>2018-01-24</td>
+						<td>李四</td>
+						<td>13098765444</td>
+						<td>微信</td>
+						<td>处理中</td>
+						<td>王老实</td>
+						<td>2018-1-24</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div><!-- main-frame -->
+	<div id="selectDivId">
+	</div>
+</body>
+</html>
