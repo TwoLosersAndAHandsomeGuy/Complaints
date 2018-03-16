@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>投诉</title>
+    <link href="../resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="../resources/dropkick/dropkick.css" rel="stylesheet" type="text/css" />
+    <link href="../resources/easyui/easyui.css" rel="stylesheet" type="text/css" />
+    <link href="../resources/css/default.css" rel="stylesheet" type="text/css" />
+    <link href="../resources/css/themes.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../resources/js/jquery.1.11.3.min.js"></script>
+    <script type="text/javascript" src="../resources/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../resources/dropkick/jquery.dropkick-min.js"></script>
+    <script type="text/javascript" src="../resources/easyui/jquery.easyui.min.js"></script>
+    <!--     <script type="text/javascript" src="../resources/js/pop.js"></script> -->
+    <script type="text/javascript" src="../resources/js/myfunctions.js"></script>
+    <script type="text/javascript" src="../resources/js/frame.js"></script>
+    <script type="text/javascript" src="../resources/js/mySelectWin.js"></script>
+    <link href="../resources/bootstrap/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../resources/bootstrap/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../resources/bootstrap/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+
+        function editUser() {
+            $('#myAddModal').modal();
+        }
+
+        $(".div-top:eq(0)").on("mouseover", "li.dropdown", function() {
+            $(this).addClass("open");
+        });
+        $(".div-top:eq(0)").on("mouseout", "li.dropdown", function() {
+            $(this).removeClass("open");
+        });
+
+    })
+    </script>
+    <style type="text/css">
+    .div-top {
+        margin: 20px 200px 0px;
+        width: 1230px;
+        height: 70px;
+    }
+
+    .logo {
+        margin-right: 60px;
+        float: left;
+    }
+
+    .nav a {
+        font-size: 18px;
+    }
+
+    .message-page {
+        width: 1130px;
+        height: 400px;
+        margin: auto;
+    }
+
+    .home-panel {
+        height: 230px;
+    }
+
+    .table tr {
+        background-color: #fff;
+    }
+    </style>
+    <!--[if IE 8 ]>
+    <style type="text/css">
+    .message-page>div {
+        float: left;
+    }
+    </style>
+    
+<![endif]-->
+</head>
+
+<body>
+    <div class="modal fade myAddModal" id="myAddModal" tabindex="-1" role="dialog" aria-labelledby="myAddModalLabel" data-backdrop="static" style="overflow:scroll">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="border-bottom-width: 1px;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                    <h4 class="modal-title" id="myAddModalLabel" style="padding-left: 10px;">舆情信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                舆情登记信息
+                            </a>
+                        </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="form-group col-sm-6">
+                                    <label for="firstname" class="col-sm-3 control-label yqtj-label">登记编号</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="firstname" placeholder="请输入">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="firstname" class="col-sm-3 control-label yqtj-label">登记日期</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control date" id="firstname" placeholder="请输入">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="firstname" class="col-sm-3 control-label yqtj-label">舆情平台</label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control">
+                                            <option value="0">全部</option>
+                                            <option value="1">大众点评</option>
+                                            <option value="2">微博</option>
+                                            <option value="3">微信</option>
+                                            <option value="4">贴吧</option>
+                                            <option value="5">博客</option>
+                                            <option value="6">其他</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label for="name" class="col-sm-3 control-label yqtj-label">舆情性质</label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control">
+                                            <option value="1">正面</option>
+                                            <option value="2">负面</option>
+                                            <option value="3">中性</option>
+                                            <option value="4">其他</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <label class="col-sm-3 control-label yqtj-label" style="width: 12%;">舆情内容</label>
+                                    <div class="col-sm-8">
+                                        <textarea name="" rows="" cols="" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-7">
+                                    <label for="name" class="col-sm-3 control-label yqtj-label" sytle="heigth:20px; width:100px;">投诉人信息</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optionsRadiosinline" id="optionsRadios1" value="option1">有
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optionsRadiosinline" id="optionsRadios2" value="option2">无
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                被投诉人信息
+                            </a>
+                        </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="form-group col-sm-6">
+                                    <label class="col-sm-3 control-label yqtj-label">被投诉科室</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="deptSelName" placeholder="请选择" onClick="openDeptSelect()" readonly="true">
+                                        <input type="hidden" id="deptSelId">
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label class="col-sm-3 control-label yqtj-label">被投诉人员</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="userSelName" placeholder="请选择" onClick="openUserSelect()" readonly="true">
+                                        <input type="hidden" id="userSelId">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                附件列表(共有 0 条记录)
+                            </a>
+                        </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="btn-toolbar">
+                                    <ul>
+                                        <li>
+                                            <button type="button" class="btn btn-link" onclick="openFileUpload();">上传附件</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <table class="table table-bordered table-hover" style="border: 1px solid #ddd;" id="fileTable">
+                                    <thead>
+                                        <tr>
+                                            <th>文件名称</th>
+                                            <th>大小</th>
+                                            <th>上传人</th>
+                                            <th>上传时间</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>YQ201801-001</td>
+                                            <td>3M</td>
+                                            <td>张三</td>
+                                            <td>2018-3-13</td>
+                                            <td><a title="删除" class="toggle-tooltip" href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>YQ201801-002</td>
+                                            <td>4M</td>
+                                            <td>李四</td>
+                                            <td>2018-1-24</td>
+                                            <td><a title="删除" class="toggle-tooltip" href="#"><span class="glyphicon glyphicon-trash"></span></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                    </button>
+                    <button type="button" id="btn_submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="div-top">
+        <div class="logo">
+            <a id="head" href="#"><img src="../resources/images/logo.png"></a>
+        </div>
+        <ul class="nav nav-pills">
+            <li class="active"><a href="index__.html">首页</a></li>
+            <li><a href="message__.html">消息传阅</a></li>
+            <li><a href="yuQingGuanLi.html">舆情管理</a></li>
+            <li><a href="#">诉讼管理</a></li>
+            <li><a href="#">报表展示</a></li>
+            <li><a href="#">数据分析</a></li>
+            <li><a href="#">系统管理</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" style="font-size: 15px; position: relative; top: -20px; padding-left: 0px;"><span class="glyphicon glyphicon-user"></span> 欢迎您：系统管理员</a>
+                <div class="dropdown-menu dropdown-user" style="left: -200px;">
+                    <div class="pop-dropdown-apps user-tk">
+                        <div class="pda_arr"></div>
+                        <dl class="pda-list user_pda">
+                            <img src="../resources/images/moRenTouXiang.jpg">
+                            <div class="userright-list">
+                                <h1>超级管理员&nbsp;&nbsp;|&nbsp;&nbsp;23326</h1>
+                                <h2>
+                            <b>单位/部门：</b>学科规划与建设办公室
+                            <br> <b>角&nbsp; &nbsp;色：</b>
+                        </h2>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="userexit">
+                                <button id="btn_FanHui2" type="button" class="btn btn-info addbtm" style=" padding-top:4px;"><span class="glyphicon glyphicon-pencil"></span> 编辑信息</button>
+                                <button onclick="location.href='login.html'" type="button" class="btn btn-default">退出登录</button>
+                            </div>
+                            <div class="clear"></div>
+                        </dl>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="message-page">
+        <div class="col-sm-6 col-md-6">
+            <div class="home-panel">
+                <div class="hp-more">
+                    <button type="button" class="btn btn-default">更多</button>
+                </div>
+                <div class="hp-title">投诉与纠纷信息</div>
+                <table class="table">
+                    <tr>
+                        <td><a href="#">[被投诉科室：后勤部][患者姓名：齐先生]</a></td>
+                        <td><a href="#">李木子</a></td>
+                        <td><a href="#">2018-01-23</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">[被投诉科室：心外科][患者姓名：王女士]</a></td>
+                        <td><a href="#">李木子</a></td>
+                        <td><a href="#">2018-02-01</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">[被投诉科室：急诊科][患者姓名：齐先生]</a></td>
+                        <td><a href="#">李木子</a></td>
+                        <td><a href="#">2018-02-01</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">[被投诉科室：医学美容中心][患者姓名：李先生]</a></td>
+                        <td><a href="#">李木子</a></td>
+                        <td><a href="#">2018-02-01</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">[被投诉科室：泌尿外科][患者姓名：李先生]</a></td>
+                        <td><a href="#">李木子</a></td>
+                        <td><a href="#">2018-02-01</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-6">
+            <div class="home-panel">
+                <div class="hp-more">
+                    <button type="button" class="btn btn-default">更多</button>
+                </div>
+                <div class="hp-title">投诉信息</div>
+                <table class="table">
+                    <tr>
+                        <td><a href="#">[当事科室：心外科][患者姓名：刘先生]</a></td>
+                        <td><a href="#">李木子</a></td>
+                        <td><a href="#">2018-01-23</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">[当事科室：后勤部][患者姓名：齐先生]</a></td>
+                        <td><a href="#">李木子</a></td>
+                        <td><a href="#">2018-02-01</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">[当事科室：医学美容中心][患者姓名：王女士]</a></td>
+                        <td><a href="#">李木子</a></td>
+                        <td><a href="#">2018-02-01</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">[当事科室：急诊科][患者姓名：李先生]</a></td>
+                        <td><a href="#">李木子</a></td>
+                        <td><a href="#">2018-02-01</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">[当事科室：泌尿外科][患者姓名：王先生]</a></td>
+                        <td><a href="#">李木子</a></td>
+                        <td><a href="#">2018-02-01</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="home-panel">
+                <div class="hp-more">
+                    <button type="button" class="btn btn-default">更多</button>
+                </div>
+                <div class="hp-title">培训与预警</div>
+                <table class="table">
+                    <tr>
+                        <td><a href="#">和谐医患关系与医患沟通培训</a></td>
+                        <td><a href="#">李木子</a></td>
+                        <td><a href="#">2018-01-23</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">如何处理好医患关系</a></td>
+                        <td><a href="#">李木子</a></td>
+                        <td><a href="#">2018-02-01</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">医患关系与医德医风培训</a></td>
+                        <td><a href="#">李木子</a></td>
+                        <td><a href="#">2018-02-01</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="home-panel">
+                <div class="hp-more">
+                    <button type="button" class="btn btn-default">更多</button>
+                </div>
+                <div class="hp-title">案例分析</div>
+                <table class="table">
+                    <tr>
+                        <td><a href="#">医疗纠纷案例分析</a></td>
+                        <td><a href="#">李木子</a></td>
+                        <td><a href="#">2018-01-23</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">医疗纠纷案例分析</a></td>
+                        <td><a href="#">李木子</a></td>
+                        <td><a href="#">2018-02-01</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">医疗纠纷案例分析</a></td>
+                        <td><a href="#">李木子</a></td>
+                        <td><a href="#">2018-02-01</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="home-panel">
+                <div class="hp-more">
+                    <button type="button" class="btn btn-default">更多</button>
+                </div>
+                <div class="hp-title">规章制度及常用法律法规</div>
+                <table class="table">
+                    <tr>
+                        <td><a href="#">医患关系办公室工作职责.docx</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">鉴定案件材料归档.xls</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">患方申请调解书.doc</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#"> 再次医疗事故技术鉴定申请书（存根）.doc</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">鉴定案件材料归档.xls</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
