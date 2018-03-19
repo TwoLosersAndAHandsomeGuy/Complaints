@@ -1,0 +1,53 @@
+{
+  "total": 9,
+  "rows": [
+    {
+      "id": 1,
+      "menuName": "首页",
+      "isEnabled" : "true",
+      "state":"open"
+    },
+    {
+      "id": 2,
+      "menuName": "培训与预警",
+      "isEnabled" : "true",
+      "_parentId": 1
+    },
+    {
+      "id": 3,
+      "menuName": "消息传阅",
+      "isEnabled" : "true",
+      "_parentId": 1
+    },
+    {
+      "id": 4,
+      "menuName": "舆情管理",
+      "isEnabled" : "true",
+      "_parentId": 1
+    },
+    {
+      "id": 5,
+      "region": "Washington",
+      "menuName": "诉讼管理",
+      "isEnabled" : "true"
+    },
+    {
+      "id": 6,
+      "region": "Bellingham",
+      "f1": 2000,
+      "f2": 1800,
+      "menuName": "报表展示",
+      "isEnabled" : "true"
+    },
+    {
+      "id": 7,
+      "menuName": "数据分析",
+      "isEnabled" : "true"
+    },
+    {
+      "id": 8,
+      "menuName": "系统管理",
+      "isEnabled" : "true"
+    }
+  ]
+}
