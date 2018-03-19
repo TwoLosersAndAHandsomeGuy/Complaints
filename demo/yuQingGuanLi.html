@@ -159,18 +159,6 @@
         .yqtj-label {
             margin-top: 5px;
         }
-
-        .panel-title {
-            line-height: 0px;
-        }
-
-        .panel-heading {
-            padding: 20px 10px;
-        }
-
-        .panel-body {
-            padding-top: 10px;
-        }
     </style>
 </head>
 <body>
@@ -251,7 +239,7 @@
                     </div>
                 </div>
                 <div id="conditionInputDiv" class="col-sm-4" style="display:none">
-                    <input id="conditionInput" type="text" class="form-control" id="firstname" placeholder="请输入">
+                    <input id="conditionInput" type="text" class="form-control" placeholder="请输入">
                 </div>
                 <div id="conditionSelectDiv" class="col-sm-4" style="display:none">
 
@@ -378,21 +366,21 @@
                     <div id="collapseOne" class="panel-collapse collapse in">
                         <div class="panel-body">
                             <div class="form-group col-sm-6">
-                                <label for="firstname" class="col-sm-3 control-label yqtj-label">登记编号</label>
+                                <label for="djbh" class="col-sm-3 control-label yqtj-label">登记编号</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="firstname" placeholder="请输入">
+                                    <input type="text" class="form-control" id="djbh" placeholder="请输入">
                                 </div>
                             </div>
                             <div class="form-group col-sm-6">
-                                <label for="firstname" class="col-sm-3 control-label yqtj-label">登记日期</label>
+                                <label for="djrq" class="col-sm-3 control-label yqtj-label">登记日期</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control date" id="firstname" placeholder="请输入">
+                                    <input type="text" class="form-control date" id="djrq" placeholder="请输入">
                                 </div>
                             </div>
                             <div class="form-group col-sm-6">
-                                <label for="firstname" class="col-sm-3 control-label yqtj-label">舆情平台</label>
+                                <label for="yqpt" class="col-sm-3 control-label yqtj-label">舆情平台</label>
                                 <div class="col-sm-6">
-                                    <select class="form-control">
+                                    <select class="form-control" id="yqpt">
                                         <option value="0">全部</option>
                                         <option value="1">大众点评</option>
                                         <option value="2">微博</option>
@@ -404,9 +392,9 @@
                                 </div>
                             </div>
                             <div class="form-group col-sm-6">
-                                <label for="name" class="col-sm-3 control-label yqtj-label">舆情性质</label>
+                                <label for="yqxz" class="col-sm-3 control-label yqtj-label">舆情性质</label>
                                 <div class="col-sm-6">
-                                    <select class="form-control">
+                                    <select class="form-control" id="yqxz">
                                         <option value="1">正面</option>
                                         <option value="2">负面</option>
                                         <option value="3">中性</option>
@@ -421,7 +409,7 @@
                                 </div>
                             </div>
                             <div class="form-group col-sm-7">
-                                <label for="name" class="col-sm-3 control-label yqtj-label"
+                                <label class="col-sm-3 control-label yqtj-label"
                                        sytle="heigth:20px; width:100px;">投诉人信息</label>
                                 <label class="radio-inline">
                                     <input type="radio" name="optionsRadiosinline" id="optionsRadios1" value="option1">有
@@ -519,7 +507,7 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
                 </button>
-                <button type="button" id="btn_submit" class="btn btn-primary">
+                <button type="button" id="btn_add_submit" class="btn btn-primary">
                     <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
                 </button>
             </div>
@@ -544,7 +532,7 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
                 </button>
-                <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal">
+                <button type="button" id="btn_file_submit" class="btn btn-primary" data-dismiss="modal">
                     <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>上传
                 </button>
             </div>

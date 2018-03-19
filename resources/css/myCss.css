@@ -10,3 +10,19 @@
 .top-ul a{
 	font-size: 18px;
 }
+
+.panel-title {
+	line-height: 0px;
+}
+
+.panel-heading {
+	padding: 20px 10px;
+}
+
+.panel-body {
+	padding-top: 10px;
+}
+
+.tree-title {
+	font-size: 14px;
+}
