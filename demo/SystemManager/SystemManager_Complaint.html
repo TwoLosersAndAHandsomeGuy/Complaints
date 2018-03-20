@@ -6,17 +6,17 @@
     <title>系统管理</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <link href="../resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <link href="../resources/dropkick/dropkick.css" rel="stylesheet" type="text/css"/>
-    <link href="../resources/easyui/easyui.css" rel="stylesheet" type="text/css"/>
-    <link href="../resources/css/themes.css" rel="stylesheet" type="text/css"/>
-    <link href="../resources/css/default.css" rel="stylesheet" type="text/css"/>
-    <link href="../resources/css/myCss.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/dropkick/dropkick.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/easyui/easyui.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/css/themes.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/css/default.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/css/myCss.css" rel="stylesheet" type="text/css"/>
 
-    <script type="text/javascript" src="../resources/js/jquery.1.11.3.min.js"></script>
-    <script type="text/javascript" src="../resources/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../resources/dropkick/jquery.dropkick-min.js"></script>
-    <script type="text/javascript" src="../resources/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/jquery.1.11.3.min.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../resources/dropkick/jquery.dropkick-min.js"></script>
+    <script type="text/javascript" src="../../resources/easyui/jquery.easyui.min.js"></script>
 
     <script type="text/javascript">
 
@@ -72,25 +72,26 @@
 
 <div class="top">
     <div class="logo">
-        <a id="head" href="#"><img src="../resources/images/logo.png"></a>
+        <a id="head" href="#"><img src="../../resources/images/logo.png"></a>
     </div>
     <ul class="nav nav-pills top-ul">
-        <li><a href="index__.html">首页</a></li>
-        <li><a href="message__.html">消息传阅</a></li>
-        <li><a href="yuQingGuanLi.html">舆情管理</a></li>
-        <li><a href="#">诉讼管理</a></li>
-        <li><a href="#">报表展示</a></li>
-        <li><a href="#">数据分析</a></li>
-        <li class="active"><a href="xiTongGuanLi.html">系统管理</a></li>
+        <li><a href="../index__.html">首页</a></li>
+        <li><a href="../message__.html">消息传阅</a></li>
+        <li><a href="../PublicOpinionManage/PublicOpinionManage.html">舆情管理</a></li>
+        <li><a href="../ComplaintManage/ComplaintManage.html">投诉管理</a></li>
+        <li><a href="../LitigationManage/LitigationManage.html">诉讼管理</a></li>
+        <li><a href="../ReportForm/ReportForm.html">报表展示</a></li>
+        <li><a href="../DataAnalysis/DataAnalysis.html">数据分析</a></li>
+        <li class="active"><a href="SystemManager.html">系统管理</a></li>
     </ul>
 </div>
 <div style="margin: auto;width: 1090px;">
     <ul class="nav nav-tabs">
-        <li><a onclick="NavTab(this)" href="xiTongGuanLi.html">菜单</a></li>
-        <li><a onclick="NavTab(this)" href="xiTongGuanLi_jueSe.html">角色</a></li>
-        <li><a onclick="NavTab(this)" href="xiTongGuanLi_renYuanQuanXian.html">人员权限</a></li>
-        <li class="active"><a onclick="NavTab(this)" href="xiTongGuanLi_touSu.html">投诉分类</a></li>
-        <li><a onclick="NavTab(this)" href="#">数据字典</a></li>
+        <li><a onclick="NavTab(this)" href="SystemManager.html">菜单</a></li>
+        <li><a onclick="NavTab(this)" href="SystemManager_Role.html">角色</a></li>
+        <li><a onclick="NavTab(this)" href="SystemManager_RoleUser.html">人员权限</a></li>
+        <li class="active"><a onclick="NavTab(this)" href="SystemManager_Complaint.html">投诉分类</a></li>
+        <li><a onclick="NavTab(this)" href="SystemManager_Dictionary.html">数据字典</a></li>
     </ul>
     <div class="form-search" id="formSearchDiv">
         <div class="form-horizontal search-normal">
@@ -142,7 +143,7 @@
         </div>
         <table id="mainTable" class="easyui-treegrid table-bordered table-hover"
                data-options="
-				url: 'data/complaintTestData.json',
+				url: '../data/complaintTestData.json',
 				method: 'get',
 				idField: 'id',
 				treeField: 'name',
