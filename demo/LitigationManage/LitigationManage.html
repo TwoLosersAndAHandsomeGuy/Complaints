@@ -61,28 +61,28 @@
 
         //部门选择---开始---
         var deptTestDate =
-            [{
-                "id": "0",
-                "name": "住院部"
-            }, {
-                "id": "1",
-                "name": "医疗部"
-            }, {
-                "id": "2",
-                "name": "急诊部"
-            }, {
-                "id": "3",
-                "name": "护理部"
-            }, {
-                "id": "4",
-                "name": "科研教育部"
-            }, {
-                "id": "5",
-                "name": "公共关系部"
-            }, {
-                "id": "6",
-                "name": "物资部"
-            }];
+                [{
+                    "id": "0",
+                    "name": "住院部"
+                }, {
+                    "id": "1",
+                    "name": "医疗部"
+                }, {
+                    "id": "2",
+                    "name": "急诊部"
+                }, {
+                    "id": "3",
+                    "name": "护理部"
+                }, {
+                    "id": "4",
+                    "name": "科研教育部"
+                }, {
+                    "id": "5",
+                    "name": "公共关系部"
+                }, {
+                    "id": "6",
+                    "name": "物资部"
+                }];
 
         function openDeptSelect() {
             SelectWindow.open("selectDivId", "部门选择", deptSelectCallBack, deptTestDate, null);
@@ -99,22 +99,22 @@
         //人员选择--开始--
 
         var userTestDate =
-            [{
-                "id": "0",
-                "name": "张老实"
-            }, {
-                "id": "1",
-                "name": "王老实"
-            }, {
-                "id": "2",
-                "name": "郑老实"
-            }, {
-                "id": "3",
-                "name": "周老实"
-            }, {
-                "id": "4",
-                "name": "吴老实"
-            }];
+                [{
+                    "id": "0",
+                    "name": "张老实"
+                }, {
+                    "id": "1",
+                    "name": "王老实"
+                }, {
+                    "id": "2",
+                    "name": "郑老实"
+                }, {
+                    "id": "3",
+                    "name": "周老实"
+                }, {
+                    "id": "4",
+                    "name": "吴老实"
+                }];
 
         function openUserSelect() {
             SelectWindow.open("selectDivId", "人员选择", userSelectCallBack, userTestDate, null);
@@ -178,7 +178,7 @@
         <li><a href="../MessagePass/MessagePass.html">消息传阅</a></li>
         <li><a href="../PublicOpinionManage/PublicOpinionManage.html">舆情管理</a></li>
         <li><a href="../ComplaintManage/ComplaintManage.html">投诉管理</a></li>
-        <li  class="active"><a href="../ComplaintManage/ComplaintManage.html">诉讼管理</a></li>
+        <li class="active"><a href="../ComplaintManage/ComplaintManage.html">诉讼管理</a></li>
         <li><a href="../ReportForm/ReportForm.html">报表展示</a></li>
         <li><a href="../DataAnalysis/DataAnalysis.html">数据分析</a></li>
         <li><a href="../SystemManager/SystemManager.html">系统管理</a></li>
@@ -187,24 +187,23 @@
 <div>
     <div class="main-frame2" style="margin: auto;width: 1090px;">
         <div class="form-search" id="divFormSearch3">
-
-            <div class="form-group col-sm-6 col-md-4 col-lg-3">
-                <label class="fg-text control-label" style="width:60px">编号：</label>
-                <div class="fg-input">
-                    <input type="text" class="form-control" id="inputEmail3" placeholder="请输入编号，模糊查询">
-                </div>
-            </div>
-
-            <div class="form-group col-sm-6 col-md-4 col-lg-3">
-                <label class="fg-text control-label">被投诉科室：</label>
-                <div class="fg-input">
-                    <input type="hidden" id="message-sender-id">
-                    <input type="text" class="form-control" id="message-sender-name" placeholder="请选择"
-                           onClick="openDeptSelect()" readonly="true">
-                </div>
-            </div>
-
             <div class="form-horizontal search-normal">
+                <div class="form-group col-sm-6 col-md-4 col-lg-4">
+                    <label class="fg-text control-label">编号：</label>
+                    <div class="fg-input">
+                        <input type="text" class="form-control" id="inputEmail3" placeholder="请输入编号，模糊查询">
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-6 col-md-4 col-lg-4">
+                    <label class="fg-text control-label">被投诉科室：</label>
+                    <div class="fg-input">
+                        <input type="hidden" id="message-sender-id">
+                        <input type="text" class="form-control" id="message-sender-name" placeholder="请选择"
+                               onClick="openDeptSelect()" readonly="true">
+                    </div>
+                </div>
+
                 <div class="form-group col-sm-4">
                     <button type="button" class="btn btn-info" onclick="alert('ok!')">
                         <span class="glyphicon glyphicon-search"></span>查询
@@ -212,7 +211,7 @@
                 </div>
 
                 <div class="form-group col-sm-4">
-                    <label class="fg-text control-label">查询条件</label>
+                    <label class="fg-text control-label">查询条件：</label>
                     <div class="fg-input">
                         <select class="select-dropkick" style="width:50%" onchange="conditionOnchang(this)">
                             <option value="0">---请选择条件---</option>
@@ -274,52 +273,52 @@
 
             <table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
                 <thead>
-                    <tr>
-                        <th>编号</th>
-                        <th>负责人员</th>
-                        <th>当事科室</th>
-                        <th>起诉日期</th>
-                        <th>原告姓名</th>
-                        <th>一审适用程序</th>
-                        <th>登记人</th>
-                        <th>登记时间</th>
-                        <th>归档状态</th>
-                    </tr>
+                <tr>
+                    <th>编号</th>
+                    <th>负责人员</th>
+                    <th>当事科室</th>
+                    <th>起诉日期</th>
+                    <th>原告姓名</th>
+                    <th>一审适用程序</th>
+                    <th>登记人</th>
+                    <th>登记时间</th>
+                    <th>归档状态</th>
+                </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><a title="详情" class="toggle-tooltip" href="#" onclick="addFunc(1);">SS201801-001</a></td>
-                        <td>张三</td>
-                        <td>产科</td>
-                        <td>2018-01-24</td>
-                        <td>张三</td>
-                        <td>普通</td>
-                        <td>李木子</td>
-                        <td>2018-01-24</td>
-                        <td>进行中</td>
-                    </tr>
-                    <tr>
-                        <td><a title="详情" class="toggle-tooltip" href="#" onclick="addFunc(2);">SS201801-003</a></td>
-                        <td>李木子</td>
-                        <td>医务科</td>
-                        <td>2018-01-24</td>
-                        <td>张三</td>
-                        <td>普通</td>
-                        <td>李木子</td>
-                        <td>2018-01-24</td>
-                        <td>进行中</td>
-                    </tr>
-                    <tr>
-                        <td><a title="详情" class="toggle-tooltip" href="#" onclick="addFunc(3);">SS201801-002</a></td>
-                        <td>齐先生</td>
-                        <td>神经外科</td>
-                        <td>2018-01-24</td>
-                        <td>李四</td>
-                        <td>简易</td>
-                        <td>李木子</td>
-                        <td>2018-01-24</td>
-                        <td>进行中</td>
-                    </tr>
+                <tr>
+                    <td><a title="详情" class="toggle-tooltip" href="#" onclick="addFunc(1);">SS201801-001</a></td>
+                    <td>张三</td>
+                    <td>产科</td>
+                    <td>2018-01-24</td>
+                    <td>张三</td>
+                    <td>普通</td>
+                    <td>李木子</td>
+                    <td>2018-01-24</td>
+                    <td>进行中</td>
+                </tr>
+                <tr>
+                    <td><a title="详情" class="toggle-tooltip" href="#" onclick="addFunc(2);">SS201801-003</a></td>
+                    <td>李木子</td>
+                    <td>医务科</td>
+                    <td>2018-01-24</td>
+                    <td>张三</td>
+                    <td>普通</td>
+                    <td>李木子</td>
+                    <td>2018-01-24</td>
+                    <td>进行中</td>
+                </tr>
+                <tr>
+                    <td><a title="详情" class="toggle-tooltip" href="#" onclick="addFunc(3);">SS201801-002</a></td>
+                    <td>齐先生</td>
+                    <td>神经外科</td>
+                    <td>2018-01-24</td>
+                    <td>李四</td>
+                    <td>简易</td>
+                    <td>李木子</td>
+                    <td>2018-01-24</td>
+                    <td>进行中</td>
+                </tr>
                 </tbody>
             </table>
         </div>

@@ -20,8 +20,10 @@
     <script type="text/javascript" src="../../resources/easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="../../resources/js/frame.js"></script>
     <script type="text/javascript" src="../../resources/js/mySelectWin.js"></script>
-    <script type="text/javascript" src="../../resources/bootstrap/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-    <script type="text/javascript" src="../../resources/bootstrap/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script type="text/javascript"
+            src="../../resources/bootstrap/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript"
+            src="../../resources/bootstrap/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
     <script type="text/javascript">
         $(function () {
             $('#collapseOne').collapse('show');
@@ -37,33 +39,33 @@
 
         //部门选择---开始---
         var deptTestDate =
-            [{
-                "id": "0",
-                "name": "住院部"
-            }, {
-                "id": "1",
-                "name": "医疗部"
-            }, {
-                "id": "2",
-                "name": "急诊部"
-            }, {
-                "id": "3",
-                "name": "护理部"
-            }, {
-                "id": "4",
-                "name": "科研教育部"
-            }, {
-                "id": "5",
-                "name": "公共关系部"
-            }, {
-                "id": "6",
-                "name": "物资部"
-            }];
+                [{
+                    "id": "0",
+                    "name": "住院部"
+                }, {
+                    "id": "1",
+                    "name": "医疗部"
+                }, {
+                    "id": "2",
+                    "name": "急诊部"
+                }, {
+                    "id": "3",
+                    "name": "护理部"
+                }, {
+                    "id": "4",
+                    "name": "科研教育部"
+                }, {
+                    "id": "5",
+                    "name": "公共关系部"
+                }, {
+                    "id": "6",
+                    "name": "物资部"
+                }];
 
-        function queryData(){
+        function queryData() {
             //设置 数据表格 title
             $("#table_title_typeName").text($("input[name='optionsRadiosinline']:checked").val());
-            $("#table_title_countDate").text("统计时间:"+$("#startDate").val()+"~"+$("#endDate").val());
+            $("#table_title_countDate").text("统计时间:" + $("#startDate").val() + "~" + $("#endDate").val());
         }
         function openDeptSelect() {
             SelectWindow.open("selectDivId", "部门选择", deptSelectCallBack, deptTestDate, null);
@@ -129,12 +131,17 @@
                 </div>
             </div>
             <div class="form-group col-sm-4">
+                <button type="button" class="btn btn-info" onclick="queryData();">
+                    <span class="glyphicon glyphicon-search"></span>查询
+                </button>
+            </div>
+            <div class="form-group col-sm-4">
                 <label class="fg-text control-label">开始日期</label>
                 <div class="fg-input">
                     <input id="startDate" type="text" class="form-control date" placeholder="请选择">
                 </div>
             </div>
-            <div class="form-group col-sm-4" style="margin-right: 20px;">
+            <div class="form-group col-sm-4" style="margin-right: 30px;">
                 <label class="fg-text control-label">结束日期</label>
                 <div class="fg-input">
                     <input id="endDate" type="text" class="form-control date" placeholder="请选择">
@@ -152,17 +159,13 @@
                     </select>
                 </div>
             </div>
-            <div id="conditionSelectDiv" class="col-sm-2" style="display:none">
+            <div id="conditionSelectDiv" class="col-sm-2" style="display:none; margin-left: 30px;">
                 <select id="conditionSelect" class="select-dropkick" style="width:50%">
                     <option value="1">是</option>
                     <option value="2">否</option>
                 </select>
             </div>
-            <div class="form-group col-sm-4">
-                <button type="button" class="btn btn-info" onclick="queryData();">
-                    <span class="glyphicon glyphicon-search"></span>查询
-                </button>
-            </div>
+
         </div>
     </div>
     <div class="table-normal">
