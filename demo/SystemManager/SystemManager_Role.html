@@ -22,7 +22,9 @@
         $(function () {
             $('#collapseOne').collapse('show');
             $('#collapseTwo').collapse('show');
-
+            $('#myAddModal').on('shown.bs.modal', function () {
+                $("#menuRoleTable").treegrid("resize");
+            });
         });
 
 
@@ -47,11 +49,6 @@
                 $("#myAddModalLabel").text("详情:" + id);
             }
             $('#myAddModal').modal();
-        }
-
-        function openModal2() {
-            $("#modal2Label").text("新增");
-            $('#modal2').modal('show');
         }
 
         function formatEnable(value) {
@@ -121,7 +118,7 @@
             <div id="menuToolBar" class="btn-toolbar">
                 <ul>
                     <li>
-                        <button type="button" class="btn btn-default" onclick="openModal2();">
+                        <button type="button" class="btn btn-default" onclick="openAddModal();">
                             <span class="glyphicon glyphicon-plus"></span>新增
                         </button>
                     </li>
@@ -219,7 +216,7 @@
                         <div class="panel-body">
                             <div>
                                 <table id="menuRoleTable" class="easyui-treegrid"
-                                       style="height:300px;width:700px;"
+                                       style="height:300px;"
                                        data-options="
                                         url: '../data/menuTestData.json',
                                         method: 'get',
@@ -255,47 +252,5 @@
         </div>
     </div>
 </div> <!-- modal-div -->
-
-<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="modal2Label" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">aa</button>
-                <h4 class="modal-title" id="modal2Label">
-                    模态框（Modal）标题
-                </h4>
-            </div>
-            <div class="modal-body">
-                <div class="table-normal">
-                    <table id="table22" class="easyui-treegrid"
-                           style="height:300px;width:500px;"
-                           data-options="
-                                        url: '../data/menuTestData.json',
-                                        method: 'get',
-                                        idField: 'id',
-                                        treeField: 'menuName',
-                                        singleSelect: false">
-                        <thead>
-                        <tr>
-                            <th data-options="field:'id',width:100,halign:'center',checkbox:true">ID</th>
-                            <th data-options="field:'menuName',width:400">菜单名称</th>
-                            <th data-options="field:'isEnabled',width:200,halign:'center',align:'center',formatter:formatEnable">
-                                是否可用
-                            </th>
-                        </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                </button>
-                <button type="button" class="btn btn-primary">
-                    提交更改
-                </button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
 </body>
 </html>
