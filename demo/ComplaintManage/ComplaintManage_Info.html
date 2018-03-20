@@ -1,11 +1,10 @@
-
-<div class="modal fade myAddModal" id="myAddModal222" tabindex="-1" role="dialog" aria-labelledby="myAddModalLabel"
+<div class="modal fade" id="compInfoModal" tabindex="-1" role="dialog" aria-labelledby="compInfoModalLabel"
      data-backdrop="static" style="overflow:scroll">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header" style="border-bottom-width: 1px;">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h4 class="modal-title" id="myAddModalLabel" style="padding-left: 10px;">舆情信息</h4>
+                <h4 class="modal-title" id="compInfoModalLabel" style="padding-left: 10px;"></h4>
             </div>
             <div class="modal-body">
 
@@ -13,39 +12,106 @@
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                舆情登记信息
+                                投诉人信息
                             </a>
                         </h4>
                     </div>
                     <div id="collapseOne" class="panel-collapse collapse in">
                         <div class="panel-body">
                             <div class="form-group col-sm-6">
-                                <label for="djbh" class="col-sm-3 control-label modal-label">登记编号333</label>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="djbh" placeholder="请输入">
+                                <label class="col-sm-4 control-label modal-label">投诉人姓名</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" id="name" placeholder="请输入">
                                 </div>
                             </div>
                             <div class="form-group col-sm-6">
-                                <label for="djrq" class="col-sm-3 control-label modal-label">登记日期</label>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control date" id="djrq" placeholder="请输入">
+                                <label class="col-sm-4 control-label modal-label">投诉人性别</label>
+                                <div class="col-sm-7">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optionsRadiosinline" value="option1">男
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optionsRadiosinline" value="option2">女
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optionsRadiosinline" value="option2">不详
+                                    </label>
                                 </div>
                             </div>
+                            <div class="form-group col-sm-6" style="clear: left;">
+                                <label class="col-sm-4 control-label modal-label">联系电话</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">电子邮箱</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control date" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">投诉人证件类型</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">投诉人证件号码</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control date" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">患者类型</label>
+                                <div class="col-sm-7">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optionsRadiosinline" value="option1">住院病人
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optionsRadiosinline" value="option2">门诊病人
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-5 control-label modal-label"
+                                       style="padding-right: 0px;width: 35%;">
+                                    投诉人与患者关系
+                                </label>
+                                <div class="col-sm-7" style="padding-left: 6px;">
+                                    <select class="form-control">
+                                        <option value="1">家属</option>
+                                        <option value="2">本人</option>
+                                        <option value="3">同事</option>
+                                        <option value="4">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">患者姓名</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" readonly="true" placeholder="请选择">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">患者年龄</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control date" readonly="true">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">患者性别</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control date" readonly="true">
+                                </div>
+                            </div>
+
+
                             <div class="form-group col-sm-12">
-                                <label class="col-sm-3 control-label modal-label" style="width: 12%;">舆情内容</label>
+                                <label class="col-sm-2 control-label modal-label">家庭住址</label>
                                 <div class="col-sm-8">
-                                    <textarea name="" rows="" cols="" class="form-control"></textarea>
+                                    <input type="text" class="form-control date" placeholder="请输入">
                                 </div>
-                            </div>
-                            <div class="form-group col-sm-7">
-                                <label class="col-sm-3 control-label modal-label"
-                                       sytle="heigth:20px; width:100px;">投诉人信息</label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="optionsRadiosinline" id="optionsRadios1" value="option1">有
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="optionsRadiosinline" id="optionsRadios2" value="option2">无
-                                </label>
                             </div>
                         </div>
                     </div>
