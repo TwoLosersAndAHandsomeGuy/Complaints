@@ -23,11 +23,12 @@ var SelectWindow = {
 	_each:function(html,data){
 		if(data != null){
 			data.forEach(function(val, i){
-				html += '<option value="'+ val.id+'">'+val.name+'</option> ';
+				html += '<option value="'+ val+'">'+val.name+'</option> ';
 			});
 		}
 		return html;
 	},
+	//divID,标题，回调函数，要选择的数据，已选择的数据
 	open:function(divId, title, callback, allData, selDate){
 
 		//删除多余组件
@@ -113,14 +114,16 @@ var SelectWindow = {
 	_select_submit : function(){
 		var idStr = ""
 		var nameStr = ""
+		var returnObj = [];
 		$("#" + this._selected_select_id + " option").each(function(i){
 			idStr += $(this).val() + ",";
 			nameStr += $(this).text() + ",";
+            returnObj.push($(this));
 		})
 		if(idStr.length != 0){
 			idStr = idStr.substr(0, idStr.length - 1);
 			nameStr = nameStr.substr(0, nameStr.length - 1);
 		}
-		this._openPage_callback(nameStr,idStr,this._openPageDivId);
+		this._openPage_callback(nameStr,idStr);
 	}
 }

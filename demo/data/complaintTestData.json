@@ -1,0 +1,76 @@
+{
+  "total": 9,
+  "rows": [
+    {
+      "id": 1,
+      "code": "I",
+      "name": "医疗行政投诉",
+      "type":"",
+      "isEnabled" : "true",
+      "_parentId": ""
+    },
+    {
+      "id": 2,
+      "code": "IA",
+      "name": "资质缺陷",
+      "type":"",
+      "isEnabled" : "true",
+      "_parentId": 1
+    },
+    {
+      "id": 3,
+      "code": "IB",
+      "name": "资源缺陷",
+      "type":"",
+      "isEnabled" : "true",
+      "_parentId": 1
+    },
+    {
+      "id": 4,
+      "code": "IC",
+      "name": "制度缺陷",
+      "type":"",
+      "isEnabled" : "true",
+      "_parentId": 1
+    },
+    {
+      "id": 5,
+      "code": "IC01",
+      "name": "重要制度缺陷",
+      "type":"",
+      "isEnabled" : "true",
+      "_parentId": 4
+    },
+    {
+      "id": 6,
+      "code": "II",
+      "name": "医疗流程投诉",
+      "type":"",
+      "isEnabled" : "true"
+    },
+    {
+      "id": 7,
+      "code": "IIA",
+      "name": "识别差错",
+      "type":"",
+      "isEnabled" : "true",
+      "_parentId": 6
+    },
+    {
+      "id": 8,
+      "code": "IIA01",
+      "name": "患者身份识别错误",
+      "type":"",
+      "isEnabled" : "true",
+      "_parentId": 7
+    },
+    {
+      "id": 9,
+      "code": "IIA02",
+      "name": "患者部位识别错误",
+      "type":"",
+      "isEnabled" : "true",
+      "_parentId": 7
+    }
+  ]
+}

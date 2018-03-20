@@ -29,7 +29,7 @@
         function deleteRole() {
             var nodes = $('#roleGrid').datagrid('getSelections');
             var msg = "";
-            if (nodes != null) {
+            if (nodes.length != 0) {
                 for (var i = 0; i < nodes.length; i++) {
                     if (msg != '') {
                         msg += ',';
@@ -81,7 +81,7 @@
         <a id="head" href="#"><img src="../resources/images/logo.png"></a>
     </div>
     <ul class="nav nav-pills top-ul">
-        <li><a href="#">首页</a></li>
+        <li><a href="index__.html">首页</a></li>
         <li><a href="message__.html">消息传阅</a></li>
         <li><a href="yuQingGuanLi.html">舆情管理</a></li>
         <li><a href="#">诉讼管理</a></li>
@@ -92,10 +92,10 @@
 </div>
 <div style="margin: auto;width: 1090px;">
     <ul class="nav nav-tabs">
-        <li><a onclick="NavTab(this)" href="xitongguanli.html">菜单</a></li>
+        <li><a onclick="NavTab(this)" href="xiTongGuanli.html">菜单</a></li>
         <li class="active"><a onclick="NavTab(this)" href="xiTongGuanLi_jueSe.html">角色</a></li>
-        <li><a onclick="NavTab(this)" href="#">人员权限</a></li>
-        <li><a onclick="NavTab(this)" href="#">投诉分类</a></li>
+        <li><a onclick="NavTab(this)" href="xiTongGuanLi_renYuanQuanXian.html">人员权限</a></li>
+        <li><a onclick="NavTab(this)" href="xiTongGuanLi_touSu.html">投诉分类</a></li>
         <li><a onclick="NavTab(this)" href="#">数据字典</a></li>
     </ul>
 
