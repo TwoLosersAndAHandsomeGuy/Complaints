@@ -1,32 +1,42 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="Cache-Control" content="no-transform "/>
-    <title>培训与预警</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <link href="../../resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <link href="../../resources/dropkick/dropkick.css" rel="stylesheet" type="text/css"/>
-    <link href="../../resources/easyui/easyui.css" rel="stylesheet" type="text/css"/>
-    <link href="../../resources/css/themes.css" rel="stylesheet" type="text/css"/>
-    <link href="../../resources/css/default.css" rel="stylesheet" type="text/css"/>
-    <link href="../../resources/css/myCss.css" rel="stylesheet" type="text/css"/>
-    <link href="../../resources/bootstrap/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet"
-          type="text/css"/>
+    <meta charset="UTF-8">
+    <title>消息中心</title>
+    <link href="../../resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="../../resources/dropkick/dropkick.css" rel="stylesheet" type="text/css" />
+    <link href="../../resources/easyui/easyui.css" rel="stylesheet" type="text/css" />
+    <link href="../../resources/css/default.css" rel="stylesheet" type="text/css" />
+    <link href="../../resources/css/themes.css" rel="stylesheet" type="text/css" />
+    <link href="../../resources/bootstrap/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../../resources/js/jquery.1.11.3.min.js"></script>
     <script type="text/javascript" src="../../resources/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../resources/dropkick/jquery.dropkick-min.js"></script>
     <script type="text/javascript" src="../../resources/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/pop.js"></script>
+    <script type="text/javascript" src="../../resources/js/myfunctions.js"></script>
     <script type="text/javascript" src="../../resources/js/frame.js"></script>
     <script type="text/javascript" src="../../resources/js/mySelectWin.js"></script>
     <script type="text/javascript" src="../../resources/bootstrap/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript" src="../../resources/bootstrap/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
     <script type="text/javascript">
-        $(function () {
-            $('#collapseOne').collapse('show');
-            $('#collapseTwo').collapse('show');
-            $('#collapseThree').collapse('show');
+        var fileOpen = false;
+        $(function() {
+            //设置消息类型
+            var messageType = 0;
+            try {
+                var url=window.location.href;
+                messageType = url.split('?')[1].split('=')[1];
+            }catch(err) {
+                messageType = 1;
+            }
+            $("#messageCenter_MessageType_Div").find('input').each(function(){
+                if($(this).val() == messageType){
+                    $(this).attr('checked',true);
+                }
+            })
+            //选择日期
             $('.date').datepicker({
                 autoclose: true,
                 language: "zh-CN",
@@ -34,6 +44,11 @@
                 clearBtn: true //清除按钮
             });
         });
+        //新增附件
+        function openFileUpload() {
+            $('#fileModal').modal();
+            fileOpen = true;
+        }
 
         //人员数据
         var userTestDate = [{
@@ -58,14 +73,35 @@
         }
 
         function senderSelectCallBack(nameStr, idStr) {
-            $("#message-center-id").val(idStr);
-            $("#message-center-name").val(nameStr);
+            $("#message-sender-id").val(idStr);
+            $("#message-sender-name").val(nameStr);
         }
+        //收件人选择
+        function openRecipientSelect() {
+            SelectWindow.open("selectDivId", "人员选择", recipientSelectCallBack, userTestDate, null);
+        }
+
+        function recipientSelectCallBack(nameStr, idStr) {
+            $("#message-recipient-name").val(idStr);
+            $("#message-recipient-name").val(nameStr);
+        }
+        //人员选择--结束--
     </script>
+    <style type="text/css">
+        .top {
+            margin: 20px auto 0px;
+            width: 1100px;
+            height: 70px;
+        }
 
+        .logo {
+            margin-right: 70px;
+            float: left;
+        }
+    </style>
 </head>
-<body>
 
+<body>
 <div class="top">
     <div class="logo">
         <a id="head" href="#"><img src="../../resources/images/logo.png"></a>
@@ -81,16 +117,9 @@
         <li><a href="../SystemManager/SystemManager.html">系统管理</a></li>
     </ul>
 </div>
-<div style="margin: auto;width: 1090px;">
-    <ul class="nav nav-tabs">
-        <li class="active"><a onclick="NavTab(this)" href="ReportForm.html">培训与预警</a></li>
-        <li><a onclick="NavTab(this)" href="ReportForm_DSF.html">案例分享</a></li>
-        <li><a onclick="NavTab(this)" href="ReportForm_JD.html">规章制度</a></li>
-        <li><a onclick="NavTab(this)" href="ReportForm_PC.html">常用法律法规</a></li>
-    </ul>
-
-    <div class="form-search" id="formSearchDiv">
-        <div class="form-horizontal search-normal">
+<div class="message-page">
+    <div class="form-search">
+        <div class="form-horizontal">
             <div class="form-group col-sm-6 col-md-4 col-lg-3">
                 <label class="fg-text control-label" style="width:60px">标题</label>
                 <div class="fg-input">
@@ -109,69 +138,379 @@
                     <span class="glyphicon glyphicon-search"></span>查询
                 </button>
             </div>
+            <div class="form-group col-md-9" id="messageCenter_MessageType_Div">
+                <label class="fg-text control-label">消息类型</label>
+                <div>
+                    <label class="radio-inline">
+                        <input type="radio" name="messageCenter_Radio_MessageType" value="1" checked> 培训预警
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="messageCenter_Radio_MessageType" value="2"> 案例分享
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="messageCenter_Radio_MessageType" value="3"> 规章制度
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="messageCenter_Radio_MessageType" value="4">法律法规
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table-toolbar">
+        <div class="btn-toolbar">
+            <ul>
+                <li>
+                    <button type="button" id="btn_add" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> 新增传阅
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-save"></span> 导出数据</button>
+                </li>
+            </ul>
         </div>
     </div>
     <div class="table-normal">
-        <div class="table-toolbar">
-            <div id="menuToolBar" class="btn-toolbar">
-                <ul>
-                    <li>
-                        <button type="button" class="btn btn-default">
-                            <span class="glyphicon glyphicon-cloud-download"></span> 导出数据
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <table class="table table-bordered table-hover">
+        <table class="table table-bordered table-hover" style=" border: 1px solid #ddd;">
+            <thead>
             <tr>
-                <th>患者姓名</th>
-                <th>被投诉科室</th>
-                <th>被投诉人姓名</th>
-                <th>事件发生时间</th>
-                <th>赔偿时间</th>
-                <th>结案方式</th>
-                <th>医院欠费损失</th>
-                <th>判决结论</th>
-                <th>目前状态</th>
+                <th>标题</th>
+                <th>发布人</th>
+                <th>发布科室</th>
+                <th>发布时间</th>
+                <th>审批人</th>
+                <th>审批时间</th>
+                <th>状态</th>
             </tr>
+            </thead>
+            <tbody>
             <tr>
-                <td>张三</td>
-                <td>放射科，财务科</td>
+                <td>医患关系与医德医风培训</td>
                 <td>李木子</td>
-                <td>2018-01-24</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>已归档</td>
+                <td>院长办公室</td>
+                <td>2014-03-14 11:23:04</td>
+                <td>管理员</td>
+                <td>2014-03-15 12:00:43</td>
+                <td>草稿</td>
             </tr>
             <tr>
-                <td>张三</td>
-                <td>放射科，财务科</td>
+                <td>医患关系与医德医风培训</td>
                 <td>李木子</td>
-                <td>2018-01-24</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>已归档</td>
+                <td>院长办公室</td>
+                <td>2014-03-14 11:23:04</td>
+                <td>管理员</td>
+                <td>2014-03-15 12:00:43</td>
+                <td>草稿</td>
             </tr>
             <tr>
-                <td>张三</td>
-                <td>放射科，财务科</td>
+                <td>医患关系与医德医风培训</td>
                 <td>李木子</td>
-                <td>2018-01-24</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>已归档</td>
+                <td>院长办公室</td>
+                <td>2014-03-14 11:23:04</td>
+                <td>管理员</td>
+                <td>2014-03-15 12:00:43</td>
+                <td>草稿</td>
             </tr>
+            </tbody>
         </table>
+        <ul class="pagination">
+            <li>
+                <a href="#">
+                    <span>&laquo;</span>
+                </a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+                <a href="#">
+                    <span>&raquo;</span>
+                </a>
+            </li>
+            <li class="ml10 mr10">
+                向第
+                <input class="form-control page-num-input">
+                </span>
+                / 9 页
+            </li>
+            <li class=" mr10">
+                <button type="button" class="btn btn-info  page-num-btn">跳转</button>
+            </li>
+            <li class=" mr10">
+                共 99 条记录
+            </li>
+        </ul>
     </div>
 </div>
-<div id="selectDivId">
+<div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" style="overflow:scroll">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">传阅信息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="form-group col-sm-12" style="padding-left: 0px;">
+                        <label class="fg-text control-label" style="padding-right: 10px;">传阅标题：</label>
+                        <div class="fg-input" style="margin-left: 85px;">
+                            <input type="text" class="form-control" id="inputEmail3" placeholder="请输入标题">
+                        </div>
+                    </div>
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="name">消息内容</label>
+                            <textarea class="form-control" rows="3" placeholder="选中内容同时按下键盘Ctrl+C复制，Ctrl+V粘贴"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                附件列表(共有 3 条记录)
+                            </a>
+                        </h4>
+                        <p class="navbar-text navbar-right" style="margin-right: 0px; position: relative; bottom: 8px;">
+                            <a href="#" class="navbar-link" onclick="openFileUpload();">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                新增附件
+                            </a>
+                        </p>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table class="table table-bordered table-hover" style=" border: 1px solid #ddd; margin-bottom: 0px;">
+                                <thead>
+                                <tr>
+                                    <th>文件名称</th>
+                                    <th>大小</th>
+                                    <th>创建人</th>
+                                    <th>创建时间</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>运维文件.doc</td>
+                                    <td>3.5M</td>
+                                    <td>李木子</td>
+                                    <td>2018-02-07 15:35:29</td>
+                                    <td>
+                                        <a title="" class="tooltip-f" href="#"><span class="glyphicon glyphicon-remove"></span></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>运维文件.doc</td>
+                                    <td>3.5M</td>
+                                    <td>李木子</td>
+                                    <td>2018-02-07 15:35:29</td>
+                                    <td>
+                                        <a title="" class="tooltip-f" href="#"><span class="glyphicon glyphicon-remove"></span></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>运维文件.doc</td>
+                                    <td>3.5M</td>
+                                    <td>李木子</td>
+                                    <td>2018-02-07 15:35:29</td>
+                                    <td>
+                                        <a title="" class="tooltip-f" href="#"><span class="glyphicon glyphicon-remove"></span></a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                相关任务(共有 1 条记录)
+                            </a>
+                        </h4>
+                    </div>
+                    <!-- <p class="navbar-text navbar-right" style="margin-right: 0px; position: relative; bottom: 8px;">
+            <a href="#" class="navbar-link">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+              新增关联任务
+            </a>
+          </p> -->
+                    <div id="collapseTwo" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
+                                <thead>
+                                <tr>
+                                    <th>任务主题</th>
+                                    <th>任务承办人</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>待运维问题统计</td>
+                                    <td>李木子</td>
+                                    <td>
+                                        <a title="" class="tooltip-f" href="#"><span class="glyphicon glyphicon-remove"></span></a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                收件人 (共有 2 条记录)
+                            </a>
+                        </h4>
+                    </div>
+                    <!-- <p class="navbar-text navbar-right" style="margin-right: 0px; position: relative; bottom: 8px;">
+            <a href="#" class="navbar-link">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+              添加收件人
+            </a>
+          </p> -->
+                    <div id="collapseThree" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table class="table table-bordered table-hover" style=" border: 1px solid #ddd;">
+                                <thead>
+                                <tr>
+                                    <th>姓名</th>
+                                    <th>确认/反馈意见</th>
+                                    <th>确认时间</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>张三</td>
+                                    <td>已确认，没意见</td>
+                                    <td>2018-02-07 16:04:00</td>
+                                    <td>已确认</td>
+                                    <td>
+                                        <a title="" class="tooltip-f" href="#"><span class="glyphicon glyphicon-remove"></span></a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                附件列表(共有 3 条记录)
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="form-horizontal">
+                                <!-- div class="form-group col-sm-12" style="margin-top: 15px;">
+              <label class="fg-text control-label">收件人：</label>
+              <div class="fg-input">
+                <input type="text" class="form-control" id="inputEmail3" placeholder="请填写这一个字段">
+              </div>
+            </div> -->
+                                <div class="form-group col-sm-4" style="margin-top: 15px;">
+                                    <label class="fg-text control-label">完成期限：</label>
+                                    <div class="fg-input">
+                                        <input id="startDate" type="text" class="form-control date" placeholder="请选择">
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-9">
+                                    <label class="fg-text control-label">传阅选项：</label>
+                                    <div>
+                                        <label class="radio-inline">
+                                            <input type="checkbox" name="optionsRadiosinline" id="optionsRadios1" value="option1"> 邮件提醒
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="checkbox" name="optionsRadiosinline" id="optionsRadios2" value="option1"> 确认时提醒
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="checkbox" name="optionsRadiosinline" id="optionsRadios3" value="option1"> 重要传阅
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                </button>
+                <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
+<div class="modal fade" id="fileModal" tabindex="-1" role="dialog" aria-labelledby="fileModalLabel" data-backdrop="static" style="overflow:scroll">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="fileModalLabel">上传附件</h4>
+            </div>
+            <div class="modal-body">
+                <input id="input-1a" type="file" class="file" data-show-preview="false">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>上传</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="selectDivId"></div>
 </body>
+<style type="text/css">
+    .message-page {
+        width: 1090px;
+        height: 400px;
+        margin: auto;
+    }
+
+    .radio-inline {
+        margin-right: 30px;
+    }
+
+    .modal {
+        top: 100px;
+        left: 270px;
+    }
+
+    #fileModal {
+        top: 250px;
+        left: 270px;
+    }
+
+    .panel-title {
+        line-height: 0px;
+    }
+
+    .panel-heading {
+        padding: 20px 10px;
+    }
+
+    .table {
+        margin-bottom: 0px;
+    }
+
+    .panel-default {
+        margin-bottom: 20px;
+    }
+</style>
+
 </html>

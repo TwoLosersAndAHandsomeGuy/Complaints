@@ -24,9 +24,7 @@
     $(function() {
         var complaintURL = "ComplaintManage/ComplaintManage.html";
         var litigationURL = "LitigationManage/LitigationManage.html";
-        var messageCenterURL_PX = "MessageCenter/MessageCenter.html";
-        var messageCenterURL_AL = "MessageCenter/MessageCenter_AL.html";
-        var messageCenterURL_ZD = "MessageCenter/MessageCenter_ZD.html";
+        var messageCenterURL = "MessageCenter/MessageCenter.html";
 
         $(".div-top:eq(0)").on("mouseover", "li.dropdown", function() {
             $(this).addClass("open");
@@ -42,13 +40,13 @@
             $(this).attr("href",litigationURL);
         });
         $("#messageCenter_PX").find("a").each(function(){
-            $(this).attr("href",messageCenterURL_PX);
+            $(this).attr("href",messageCenterURL+"?type=1");
         });
         $("#messageCenter_AL").find("a").each(function(){
-            $(this).attr("href",messageCenterURL_AL);
+            $(this).attr("href",messageCenterURL+"?type=2");
         });
         $("#messageCenter_ZD").find("a").each(function(){
-            $(this).attr("href",messageCenterURL_ZD);
+            $(this).attr("href",messageCenterURL+"?type=3");
         });
 
     })
