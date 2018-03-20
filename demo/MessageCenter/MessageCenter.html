@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="Cache-Control" content="no-transform "/>
-    <title>医疗安全总台账</title>
+    <title>培训与预警</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link href="../../resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
@@ -35,46 +35,31 @@
             });
         });
 
-        //部门选择---开始---
-        var deptTestDate =
-            [{
-                "id": "0",
-                "name": "住院部"
-            }, {
-                "id": "1",
-                "name": "医疗部"
-            }, {
-                "id": "2",
-                "name": "急诊部"
-            }, {
-                "id": "3",
-                "name": "护理部"
-            }, {
-                "id": "4",
-                "name": "科研教育部"
-            }, {
-                "id": "5",
-                "name": "公共关系部"
-            }, {
-                "id": "6",
-                "name": "物资部"
-            }];
-
-
-        function openDeptSelect() {
-            SelectWindow.open("selectDivId", "部门选择", deptSelectCallBack, deptTestDate, null);
-        }
-        function deptSelectCallBack(nameStr, idStr, modalDivId) {
-            $("#deptSelId").val(idStr);
-            $("#deptSelName").val(nameStr);
+        //人员数据
+        var userTestDate = [{
+            "id": "0",
+            "name": "张老实"
+        }, {
+            "id": "1",
+            "name": "王老实"
+        }, {
+            "id": "2",
+            "name": "郑老实"
+        }, {
+            "id": "3",
+            "name": "周老实"
+        }, {
+            "id": "4",
+            "name": "吴老实"
+        }];
+        //发件人选择
+        function openSenderSelect() {
+            SelectWindow.open("selectDivId", "人员选择", senderSelectCallBack, userTestDate, null);
         }
 
-        function conditionOnchang(obj) {
-            if (obj.value == 0) {
-                $('#conditionSelectDiv').hide();
-            } else {
-                $('#conditionSelectDiv').show();
-            }
+        function senderSelectCallBack(nameStr, idStr) {
+            $("#message-center-id").val(idStr);
+            $("#message-center-name").val(nameStr);
         }
     </script>
 
@@ -86,48 +71,37 @@
         <a id="head" href="#"><img src="../../resources/images/logo.png"></a>
     </div>
     <ul class="nav nav-pills top-ul">
-        <li><a href="../index__.html">首页</a></li>
+        <li class="active"><a href="../index__.html">首页</a></li>
         <li><a href="../MessagePass/MessagePass.html">消息传阅</a></li>
         <li><a href="../PublicOpinionManage/PublicOpinionManage.html">舆情管理</a></li>
         <li><a href="../ComplaintManage/ComplaintManage.html">投诉管理</a></li>
         <li><a href="../LitigationManage/LitigationManage.html">诉讼管理</a></li>
-        <li class="active"><a href="ReportForm.html">报表展示</a></li>
+        <li><a href="ReportForm.html">报表展示</a></li>
         <li><a href="../DataAnalysis/DataAnalysis.html">数据分析</a></li>
         <li><a href="../SystemManager/SystemManager.html">系统管理</a></li>
     </ul>
 </div>
 <div style="margin: auto;width: 1090px;">
     <ul class="nav nav-tabs">
-        <li class="active"><a onclick="NavTab(this)" href="ReportForm.html">医疗安全总台账</a></li>
-        <li><a onclick="NavTab(this)" href="ReportForm_DSF.html">第三方调解</a></li>
-        <li><a onclick="NavTab(this)" href="ReportForm_JD.html">鉴定结果记录</a></li>
-        <li><a onclick="NavTab(this)" href="ReportForm_PC.html">赔偿记录</a></li>
-        <li><a onclick="NavTab(this)" href="ReportForm_YZX.html">医责险记录</a></li>
+        <li class="active"><a onclick="NavTab(this)" href="ReportForm.html">培训与预警</a></li>
+        <li><a onclick="NavTab(this)" href="ReportForm_DSF.html">案例分享</a></li>
+        <li><a onclick="NavTab(this)" href="ReportForm_JD.html">规章制度</a></li>
+        <li><a onclick="NavTab(this)" href="ReportForm_PC.html">常用法律法规</a></li>
     </ul>
 
     <div class="form-search" id="formSearchDiv">
         <div class="form-horizontal search-normal">
-            <div class="form-group col-sm-4">
-                <label class="fg-text control-label">所属科室</label>
+            <div class="form-group col-sm-6 col-md-4 col-lg-3">
+                <label class="fg-text control-label" style="width:60px">标题</label>
                 <div class="fg-input">
-                    <input type="hidden" id="CMN-Serch-Dept-Id">
-                    <input type="text" class="form-control" id="CMN-Serch-Dept" placeholder="---全部科室---"
-                           onClick="openDeptSelect();" readonly="true">
+                    <input type="text" class="form-control" id="inputEmail3" placeholder="请输入标题">
                 </div>
             </div>
-            <div class="form-group col-sm-4">
-                <label class="fg-text control-label">事件发生时间</label>
+            <div class="form-group col-sm-6 col-md-4 col-lg-3">
+                <label class="fg-text control-label">发布人</label>
                 <div class="fg-input">
-                    <input id="startDate" type="text" class="form-control date" placeholder="请选择">
-                    <input id="endDate" type="text" class="form-control date" placeholder="请选择">
-                </div>
-            </div>
-            <div class="form-group col-sm-4">
-                <label class="fg-text control-label">查询条件</label>
-                <div class="fg-input">
-                    <select class="select-dropkick" style="width:50%" onchange="conditionOnchang(this)">
-                        <option value="0">---请选择条件---</option>
-                    </select>
+                    <input type="hidden" id="message-center-id">
+                    <input type="text" class="form-control" id="message-center-name" placeholder="请选择" onClick="openSenderSelect()" readonly="true">
                 </div>
             </div>
             <div class="form-group col-sm-4">

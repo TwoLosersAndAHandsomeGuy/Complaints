@@ -22,12 +22,33 @@
     <script type="text/javascript" src="../resources/bootstrap/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
     <script type="text/javascript">
     $(function() {
+        var complaintURL = "ComplaintManage/ComplaintManage.html";
+        var litigationURL = "LitigationManage/LitigationManage.html";
+        var messageCenterURL_PX = "MessageCenter/MessageCenter.html";
+        var messageCenterURL_AL = "MessageCenter/MessageCenter_AL.html";
+        var messageCenterURL_ZD = "MessageCenter/MessageCenter_ZD.html";
 
         $(".div-top:eq(0)").on("mouseover", "li.dropdown", function() {
             $(this).addClass("open");
         });
         $(".div-top:eq(0)").on("mouseout", "li.dropdown", function() {
             $(this).removeClass("open");
+        });
+
+        $("#complaint").find("a").each(function(){
+            $(this).attr("href",complaintURL);
+        });
+        $("#litigation").find("a").each(function(){
+            $(this).attr("href",litigationURL);
+        });
+        $("#messageCenter_PX").find("a").each(function(){
+            $(this).attr("href",messageCenterURL_PX);
+        });
+        $("#messageCenter_AL").find("a").each(function(){
+            $(this).attr("href",messageCenterURL_AL);
+        });
+        $("#messageCenter_ZD").find("a").each(function(){
+            $(this).attr("href",messageCenterURL_ZD);
         });
 
     })
@@ -200,7 +221,7 @@
         </div>
         <ul class="nav nav-pills top-ul">
             <li  class="active"><a href="index__.html">首页</a></li>
-            <li><a href="message__.html">消息传阅</a></li>
+            <li><a href="MessagePass/MessagePass.html">消息传阅</a></li>
             <li><a href="PublicOpinionManage/PublicOpinionManage.html">舆情管理</a></li>
             <li><a href="ComplaintManage/ComplaintManage.html">投诉管理</a></li>
             <li><a href="LitigationManage/LitigationManage.html">诉讼管理</a></li>
@@ -236,8 +257,8 @@
     <div class="message-page">
         <div class="col-sm-6 col-md-6">
             <div class="home-panel">
-                <div class="hp-more">
-                    <button type="button" class="btn btn-default">更多</button>
+                <div class="hp-more" id="complaint">
+                    <a>更多…   &nbsp;&nbsp;</a>
                 </div>
                 <div class="hp-title">投诉与纠纷信息</div>
                 <table class="table">
@@ -271,8 +292,8 @@
         </div>
         <div class="col-sm-6 col-md-6">
             <div class="home-panel">
-                <div class="hp-more">
-                    <button type="button" class="btn btn-default">更多</button>
+                <div class="hp-more" id="litigation">
+                    <a>更多…   &nbsp;&nbsp;</a>
                 </div>
                 <div class="hp-title">投诉信息</div>
                 <table class="table">
@@ -305,34 +326,34 @@
             </div>
         </div>
         <div class="col-sm-6 col-md-4">
-            <div class="home-panel">
+            <div class="home-panel" id="messageCenter_PX">
                 <div class="hp-more">
-                    <button type="button" class="btn btn-default">更多</button>
+                    <a>更多…   &nbsp;&nbsp;</a>
                 </div>
                 <div class="hp-title">培训与预警</div>
                 <table class="table">
                     <tr>
-                        <td><a href="#">和谐医患关系与医患沟通培训</a></td>
-                        <td><a href="#">李木子</a></td>
-                        <td><a href="#">2018-01-23</a></td>
+                        <td><a>和谐医患关系与医患沟通培训</a></td>
+                        <td><a>李木子</a></td>
+                        <td><a>2018-01-23</a></td>
                     </tr>
                     <tr>
-                        <td><a href="#">如何处理好医患关系</a></td>
-                        <td><a href="#">李木子</a></td>
-                        <td><a href="#">2018-02-01</a></td>
+                        <td><a>如何处理好医患关系</a></td>
+                        <td><a>李木子</a></td>
+                        <td><a>2018-02-01</a></td>
                     </tr>
                     <tr>
-                        <td><a href="#">医患关系与医德医风培训</a></td>
-                        <td><a href="#">李木子</a></td>
-                        <td><a href="#">2018-02-01</a></td>
+                        <td><a>医患关系与医德医风培训</a></td>
+                        <td><a>李木子</a></td>
+                        <td><a>2018-02-01</a></td>
                     </tr>
                 </table>
             </div>
         </div>
         <div class="col-sm-6 col-md-4">
-            <div class="home-panel">
+            <div class="home-panel" id="messageCenter_AL">
                 <div class="hp-more">
-                    <button type="button" class="btn btn-default">更多</button>
+                    <a>更多…   &nbsp;&nbsp;</a>
                 </div>
                 <div class="hp-title">案例分析</div>
                 <table class="table">
@@ -355,9 +376,9 @@
             </div>
         </div>
         <div class="col-sm-6 col-md-4">
-            <div class="home-panel">
+            <div class="home-panel" id="messageCenter_ZD">
                 <div class="hp-more">
-                    <button type="button" class="btn btn-default">更多</button>
+                    <a>更多…   &nbsp;&nbsp;</a>
                 </div>
                 <div class="hp-title">规章制度及常用法律法规</div>
                 <table class="table">
