@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Cache-Control" content="no-transform "/>
+    <title>系统管理</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="../resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="../resources/dropkick/dropkick.css" rel="stylesheet" type="text/css"/>
+    <link href="../resources/easyui/easyui.css" rel="stylesheet" type="text/css"/>
+    <link href="../resources/css/themes.css" rel="stylesheet" type="text/css"/>
+    <link href="../resources/css/default.css" rel="stylesheet" type="text/css"/>
+    <link href="../resources/css/myCss.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="../resources/js/jquery.1.11.3.min.js"></script>
+    <script type="text/javascript" src="../resources/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../resources/dropkick/jquery.dropkick-min.js"></script>
+    <script type="text/javascript" src="../resources/easyui/jquery.easyui.min.js"></script>
+
+    <script type="text/javascript">
+
+        function formatEnable(value) {
+            if (value == "true") {
+                return "可用";
+            } else {
+                return "不可用";
+            }
+        }
+
+        function formatName(value,obj) {
+                return '<a class="toggle-tooltip" href="#" onclick="openAddModal('+obj.id+');">' + value + '</a>';
+        }
+
+        function openAddModal(id) {
+            if (id == null) {
+                var nodes = $('#mainTable').treegrid('getSelections');
+                if (nodes.length != 0) {
+                    $("#add_parentName").val(nodes[0].name);
+                    $("#add_parentId").val(nodes[0].id);
+                }
+
+                $("#myAddModalLabel").text("新增");
+            } else {
+                $("#myAddModalLabel").text("详情:" + id);
+            }
+            $('#myAddModal').modal();
+        }
+        function deleteRow() {
+            var nodes = $('#mainTable').datagrid('getSelections');
+            var msg = "";
+            if (nodes.length != 0) {
+                for (var i = 0; i < nodes.length; i++) {
+                    if (msg != '') {
+                        msg += ',';
+                    }
+                    msg += nodes[i].id;
+                }
+                alert("要删除:" + msg);
+            }
+        }
+
+    </script>
+    <style type="text/css">
+        #myAddModal {
+            top: 100px;
+            left: 270px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top">
+    <div class="logo">
+        <a id="head" href="#"><img src="../resources/images/logo.png"></a>
+    </div>
+    <ul class="nav nav-pills top-ul">
+        <li><a href="index__.html">首页</a></li>
+        <li><a href="message__.html">消息传阅</a></li>
+        <li><a href="yuQingGuanLi.html">舆情管理</a></li>
+        <li><a href="#">诉讼管理</a></li>
+        <li><a href="#">报表展示</a></li>
+        <li><a href="#">数据分析</a></li>
+        <li class="active"><a href="xiTongGuanLi.html">系统管理</a></li>
+    </ul>
+</div>
+<div style="margin: auto;width: 1090px;">
+    <ul class="nav nav-tabs">
+        <li><a onclick="NavTab(this)" href="xiTongGuanLi.html">菜单</a></li>
+        <li><a onclick="NavTab(this)" href="xiTongGuanLi_jueSe.html">角色</a></li>
+        <li><a onclick="NavTab(this)" href="xiTongGuanLi_renYuanQuanXian.html">人员权限</a></li>
+        <li class="active"><a onclick="NavTab(this)" href="xiTongGuanLi_touSu.html">投诉分类</a></li>
+        <li><a onclick="NavTab(this)" href="#">数据字典</a></li>
+    </ul>
+    <div class="form-search" id="formSearchDiv">
+        <div class="form-horizontal search-normal">
+            <div class="form-group col-sm-4">
+                <label class="fg-text control-label">名称:</label>
+                <div class="fg-input">
+                    <input id="nameInput" type="text" class="form-control" placeholder="请输入">
+                </div>
+            </div>
+            <div class="form-group col-sm-4">
+                <label class="fg-text control-label">编码:</label>
+                <div class="fg-input">
+                    <input id="codeInput" type="text" class="form-control" placeholder="请输入">
+                </div>
+            </div>
+            <div class="form-group col-sm-4">
+                <button type="button" class="btn btn-info" onclick="alert('ok!')">
+                    <span class="glyphicon glyphicon-search"></span>查询
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="table-normal">
+        <div class="table-toolbar">
+            <div id="mainToolBar" class="btn-toolbar">
+                <ul>
+                    <li>
+                        <button type="button" class="btn btn-default" onclick="openAddModal();">
+                            <span class="glyphicon glyphicon-plus"></span>新增
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-default" onclick="deleteRow()">
+                            <span class="glyphicon glyphicon-remove" style="color: #f00;"></span>删除
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-cloud-upload"></span> 导入数据
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-cloud-download"></span> 导出数据
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <table id="mainTable" class="easyui-treegrid table-bordered table-hover"
+               data-options="
+				url: 'data/complaintTestData.json',
+				method: 'get',
+				idField: 'id',
+				treeField: 'name',
+				animate:true,
+                fitColumns: true,
+				autoRowHeight: false,
+                singleSelect: true
+			">
+            <thead>
+            <tr>
+                <th data-options="field:'id',width:100,halign:'center',checkbox:true">ID</th>
+                <th data-options="field:'code',width:100">编码</th>
+                <th data-options="field:'name',width:400,formatter:formatName">菜单名称</th>
+                <th data-options="field:'type',width:100">类型</th>
+                <th data-options="field:'isEnabled',width:100,halign:'center',align:'center',formatter:formatEnable">
+                    是否可用
+                </th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div><!-- main-frame -->
+
+<div class="modal fade myAddModal" id="myAddModal" tabindex="-1" role="dialog" aria-labelledby="myAddModalLabel"
+     data-backdrop="static" style="overflow:scroll">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom-width: 1px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title" id="myAddModalLabel" style="padding-left: 10px;">舆情信息</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                投诉添加
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-3 control-label modal-label">上级</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="add_parentName" readonly="true">
+                                    <input type="hidden" class="form-control" id="add_parentId" readonly="true">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-3 control-label modal-label">类型</label>
+                                <div class="col-sm-6">
+                                    <select class="form-control" id="yqxz">
+                                        <option value="1">A类</option>
+                                        <option value="2">B类</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-3 control-label modal-label">名称</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="add_name" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-3 control-label modal-label">编码</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control date" id="add_code" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-3 control-label" sytle="heigth:20px; width:100px;">是否可用</label>
+                                <div class="col-sm-6">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optionsRadiosinline" id="isEnabled1" value="1"
+                                               checked="true">是
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optionsRadiosinline" id="isEnabled2" value="0">否
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                </button>
+                <button type="button" id="btn_add_submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                </button>
+            </div>
+        </div>
+    </div>
+</div> <!-- modal-div -->
+
+
+<div id="selectDivId">
+</div>
+</body>
+</html>

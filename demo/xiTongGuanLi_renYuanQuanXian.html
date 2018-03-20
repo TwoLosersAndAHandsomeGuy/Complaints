@@ -42,11 +42,7 @@
         }
 
         function openAddModal(id) {
-            if (id == null) {
-                $("#myAddModalLabel").text("新增");
-            } else {
-                $("#myAddModalLabel").text("详情:" + id);
-            }
+            $("#myAddModalLabel").text("新增");
             $('#myAddModal').modal();
         }
 
@@ -79,7 +75,7 @@
             SelectWindow.open("selectDivId", "部门选择", deptSelectCallBack, deptTestDate, null);
         }
 
-        function deptSelectCallBack(nameStr, idStr, modalDivId) {
+        function deptSelectCallBack(nameStr, idStr) {
             $("#deptSelId").val(idStr);
             $("#deptSelName").val(nameStr);
         }
@@ -88,7 +84,7 @@
             SelectWindow.open("selectDivId", "部门选择", add_deptSelectCallBack, deptTestDate, null);
         }
 
-        function add_deptSelectCallBack(nameStr, idStr, modalDivId) {
+        function add_deptSelectCallBack(nameStr, idStr) {
             $("#add_deptSelId").val(idStr);
             $("#add_deptSelName").val(nameStr);
         }
@@ -193,10 +189,10 @@
 </div>
 <div style="margin: auto;width: 1090px;">
     <ul class="nav nav-tabs">
-        <li><a onclick="NavTab(this)" href="xitongguanli.html">菜单</a></li>
+        <li><a onclick="NavTab(this)" href="xiTongGuanLi.html">菜单</a></li>
         <li><a onclick="NavTab(this)" href="xiTongGuanLi_jueSe.html">角色</a></li>
         <li class="active"><a onclick="NavTab(this)" href="xiTongGuanLi_renYuanQuanXian.html">人员权限</a></li>
-        <li><a onclick="NavTab(this)" href="#">投诉分类</a></li>
+        <li><a onclick="NavTab(this)" href="xiTongGuanLi_touSu.html">投诉分类</a></li>
         <li><a onclick="NavTab(this)" href="#">数据字典</a></li>
     </ul>
 
@@ -296,7 +292,7 @@
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                舆情登记信息
+                                人员权限新增
                             </a>
                         </h4>
                     </div>

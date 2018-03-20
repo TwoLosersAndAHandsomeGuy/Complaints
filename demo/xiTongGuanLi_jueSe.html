@@ -29,7 +29,7 @@
         function deleteRole() {
             var nodes = $('#roleGrid').datagrid('getSelections');
             var msg = "";
-            if (nodes != null) {
+            if (nodes.length != 0) {
                 for (var i = 0; i < nodes.length; i++) {
                     if (msg != '') {
                         msg += ',';
@@ -92,10 +92,10 @@
 </div>
 <div style="margin: auto;width: 1090px;">
     <ul class="nav nav-tabs">
-        <li><a onclick="NavTab(this)" href="xitongguanli.html">菜单</a></li>
+        <li><a onclick="NavTab(this)" href="xiTongGuanli.html">菜单</a></li>
         <li class="active"><a onclick="NavTab(this)" href="xiTongGuanLi_jueSe.html">角色</a></li>
         <li><a onclick="NavTab(this)" href="xiTongGuanLi_renYuanQuanXian.html">人员权限</a></li>
-        <li><a onclick="NavTab(this)" href="#">投诉分类</a></li>
+        <li><a onclick="NavTab(this)" href="xiTongGuanLi_touSu.html">投诉分类</a></li>
         <li><a onclick="NavTab(this)" href="#">数据字典</a></li>
     </ul>
 
