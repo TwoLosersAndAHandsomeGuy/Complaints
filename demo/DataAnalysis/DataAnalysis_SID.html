@@ -120,11 +120,6 @@
                 </div>
             </div>
             <div class="form-group col-sm-4">
-                <button type="button" class="btn btn-info" onclick="queryData();">
-                    <span class="glyphicon glyphicon-search"></span>查询
-                </button>
-            </div>
-            <div class="form-group col-sm-4">
                 <label class="fg-text control-label">分析方式</label>
                 <div class="fg-input">
                     <select class="select-dropkick" style="width:80%">
@@ -133,64 +128,40 @@
                     </select>
                 </div>
             </div>
-            <div class="form-group col-md-9">
+            <div class="form-group col-sm-4">
                 <label class="fg-text control-label">严重度</label>
-                <div>
-                    <label class="radio-inline">
-                        <input type="radio" name="S_Radiosinline" id="S_Radios1" value="不小于5" checked> 不小于5
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="S_Radiosinline" id="S_Radios2" value="不小于4" checked> 不小于4
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="S_Radiosinline" id="S_Radios3" value="不小于3" checked> 不小于3
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="S_Radiosinline" id="S_Radios4" value="不小于2" checked> 不小于2
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="S_Radiosinline" id="S_Radios5" value="不小于1" checked> 不小于1
-                    </label>
+                <div class="fg-input">
+                    <select class="select-dropkick" style="width:80%">
+                        <option value="1">不小于1</option>
+                        <option value="2">不小于2</option>
+                        <option value="3">不小于3</option>
+                        <option value="4">不小于4</option>
+                        <option value="5">不小于5</option>
+                    </select>
                 </div>
             </div>
-            <div class="form-group col-md-9">
+            <div class="form-group col-sm-4">
                 <label class="fg-text control-label">激烈度</label>
-                <div>
-                    <label class="radio-inline">
-                        <input type="radio" name="I_Radiosinline" id="I_Radios1" value="不小于5" checked> 不小于5
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="I_Radiosinline" id="I_Radios2" value="不小于4" checked> 不小于4
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="I_Radiosinline" id="I_Radios3" value="不小于3" checked> 不小于3
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="I_Radiosinline" id="I_Radios4" value="不小于2" checked> 不小于2
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="I_Radiosinline" id="I_Radios5" value="不小于1" checked> 不小于1
-                    </label>
+                <div class="fg-input">
+                    <select class="select-dropkick" style="width:80%">
+                        <option value="1">不小于1</option>
+                        <option value="2">不小于2</option>
+                        <option value="3">不小于3</option>
+                        <option value="4">不小于4</option>
+                        <option value="5">不小于5</option>
+                    </select>
                 </div>
             </div>
-            <div class="form-group col-md-9">
+            <div class="form-group col-sm-4">
                 <label class="fg-text control-label">滞留度</label>
-                <div>
-                    <label class="radio-inline">
-                        <input type="radio" name="D_Radiosinline" id="D_Radios1" value="不小于5" checked> 不小于5
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="D_Radiosinline" id="D_Radios2" value="不小于4" checked> 不小于4
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="D_Radiosinline" id="D_Radios3" value="不小于3" checked> 不小于3
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="D_Radiosinline" id="D_Radios4" value="不小于2" checked> 不小于2
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" name="D_Radiosinline" id="D_Radios5" value="不小于1" checked> 不小于1
-                    </label>
+                <div class="fg-input">
+                    <select class="select-dropkick" style="width:80%">
+                        <option value="1">不小于1</option>
+                        <option value="2">不小于2</option>
+                        <option value="3">不小于3</option>
+                        <option value="4">不小于4</option>
+                        <option value="5">不小于5</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group col-sm-4">
@@ -204,6 +175,12 @@
                 <div class="fg-input">
                     <input id="endDate" type="text" class="form-control date" placeholder="请选择">
                 </div>
+            </div>
+
+            <div class="form-group col-sm-3">
+                <button type="button" class="btn btn-info" onclick="queryData();">
+                    <span class="glyphicon glyphicon-search"></span>查询
+                </button>
             </div>
         </div>
     </div>
