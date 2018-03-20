@@ -1,0 +1,65 @@
+
+<div class="modal fade myAddModal" id="myAddModal222" tabindex="-1" role="dialog" aria-labelledby="myAddModalLabel"
+     data-backdrop="static" style="overflow:scroll">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom-width: 1px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title" id="myAddModalLabel" style="padding-left: 10px;">舆情信息</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                舆情登记信息
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="form-group col-sm-6">
+                                <label for="djbh" class="col-sm-3 control-label modal-label">登记编号333</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="djbh" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label for="djrq" class="col-sm-3 control-label modal-label">登记日期</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control date" id="djrq" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label class="col-sm-3 control-label modal-label" style="width: 12%;">舆情内容</label>
+                                <div class="col-sm-8">
+                                    <textarea name="" rows="" cols="" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-7">
+                                <label class="col-sm-3 control-label modal-label"
+                                       sytle="heigth:20px; width:100px;">投诉人信息</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadios1" value="option1">有
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="optionsRadiosinline" id="optionsRadios2" value="option2">无
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                </button>
+                <button type="button" id="btn_add_submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

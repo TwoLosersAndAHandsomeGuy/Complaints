@@ -27,7 +27,6 @@
             src="../../resources/bootstrap/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
 
     <script type="text/javascript">
-        var fileOpen = false;
         $(function () {
             $('#collapseOne').collapse('show');
             $('#collapseTwo').collapse('show');
@@ -41,6 +40,7 @@
                 clearBtn: true //清除按钮
             });
 
+            $("#selectDivId").load("ComplaintManage_Info.html");
         });
 
         function addCallBack() {
@@ -52,11 +52,7 @@
             } else {
                 $("#myAddModalLabel").text("详情:" + id);
             }
-            $('#myAddModal').modal();
-        }
-        function openFileUpload() {
-            $('#fileModal').modal();
-            fileOpen = true;
+            $('#myAddModal222').modal();
         }
 
         //部门选择---开始---
@@ -129,34 +125,29 @@
 
         function conditionOnchang(obj) {
             if (obj.value == 0) {
-                $('#conditionInputDateDiv').hide();
+                $('#conditionInputStartDateDiv').hide();
+                $('#conditionInputEndDateDiv').hide();
                 $('#conditionInputDiv').hide();
                 $('#conditionInput').val("");
             } else if (obj.value == 1 || obj.value == 2 || obj.value == 3 || obj.value == 4) {
-                $('#conditionInputDateDiv').hide();
+                $('#conditionInputStartDateDiv').hide();
+                $('#conditionInputEndDateDiv').hide();
                 $('#conditionInputDiv').show();
                 $('#conditionInput').val("");
             } else {
-                $('#conditionInputDateDiv').show();
+                $('#conditionInputStartDateDiv').show();
+                $('#conditionInputEndDateDiv').show();
                 $('#conditionInputDiv').hide();
             }
         }
 
     </script>
     <style type="text/css">
-        #myAddModal {
+        #myAddModal222 {
             top: 100px;
             left: 270px;
         }
 
-        #fileModal {
-            top: 250px;
-            left: 270px;
-        }
-
-        .yqtj-label {
-            margin-top: 5px;
-        }
     </style>
 </head>
 <body>
@@ -176,173 +167,156 @@
         <li><a href="../SystemManager/SystemManager.html">系统管理</a></li>
     </ul>
 </div>
-<div>
-    <div class="main-frame2" style="margin: auto;width: 1090px;">
-        <div class="form-search" id="divFormSearch3">
-            <div class="form-horizontal search-normal">
-                <div class="form-group col-md-4">
-                    <label class="fg-text control-label" style="width:60px">编号</label>
-                    <div class="fg-input">
-                        <input type="text" class="form-control" id="inputEmail3" placeholder="请输入编号，模糊查询">
-                    </div>
-                </div>
-                <div class="form-group col-md-4">
-                    <label class="fg-text control-label">被投诉科室</label>
-                    <div class="fg-input">
-                        <input type="hidden" id="message-sender-id">
-                        <input type="text" class="form-control" id="message-sender-name" placeholder="请选择"
-                               onClick="openDeptSelect()" readonly="true">
-                    </div>
-                </div>
-                <div class="form-group col-sm-4">
-                    <button type="button" class="btn btn-info" onclick="alert('ok!')">
-                        <span class="glyphicon glyphicon-search"></span>查询
-                    </button>
-                </div>
-                <div class="form-group col-sm-4">
-                    <label class="fg-text control-label">查询条件</label>
-                    <div class="fg-input">
-                        <select class="select-dropkick" style="width:50%" onchange="conditionOnchang(this)">
-                            <option value="0">---请选择条件---</option>
-                            <option value="1">投诉人姓名</option>
-                            <option value="2">患者姓名</option>
-                            <option value="3">患者病历号</option>
-                            <option value="4">接待人</option>
-                            <option value="5">投诉日期</option>
-                            <option value="6">发生日期</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="conditionInputDiv" class="col-sm-4" style="display:none">
-                    <input id="conditionInput" type="text" class="form-control" placeholder="请输入">
-                </div>
-                <div id="conditionInputDateDiv" class="col-sm-4" style="display:none">
-                    <div class="fg-input">
-                        <input id="startDate" type="text" class="form-control date" placeholder="请选择">
-                    </div>
-                    <label>~</label>
-                    <div class="fg-input">
-                        <input id="endDate" type="text" class="form-control date" placeholder="请选择">
-                    </div>
-                </div>
-                </br>
-            </div>
-        </div><!-- form-search -->
-
-
-        <div class="table-normal">
-
-            <div class="table-toolbar">
-                <div class="btn-toolbar">
-                    <ul>
-                        <li>
-                            <button type="button" class="btn btn-default" onclick="addFunc();">
-                                <span class="glyphicon glyphicon-plus"></span> 新增
-                            </button>
-                        </li>
-                        <li>
-                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-save"></span>
-                                导出数据
-                            </button>
-                        </li>
-                    </ul>
+<div class="main-frame2" style="margin: auto;width: 1090px;">
+    <div class="form-search" id="divFormSearch3">
+        <div class="form-horizontal search-normal">
+            <div class="form-group col-md-4">
+                <label class="fg-text control-label" style="width:60px">编号</label>
+                <div class="fg-input">
+                    <input type="text" class="form-control" id="inputEmail3" placeholder="请输入编号，模糊查询">
                 </div>
             </div>
+            <div class="form-group col-md-4">
+                <label class="fg-text control-label">被投诉科室</label>
+                <div class="fg-input">
+                    <input type="hidden" id="message-sender-id">
+                    <input type="text" class="form-control" id="message-sender-name" placeholder="请选择"
+                           onClick="openDeptSelect()" readonly="true">
+                </div>
+            </div>
+            <div class="form-group col-sm-4">
+                <button type="button" class="btn btn-info" onclick="alert('ok!')">
+                    <span class="glyphicon glyphicon-search"></span>查询
+                </button>
+            </div>
+            <div class="form-group col-sm-4">
+                <label class="fg-text control-label">查询条件</label>
+                <div class="fg-input">
+                    <select class="select-dropkick" style="width:50%" onchange="conditionOnchang(this)">
+                        <option value="0">---请选择条件---</option>
+                        <option value="1">投诉人姓名</option>
+                        <option value="2">患者姓名</option>
+                        <option value="3">患者病历号</option>
+                        <option value="4">接待人</option>
+                        <option value="5">投诉日期</option>
+                        <option value="6">发生日期</option>
+                    </select>
+                </div>
+            </div>
+            <div id="conditionInputDiv" class="col-sm-3" style="display:none">
+                <input id="conditionInput" type="text" class="form-control" placeholder="请输入">
+            </div>
+            <div id="conditionInputStartDateDiv" class="col-sm-3" style="display:none">
+                <input id="startDate" type="text" class="form-control col-sm-3 date" placeholder="请选择">
+            </div>
+            <div id="conditionInputEndDateDiv" class="col-sm-5" style="display:none">
+                <label class="text control-label col-sm-2" style="text-align: center;">至</label>
+                <div class="fg-input">
+                    <input id="endDate" type="text" class="form-control col-sm-3 date" placeholder="请选择">
+                </div>
+            </div>
+            </br>
+        </div>
+    </div><!-- form-search -->
 
-            <table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
-                <thead>
-                    <tr>
-                        <th>编号</th>
-                        <th>投诉人姓名</th>
-                        <th>投诉日期</th>
-                        <th>被投诉人/责任人</th>
-                        <th>责任科室</th>
-                        <th>处理状态</th>
-                        <th>登记人</th>
-                        <th>登记时间</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><a title="详情" class="toggle-tooltip" href="#" onclick="addFunc(1);">TS201801-001</a></td>
-                        <td>张三</td>
-                        <td>2018-01-24</td>
-                        <td>李木子</td>
-                        <td>产科</td>
-                        <td>已归档</td>
-                        <td>李木子</td>
-                        <td>2018-01-24</td>
-                    </tr>
-                    <tr>
-                        <td><a title="详情" class="toggle-tooltip" href="#" onclick="addFunc(2);">TS201801-003</a></td>
-                        <td>张三</td>
-                        <td>2018-01-24</td>
-                        <td>李木子</td>
-                        <td>医务科</td>
-                        <td>处理中</td>
-                        <td>李木子</td>
-                        <td>2018-01-24</td>
-                    </tr>
-                    <tr>
-                        <td><a title="详情" class="toggle-tooltip" href="#" onclick="addFunc(3);">TS201801-002</a></td>
-                        <td>齐先生</td>
-                        <td>2018-01-24</td>
-                        <td>李四</td>
-                        <td>神经外科</td>
-                        <td>处理中</td>
-                        <td>李木子</td>
-                        <td>2018-01-24</td>
-                    </tr>
-                </tbody>
-            </table>
+
+    <div class="table-normal">
+
+        <div class="table-toolbar">
+            <div class="btn-toolbar">
+                <ul>
+                    <li>
+                        <button type="button" class="btn btn-default" onclick="addFunc();">
+                            <span class="glyphicon glyphicon-plus"></span> 新增
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-save"></span>
+                            导出数据
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <ul class="pagination">
-            <li>
-                <a href="#">
-                    <span>&laquo;</span>
-                </a>
-            </li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li>
-                <a href="#">
-                    <span>&raquo;</span>
-                </a>
-            </li>
-            <li class="ml10 mr10">
-                向第
-                <input class="form-control page-num-input"></span>
-                / 9 页
-            </li>
-            <li class=" mr10">
-                <button type="button" class="btn btn-info  page-num-btn">跳转</button>
-            </li>
-            <li class=" mr10">
-                共 99 条记录
-            </li>
-        </ul>
-    </div><!-- main-frame -->
+        <table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
+            <thead>
+            <tr>
+                <th>编号</th>
+                <th>投诉人姓名</th>
+                <th>投诉日期</th>
+                <th>被投诉人/责任人</th>
+                <th>责任科室</th>
+                <th>处理状态</th>
+                <th>登记人</th>
+                <th>登记时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><a title="详情" class="toggle-tooltip" href="#" onclick="addFunc(1);">TS201801-001</a></td>
+                <td>张三</td>
+                <td>2018-01-24</td>
+                <td>李木子</td>
+                <td>产科</td>
+                <td>已归档</td>
+                <td>李木子</td>
+                <td>2018-01-24</td>
+            </tr>
+            <tr>
+                <td><a title="详情" class="toggle-tooltip" href="#" onclick="addFunc(2);">TS201801-003</a></td>
+                <td>张三</td>
+                <td>2018-01-24</td>
+                <td>李木子</td>
+                <td>医务科</td>
+                <td>处理中</td>
+                <td>李木子</td>
+                <td>2018-01-24</td>
+            </tr>
+            <tr>
+                <td><a title="详情" class="toggle-tooltip" href="#" onclick="addFunc(3);">TS201801-002</a></td>
+                <td>齐先生</td>
+                <td>2018-01-24</td>
+                <td>李四</td>
+                <td>神经外科</td>
+                <td>处理中</td>
+                <td>李木子</td>
+                <td>2018-01-24</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
-</div><!-- div_rightside -->
+    <ul class="pagination">
+        <li>
+            <a href="#">
+                <span>&laquo;</span>
+            </a>
+        </li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li>
+            <a href="#">
+                <span>&raquo;</span>
+            </a>
+        </li>
+        <li class="ml10 mr10">
+            向第
+            <input class="form-control page-num-input"></span>
+            / 9 页
+        </li>
+        <li class=" mr10">
+            <button type="button" class="btn btn-info  page-num-btn">跳转</button>
+        </li>
+        <li class=" mr10">
+            共 99 条记录
+        </li>
+    </ul>
+</div><!-- main-frame -->
 
 <div id="selectDivId"></div>
-<script type="text/javascript">
-
-    $(function () {
-        $('#myAddModal').on('hide.bs.modal', function () {
-            if (fileOpen) {
-                return false;
-            }
-        });
-
-        $('#fileModal').on('hide.bs.modal', function () {
-            fileOpen = false;
-        });
-    });
-</script>
 </body>
 </html>
