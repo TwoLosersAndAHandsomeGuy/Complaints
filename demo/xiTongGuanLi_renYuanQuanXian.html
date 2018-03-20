@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Cache-Control" content="no-transform "/>
+    <title>系统管理</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="../resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="../resources/dropkick/dropkick.css" rel="stylesheet" type="text/css"/>
+    <link href="../resources/easyui/easyui.css" rel="stylesheet" type="text/css"/>
+    <link href="../resources/css/themes.css" rel="stylesheet" type="text/css"/>
+    <link href="../resources/css/default.css" rel="stylesheet" type="text/css"/>
+    <link href="../resources/css/myCss.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="../resources/js/jquery.1.11.3.min.js"></script>
+    <script type="text/javascript" src="../resources/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../resources/dropkick/jquery.dropkick-min.js"></script>
+    <script type="text/javascript" src="../resources/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../resources/js/mySelectWin.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#collapseOne').collapse('show');
+            $('#collapseTwo').collapse('show');
+
+        });
+
+
+        function deleteRole() {
+            var nodes = $('#roleGrid').datagrid('getSelections');
+            var msg = "";
+            if (nodes != null) {
+                for (var i = 0; i < nodes.length; i++) {
+                    if (msg != '') {
+                        msg += ',';
+                    }
+                    msg += nodes[i].id;
+                }
+                alert("要删除:" + msg);
+            }
+        }
+
+        function openAddModal(id) {
+            if (id == null) {
+                $("#myAddModalLabel").text("新增");
+            } else {
+                $("#myAddModalLabel").text("详情:" + id);
+            }
+            $('#myAddModal').modal();
+        }
+
+        //部门选择---开始---
+        var deptTestDate =
+            [{
+                "id": "0",
+                "name": "住院部"
+            }, {
+                "id": "1",
+                "name": "医疗部"
+            }, {
+                "id": "2",
+                "name": "急诊部"
+            }, {
+                "id": "3",
+                "name": "护理部"
+            }, {
+                "id": "4",
+                "name": "科研教育部"
+            }, {
+                "id": "5",
+                "name": "公共关系部"
+            }, {
+                "id": "6",
+                "name": "物资部"
+            }];
+
+        function openDeptSelect() {
+            SelectWindow.open("selectDivId", "部门选择", deptSelectCallBack, deptTestDate, null);
+        }
+
+        function deptSelectCallBack(nameStr, idStr, modalDivId) {
+            $("#deptSelId").val(idStr);
+            $("#deptSelName").val(nameStr);
+        }
+
+        function add_openDeptSelect() {
+            SelectWindow.open("selectDivId", "部门选择", add_deptSelectCallBack, deptTestDate, null);
+        }
+
+        function add_deptSelectCallBack(nameStr, idStr, modalDivId) {
+            $("#add_deptSelId").val(idStr);
+            $("#add_deptSelName").val(nameStr);
+        }
+        //部门选择---结束---
+
+
+        //人员选择--开始--
+
+        var userTestDate =
+            [{
+                "id": "0",
+                "name": "张老实"
+            }, {
+                "id": "1",
+                "name": "王老实"
+            }, {
+                "id": "2",
+                "name": "郑老实"
+            }, {
+                "id": "3",
+                "name": "周老实"
+            }, {
+                "id": "4",
+                "name": "吴老实"
+            }];
+
+        function openUserSelect() {
+            SelectWindow.open("selectDivId", "人员选择", userSelectCallBack, userTestDate, null);
+        }
+
+        function userSelectCallBack(nameStr, idStr) {
+            $("#userSelId").val(idStr);
+            $("#userSelName").val(nameStr);
+        }
+
+        function add_openUserSelect() {
+            SelectWindow.open("selectDivId", "人员选择", add_userSelectCallBack, userTestDate, null);
+        }
+
+        function add_userSelectCallBack(nameStr, idStr) {
+            $("#add_userSelId").val(idStr);
+            $("#add_userSelName").val(nameStr);
+        }
+        //人员选择--结束--
+
+        //角色选择--开始--
+
+        var roleTestDate =
+            [{
+                "id": "0",
+                "name": "管理员"
+            }, {
+                "id": "1",
+                "name": "系统管理员"
+            }, {
+                "id": "2",
+                "name": "系统负责人"
+            }];
+
+        function openRoleSelect() {
+            SelectWindow.open("selectDivId", "角色选择", roleSelectCallBack, roleTestDate, null);
+        }
+
+        function roleSelectCallBack(nameStr, idStr) {
+            $("#roleSelId").val(idStr);
+            $("#roleSelName").val(nameStr);
+        }
+
+        function add_openRoleSelect() {
+            SelectWindow.open("selectDivId", "角色选择", add_roleSelectCallBack, roleTestDate, null);
+        }
+
+        function add_roleSelectCallBack(nameStr, idStr) {
+            $("#add_roleSelId").val(idStr);
+            $("#add_roleSelName").val(nameStr);
+        }
+
+        //角色选择--结束--
+    </script>
+    <style type="text/css">
+        #myAddModal {
+            top: 100px;
+            left: 270px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top">
+    <div class="logo">
+        <a id="head" href="#"><img src="../resources/images/logo.png"></a>
+    </div>
+    <ul class="nav nav-pills top-ul">
+        <li><a href="index__.html">首页</a></li>
+        <li><a href="message__.html">消息传阅</a></li>
+        <li><a href="yuQingGuanLi.html">舆情管理</a></li>
+        <li><a href="#">诉讼管理</a></li>
+        <li><a href="#">报表展示</a></li>
+        <li><a href="#">数据分析</a></li>
+        <li class="active"><a href="xiTongGuanLi.html">系统管理</a></li>
+    </ul>
+</div>
+<div style="margin: auto;width: 1090px;">
+    <ul class="nav nav-tabs">
+        <li><a onclick="NavTab(this)" href="xitongguanli.html">菜单</a></li>
+        <li><a onclick="NavTab(this)" href="xiTongGuanLi_jueSe.html">角色</a></li>
+        <li class="active"><a onclick="NavTab(this)" href="xiTongGuanLi_renYuanQuanXian.html">人员权限</a></li>
+        <li><a onclick="NavTab(this)" href="#">投诉分类</a></li>
+        <li><a onclick="NavTab(this)" href="#">数据字典</a></li>
+    </ul>
+
+    <div class="form-search" id="formSearchDiv">
+        <div class="form-horizontal search-normal">
+            <div class="form-group col-sm-3">
+                <label class="col-sm-4 control-label">人员</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="userSelName" placeholder="请选择"
+                           onClick="openUserSelect()" readonly="true">
+                    <input type="hidden" id="userSelId">
+                </div>
+            </div>
+            <div class="form-group col-sm-3">
+                <label class="col-sm-4 control-label yqtj-label">角色</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="roleSelName" placeholder="请选择"
+                           onClick="openRoleSelect()" readonly="true">
+                    <input type="hidden" id="roleSelId">
+                </div>
+            </div>
+            <div class="form-group col-sm-3">
+                <label class="col-sm-4 control-label yqtj-label">科室</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="deptSelName" placeholder="请选择"
+                           onClick="openDeptSelect()" readonly="true">
+                    <input type="hidden" id="deptSelId">
+                </div>
+            </div>
+            <div class="form-group col-sm-3">
+                <button type="button" class="btn btn-info" onclick="alert('ok!')">
+                    <span class="glyphicon glyphicon-search"></span>查询
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="table-normal">
+        <div class="table-toolbar">
+            <div id="menuToolBar" class="btn-toolbar">
+                <ul>
+                    <li>
+                        <button type="button" class="btn btn-default" onclick="openAddModal();">
+                            <span class="glyphicon glyphicon-plus"></span>新增
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-default" onclick="deleteRole()">
+                            <span class="glyphicon glyphicon-remove" style="color: #f00;"></span>删除
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-cloud-upload"></span> 导入数据
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-cloud-download"></span> 导出数据
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <table id="roleGrid" class="easyui-datagrid"
+               data-options="rownumbers:true,
+                    fitColumns: true,
+                    singleSelect:true,
+                    url:'data/roleUserTestData.json',
+                    method:'get'">
+            <thead>
+            <tr>
+                <th data-options="field:'id',checkbox:true">ID</th>
+                <th data-options="field:'userCode',width:100,align:'center'">人员工号</th>
+                <th data-options="field:'userName',width:80,align:'center'">人员名称</th>
+                <th data-options="field:'roleCode',width:100,align:'center'">人员工号</th>
+                <th data-options="field:'roleName',width:80,align:'center'">人员名称</th>
+                <th data-options="field:'deptCode',width:100,align:'center'">人员工号</th>
+                <th data-options="field:'deptName',width:80,align:'center'">人员名称</th>
+            </tr>
+            </thead>
+        </table>
+
+    </div>
+</div>
+
+<div class="modal fade myAddModal" id="myAddModal" tabindex="-1" role="dialog" aria-labelledby="myAddModalLabel"
+     data-backdrop="static" style="overflow:scroll">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom-width: 1px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title" id="myAddModalLabel" style="padding-left: 10px;">舆情信息</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                舆情登记信息
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="form-group col-sm-12">
+                                <label class="col-sm-2 control-label modal-label">人员</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="add_userSelName" placeholder="请选择"
+                                           onClick="add_openUserSelect()" readonly="true">
+                                    <input type="hidden" id="add_userSelId">
+                                </div>
+                                <label class="col-sm-2 control-label modal-label">人员工号</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="add_userSelCode" readonly="true">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label class="col-sm-2 control-label modal-label">角色</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="add_roleSelName" placeholder="请选择"
+                                           onClick="add_openRoleSelect()" readonly="true">
+                                    <input type="hidden" id="add_roleSelId">
+                                </div>
+                                <label class="col-sm-2 control-label modal-label">角色编码</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="add_roleSelCode" readonly="true">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label class="col-sm-2 control-label modal-label">科室</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="add_deptSelName" placeholder="请选择"
+                                           onClick="add_openDeptSelect()" readonly="true">
+                                    <input type="hidden" id="add_deptSelId">
+                                </div>
+                                <label class="col-sm-2 control-label modal-label">科室编码</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="add_deptSelCode" readonly="true">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                </button>
+                <button type="button" id="btn_add_submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                </button>
+            </div>
+        </div>
+    </div>
+</div> <!-- modal-div -->
+
+</div>
+<div id="selectDivId"></div>
+</body>
+</html>
