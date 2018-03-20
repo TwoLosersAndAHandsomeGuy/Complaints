@@ -1,0 +1,7 @@
+# IDEA project file #
+#####################
+.idea
+*.ids
+*.iml
+*.iws
+*.ipr
