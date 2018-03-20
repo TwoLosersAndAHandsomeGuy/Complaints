@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="Cache-Control" content="no-transform "/>
-    <title>数据分析</title>
+    <title>科别分析</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link href="../../resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
@@ -18,40 +18,70 @@
     <script type="text/javascript" src="../../resources/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../resources/dropkick/jquery.dropkick-min.js"></script>
     <script type="text/javascript" src="../../resources/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/frame.js"></script>
+    <script type="text/javascript" src="../../resources/js/mySelectWin.js"></script>
     <script type="text/javascript" src="../../resources/bootstrap/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript" src="../../resources/bootstrap/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
     <script type="text/javascript">
+        $(function () {
+            $('#collapseOne').collapse('show');
+            $('#collapseTwo').collapse('show');
+            $('#collapseThree').collapse('show');
+            $('.date').datepicker({
+                autoclose: true,
+                language: "zh-CN",
+                todayHighlight: true,
+                clearBtn: true //清除按钮
+            });
+        });
 
-        function menuOpen() {
-            var nodes = $('#menuTable').treegrid('getSelections');
-            var s = '';
-            for (var i = 0; i < nodes.length; i++) {
-                if (s != '') s += ',';
-                s += nodes[i].id;
-            }
-            alert("选中数据:" + s);
+        //部门选择---开始---
+        var deptTestDate =
+            [{
+                "id": "0",
+                "name": "住院部"
+            }, {
+                "id": "1",
+                "name": "医疗部"
+            }, {
+                "id": "2",
+                "name": "急诊部"
+            }, {
+                "id": "3",
+                "name": "护理部"
+            }, {
+                "id": "4",
+                "name": "科研教育部"
+            }, {
+                "id": "5",
+                "name": "公共关系部"
+            }, {
+                "id": "6",
+                "name": "物资部"
+            }];
+
+        function queryData(){
+            //设置 数据表格 title
+            $("#table_title_typeName").text($("input[name='optionsRadiosinline']:checked").val());
+            $("#table_title_countDate").text("统计时间:"+$("#startDate").val()+"~"+$("#endDate").val());
         }
-        function menuClose() {
-            var nodes = $('#menuTable').treegrid('getSelections');
-            var s = '';
-            for (var i = 0; i < nodes.length; i++) {
-                if (s != '') s += ',';
-                s += nodes[i].id;
-            }
-            alert("选中数据:" + s);
+        function openDeptSelect() {
+            SelectWindow.open("selectDivId", "部门选择", deptSelectCallBack, deptTestDate, null);
+        }
+        function deptSelectCallBack(nameStr, idStr, modalDivId) {
+            $("#deptSelId").val(idStr);
+            $("#deptSelName").val(nameStr);
         }
 
-        function formatEnable(value){
-            if(value == "true"){
-                return "可用";
-            }else{
-                return "不可用";
+        function conditionOnchang(obj) {
+            if (obj.value == 0) {
+                $('#conditionSelectDiv').hide();
+            } else {
+                $('#conditionSelectDiv').show();
             }
         }
     </script>
-    <style type="text/css">
 
-    </style>
 </head>
 <body>
 
@@ -61,7 +91,7 @@
     </div>
     <ul class="nav nav-pills top-ul">
         <li><a href="../index__.html">首页</a></li>
-        <li><a href="../message__.html">消息传阅</a></li>
+        <li><a href="../MessagePass/MessagePass.html">消息传阅</a></li>
         <li><a href="../PublicOpinionManage/PublicOpinionManage.html">舆情管理</a></li>
         <li><a href="../ComplaintManage/ComplaintManage.html">投诉管理</a></li>
         <li><a href="../LitigationManage/LitigationManage.html">诉讼管理</a></li>
@@ -78,50 +108,118 @@
         <li><a onclick="NavTab(this)" href="DataAnalysis_SID.html">SID分析</a></li>
     </ul>
 
+    <div class="form-search" id="formSearchDiv">
+        <div class="form-horizontal search-normal">
+            <div class="form-group col-sm-4">
+                <label class="fg-text control-label">所属科室</label>
+                <div class="fg-input">
+                    <input type="hidden" id="CMN-Serch-Dept-Id">
+                    <input type="text" class="form-control" id="CMN-Serch-Dept" placeholder="---全部科室---"
+                           onClick="openDeptSelect();" readonly="true">
+                </div>
+            </div>
+            <div class="form-group col-sm-4">
+                <label class="fg-text control-label">时间类别</label>
+                <div class="fg-input">
+                    <select class="select-dropkick" style="width:80%">
+                        <option value="0">按事件发生时间统计</option>
+                        <option value="1">按投诉时间统计</option>
+                        <option value="2">按赔偿时间统计</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-sm-4">
+                <label class="fg-text control-label">开始日期</label>
+                <div class="fg-input">
+                    <input id="startDate" type="text" class="form-control date" placeholder="请选择">
+                </div>
+            </div>
+            <div class="form-group col-sm-4" style="margin-right: 20px;">
+                <label class="fg-text control-label">结束日期</label>
+                <div class="fg-input">
+                    <input id="endDate" type="text" class="form-control date" placeholder="请选择">
+                </div>
+            </div>
+            <div class="form-group col-sm-4">
+                <label class="fg-text control-label">查询条件</label>
+                <div class="fg-input">
+                    <select class="select-dropkick" style="width:50%" onchange="conditionOnchang(this)">
+                        <option value="0">---请选择条件---</option>
+                        <option value="1">启动诉讼</option>
+                        <option value="2">启动鉴定</option>
+                        <option value="3">启动第三方调解</option>
+                        <option value="4">医责险报销</option>
+                    </select>
+                </div>
+            </div>
+            <div id="conditionSelectDiv" class="col-sm-2" style="display:none">
+                <select id="conditionSelect" class="select-dropkick" style="width:50%">
+                    <option value="1">是</option>
+                    <option value="2">否</option>
+                </select>
+            </div>
+            <div class="form-group col-sm-4">
+                <button type="button" class="btn btn-info" onclick="queryData();">
+                    <span class="glyphicon glyphicon-search"></span>查询
+                </button>
+            </div>
+        </div>
+    </div>
     <div class="table-normal">
-        <div style="margin:20px 0;"></div>
         <div class="table-toolbar">
             <div id="menuToolBar" class="btn-toolbar">
                 <ul>
                     <li>
-                        <button type="button" class="btn btn-default" onclick="menuOpen();">
-                            <span class="glyphicon glyphicon-ok"></span>启用
-                        </button>
-                    </li>
-                    <li>
-                        <button type="button" class="btn btn-default" onclick="menuClose();">
-                            <span class="glyphicon glyphicon-remove" style="color: #f00;"></span>禁用
-                        </button>
-                    </li>
-                    <li>
                         <button type="button" class="btn btn-default">
-                            <span class="glyphicon glyphicon-save"></span> 导出数据
+                            <span class="glyphicon glyphicon-cloud-download"></span> 导出数据
                         </button>
                     </li>
                 </ul>
             </div>
         </div>
-        <table id="menuTable" class="easyui-treegrid table-bordered table-hover"
-               data-options="
-				url: 'data/menuTestData.json',
-				method: 'get',
-				idField: 'id',
-				treeField: 'menuName',
-				animate:true,
-                fitColumns: true,
-				autoRowHeight: false,
-                singleSelect: false
-			">
-            <thead>
+        <table class="table table-bordered table-hover">
             <tr>
-                <th data-options="field:'id',width:100,halign:'center',checkbox:true">ID</th>
-                <th data-options="field:'menuName',width:400">菜单名称</th>
-                <th data-options="field:'isEnabled',width:200,halign:'center',align:'center',formatter:formatEnable">是否可用</th>
+                <th rowspan="2">科室</th>
+                <th colspan="3"><span id="table_title_countDate">统计时间</span></th>
             </tr>
-            </thead>
+            <tr>
+                <th>投诉例数</th>
+                <th>诉讼例数</th>
+                <th>赔偿例数</th>
+                <th>赔偿金额</th>
+            </tr>
+            <tr>
+                <td>口腔科</td>
+                <td>0</td>
+                <td>2</td>
+                <td>3</td>
+                <td>347689.32</td>
+            </tr>
+            <tr>
+                <td>眼科</td>
+                <td>0</td>
+                <td>0</td>
+                <td>2</td>
+                <td>7865940.04</td>
+            </tr>
+            <tr>
+                <td>耳鼻喉头颈科</td>
+                <td>3</td>
+                <td>2</td>
+                <td>1</td>
+                <td>23456.87</td>
+            </tr>
+            <tr>
+                <td>脊柱外科</td>
+                <td>3</td>
+                <td>2</td>
+                <td>2</td>
+                <td>12345.99</td>
+            </tr>
         </table>
     </div>
-</div><!-- main-frame -->
+
+</div>
 <div id="selectDivId">
 </div>
 </body>
