@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Cache-Control" content="no-transform "/>
+    <title>系统管理</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="../../resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/dropkick/dropkick.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/easyui/easyui.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/css/themes.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/css/default.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/css/myCss.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="../../resources/js/jquery.1.11.3.min.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../resources/dropkick/jquery.dropkick-min.js"></script>
+    <script type="text/javascript" src="../../resources/easyui/jquery.easyui.min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#collapseOne').collapse('show');
+            $('#collapseTwo').collapse('show');
+
+        });
+
+
+        function deleteRole() {
+            var nodes = $('#roleGrid').datagrid('getSelections');
+            var msg = "";
+            if (nodes.length != 0) {
+                for (var i = 0; i < nodes.length; i++) {
+                    if (msg != '') {
+                        msg += ',';
+                    }
+                    msg += nodes[i].id;
+                }
+                alert("要删除:" + msg);
+            }
+        }
+
+        function openAddModal(id) {
+            if (id == null) {
+                $("#myAddModalLabel").text("新增");
+                $('#dictionCode').removeAttr("readonly");
+                $('#dictionName').removeAttr("readonly");
+                $('#itemDivId').hide();
+            } else {
+                $("#myAddModalLabel").text("详情:" + id);
+                $('#dictionCode').attr("readonly","readonly");
+                $('#dictionName').attr("readonly","readonly");
+                $('#itemDivId').show();
+            }
+            $('#myAddModal').modal();
+        }
+
+        function openEditModal(){
+            var nodes = $('#roleGrid').datagrid('getSelections');
+            if (nodes.length != 0) {
+                $('#itemDivId').show();
+                $('#dictionCode').attr("readonly","readonly");
+                $('#dictionName').attr("readonly","readonly");
+                $('#myAddModal').modal();
+            }
+        }
+
+        function openItemAddModal(){
+            $('#itemAddModal').modal();
+        }
+        function formatEnable(value) {
+            if (value == "true") {
+                return "可用";
+            } else {
+                return "不可用";
+            }
+        }
+    </script>
+    <style type="text/css">
+        #myAddModal {
+            top: 100px;
+            left: 270px;
+        }
+
+        #itemAddModal {
+            top: 200px;
+            left: 270px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top">
+    <div class="logo">
+        <a id="head" href="#"><img src="../../resources/images/logo.png"></a>
+    </div>
+    <ul class="nav nav-pills top-ul">
+        <li><a href="../index__.html">首页</a></li>
+        <li><a href="../message__.html">消息传阅</a></li>
+        <li><a href="../PublicOpinionManage/PublicOpinionManage.html">舆情管理</a></li>
+        <li><a href="../ComplaintManage/ComplaintManage.html">投诉管理</a></li>
+        <li><a href="../LitigationManage/LitigationManage.html">诉讼管理</a></li>
+        <li><a href="../ReportForm/ReportForm.html">报表展示</a></li>
+        <li><a href="../DataAnalysis/DataAnalysis.html">数据分析</a></li>
+        <li class="active"><a href="SystemManager.html">系统管理</a></li>
+    </ul>
+</div>
+<div style="margin: auto;width: 1090px;">
+    <ul class="nav nav-tabs">
+        <li><a onclick="NavTab(this)" href="SystemManager.html">菜单</a></li>
+        <li><a onclick="NavTab(this)" href="SystemManager_Role.html">角色</a></li>
+        <li><a onclick="NavTab(this)" href="SystemManager_RoleUser.html">人员权限</a></li>
+        <li><a onclick="NavTab(this)" href="SystemManager_Complaint.html">投诉分类</a></li>
+        <li class="active"><a onclick="NavTab(this)" href="SystemManager_Dictionary.html">数据字典</a></li>
+    </ul>
+
+    <div class="table-normal">
+        <div class="table-toolbar">
+            <div id="menuToolBar" class="btn-toolbar">
+                <ul>
+                    <li>
+                        <button type="button" class="btn btn-default" onclick="openAddModal();">
+                            <span class="glyphicon glyphicon-plus"></span>新增
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-default" onclick="openEditModal();">
+                            <span class="glyphicon glyphicon-pencil"></span>编辑字典项
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-default" onclick="deleteRole()">
+                            <span class="glyphicon glyphicon-remove" style="color: #f00;"></span>删除
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-cloud-upload"></span> 导入数据
+                        </button>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-cloud-download"></span> 导出数据
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <table id="roleGrid" class="easyui-datagrid"
+               data-options="rownumbers:true,
+                    fitColumns: true,
+                    singleSelect:true,
+                    url:'../data/dictionaryTestData.json',
+                    method:'get'">
+            <thead>
+            <tr>
+                <th data-options="field:'id',checkbox:true">ID</th>
+                <th data-options="field:'code',width:100,align:'center'">编码</th>
+                <th data-options="field:'name',width:80,align:'center'">名称</th>
+                <th data-options="field:'childCount',width:80,align:'center'">子项数量</th>
+            </tr>
+            </thead>
+        </table>
+
+    </div>
+</div>
+
+<div class="modal fade myAddModal" id="myAddModal" tabindex="-1" role="dialog" aria-labelledby="myAddModalLabel"
+     data-backdrop="static" style="overflow:scroll">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#">数据字典</a></li>
+                </ul>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-3 control-label modal-label">字典编码</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="dictionCode" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-3 control-label modal-label">字典名称</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control date" id="dictionName" placeholder="请输入">
+                    </div>
+                </div>
+                <div id="itemDivId" style="display:none">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#">字典项信息</a></li>
+                    </ul>
+                    <div class="btn-toolbar">
+                        <ul>
+                            <li>
+                                <button type="button" class="btn btn-link" onclick="openItemAddModal();">新增字典项
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <table class="table table-bordered table-hover" style="border: 1px solid #ddd;"
+                           id="fileTable">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>字典项编码</th>
+                            <th>字典项名称</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>ComplaintManager</td>
+                            <td>投诉管理</td>
+                            <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                    class="glyphicon glyphicon-trash"></span></a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>BudgetBusinessType</td>
+                            <td>舆情管理</td>
+                            <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                    class="glyphicon glyphicon-trash"></span></a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                </button>
+                <button type="button" id="btn_add_submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                </button>
+            </div>
+        </div>
+    </div>
+</div> <!-- modal-div -->
+
+
+<div class="modal fade" id="itemAddModal" tabindex="-1" role="dialog" aria-labelledby="itemAddModalLabel"
+     data-backdrop="static" style="overflow:scroll">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="itemAddModalLabel">添加字典项</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-3 control-label modal-label">字典项编码</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="dictionItemCode" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-3 control-label modal-label">字典项名称</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control date" id="dictionItemName" placeholder="请输入">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                </button>
+                <button type="button" id="btn_file_submit" class="btn btn-primary" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>提交
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

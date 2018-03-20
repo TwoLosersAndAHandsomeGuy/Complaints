@@ -1,0 +1,17 @@
+{
+  "total": 3,
+  "rows": [
+    {
+      "id": 1,
+      "code": "BusinessType",
+      "name": "业务类型",
+      "childCount" : 8
+    },
+    {
+      "id": 2,
+      "code": "SexType",
+      "name": "人员性别",
+      "childCount" : 2
+    }
+  ]
+}
