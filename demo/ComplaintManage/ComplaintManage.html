@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Cache-Control" content="no-transform "/>
+    <title>投诉管理</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="../../resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/dropkick/dropkick.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/easyui/easyui.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/css/default.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/css/themes.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/bootstrap/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="../../resources/css/myCss.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="../../resources/js/jquery.1.11.3.min.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../resources/dropkick/jquery.dropkick-min.js"></script>
+    <script type="text/javascript" src="../../resources/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/frame.js"></script>
+    <script type="text/javascript" src="../../resources/js/mySelectWin.js"></script>
+    <script type="text/javascript"
+            src="../../resources/bootstrap/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript"
+            src="../../resources/bootstrap/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+
+    <script type="text/javascript">
+        var fileOpen = false;
+        $(function () {
+            $('#collapseOne').collapse('show');
+            $('#collapseTwo').collapse('show');
+            $('#collapseThree').collapse('show');
+
+
+            $('.date').datepicker({
+                autoclose: true,
+                language: "zh-CN",
+                todayHighlight: true,
+                clearBtn: true //清除按钮
+            });
+
+        });
+
+        function addCallBack() {
+            alert('ok');
+        }
+        function addFunc(id) {
+            if (id == null) {
+                $("#myAddModalLabel").text("新增");
+            } else {
+                $("#myAddModalLabel").text("详情:" + id);
+            }
+            $('#myAddModal').modal();
+        }
+        function openFileUpload() {
+            $('#fileModal').modal();
+            fileOpen = true;
+        }
+
+        //部门选择---开始---
+        var deptTestDate =
+            [{
+                "id": "0",
+                "name": "住院部"
+            }, {
+                "id": "1",
+                "name": "医疗部"
+            }, {
+                "id": "2",
+                "name": "急诊部"
+            }, {
+                "id": "3",
+                "name": "护理部"
+            }, {
+                "id": "4",
+                "name": "科研教育部"
+            }, {
+                "id": "5",
+                "name": "公共关系部"
+            }, {
+                "id": "6",
+                "name": "物资部"
+            }];
+
+        function openDeptSelect() {
+            SelectWindow.open("selectDivId", "部门选择", deptSelectCallBack, deptTestDate, null);
+        }
+
+        function deptSelectCallBack(nameStr, idStr, modalDivId) {
+            $("#deptSelId").val(idStr);
+            $("#deptSelName").val(nameStr);
+        }
+
+        //部门选择---结束---
+
+
+        //人员选择--开始--
+
+        var userTestDate =
+            [{
+                "id": "0",
+                "name": "张老实"
+            }, {
+                "id": "1",
+                "name": "王老实"
+            }, {
+                "id": "2",
+                "name": "郑老实"
+            }, {
+                "id": "3",
+                "name": "周老实"
+            }, {
+                "id": "4",
+                "name": "吴老实"
+            }];
+
+        function openUserSelect() {
+            SelectWindow.open("selectDivId", "人员选择", userSelectCallBack, userTestDate, null);
+        }
+
+        function userSelectCallBack(nameStr, idStr) {
+            $("#userSelId").val(idStr);
+            $("#userSelName").val(nameStr);
+        }
+
+        //人员选择--结束--
+
+        function conditionOnchang(obj) {
+            if (obj.value == 0) {
+                $('#conditionInputDateDiv').hide();
+                $('#conditionInputDiv').hide();
+                $('#conditionInput').val("");
+            } else if (obj.value == 1 || obj.value == 2 || obj.value == 3 || obj.value == 4) {
+                $('#conditionInputDateDiv').hide();
+                $('#conditionInputDiv').show();
+                $('#conditionInput').val("");
+            } else {
+                $('#conditionInputDateDiv').show();
+                $('#conditionInputDiv').hide();
+            }
+        }
+
+    </script>
+    <style type="text/css">
+        #myAddModal {
+            top: 100px;
+            left: 270px;
+        }
+
+        #fileModal {
+            top: 250px;
+            left: 270px;
+        }
+
+        .yqtj-label {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top">
+    <div class="logo">
+        <a id="head" href="#"><img src="../../resources/images/logo.png"></a>
+    </div>
+    <ul class="nav nav-pills top-ul">
+        <li><a href="../index__.html">首页</a></li>
+        <li><a href="../message__.html">消息传阅</a></li>
+        <li><a href="../PublicOpinionManage/PublicOpinionManage.html">舆情管理</a></li>
+        <li class="active"><a href="ComplaintManage.html">投诉管理</a></li>
+        <li><a href="../LitigationManage/LitigationManage.html">诉讼管理</a></li>
+        <li><a href="../ReportForm/ReportForm.html">报表展示</a></li>
+        <li><a href="../DataAnalysis/DataAnalysis.html">数据分析</a></li>
+        <li><a href="../xiTongGuanLi.html">系统管理</a></li>
+    </ul>
+</div>
+<div>
+    <div class="main-frame2" style="margin: auto;width: 1090px;">
+        <div class="form-search" id="divFormSearch3">
+            <div class="form-horizontal search-normal">
+                <div class="form-group col-md-4">
+                    <label class="fg-text control-label" style="width:60px">编号</label>
+                    <div class="fg-input">
+                        <input type="text" class="form-control" id="inputEmail3" placeholder="请输入编号，模糊查询">
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label class="fg-text control-label">被投诉科室</label>
+                    <div class="fg-input">
+                        <input type="hidden" id="message-sender-id">
+                        <input type="text" class="form-control" id="message-sender-name" placeholder="请选择"
+                               onClick="openDeptSelect()" readonly="true">
+                    </div>
+                </div>
+                <div class="form-group col-sm-4">
+                    <button type="button" class="btn btn-info" onclick="alert('ok!')">
+                        <span class="glyphicon glyphicon-search"></span>查询
+                    </button>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label class="fg-text control-label">查询条件</label>
+                    <div class="fg-input">
+                        <select class="select-dropkick" style="width:50%" onchange="conditionOnchang(this)">
+                            <option value="0">---请选择条件---</option>
+                            <option value="1">投诉人姓名</option>
+                            <option value="2">患者姓名</option>
+                            <option value="3">患者病历号</option>
+                            <option value="4">接待人</option>
+                            <option value="5">投诉日期</option>
+                            <option value="6">发生日期</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="conditionInputDiv" class="col-sm-4" style="display:none">
+                    <input id="conditionInput" type="text" class="form-control" placeholder="请输入">
+                </div>
+                <div id="conditionInputDateDiv" class="col-sm-4" style="display:none">
+                    <div class="fg-input">
+                        <input id="startDate" type="text" class="form-control date" placeholder="请选择">
+                    </div>
+                    <label>~</label>
+                    <div class="fg-input">
+                        <input id="endDate" type="text" class="form-control date" placeholder="请选择">
+                    </div>
+                </div>
+                </br>
+            </div>
+        </div><!-- form-search -->
+
+
+        <div class="table-normal">
+
+            <div class="table-toolbar">
+                <div class="btn-toolbar">
+                    <ul>
+                        <li>
+                            <button type="button" class="btn btn-default" onclick="addFunc();">
+                                <span class="glyphicon glyphicon-plus"></span> 新增
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-save"></span>
+                                导出数据
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>投诉人姓名</th>
+                        <th>投诉日期</th>
+                        <th>被投诉人/责任人</th>
+                        <th>责任科室</th>
+                        <th>处理状态</th>
+                        <th>登记人</th>
+                        <th>登记时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a title="详情" class="toggle-tooltip" href="#" onclick="addFunc(1);">TS201801-001</a></td>
+                        <td>张三</td>
+                        <td>2018-01-24</td>
+                        <td>李木子</td>
+                        <td>产科</td>
+                        <td>已归档</td>
+                        <td>李木子</td>
+                        <td>2018-01-24</td>
+                    </tr>
+                    <tr>
+                        <td><a title="详情" class="toggle-tooltip" href="#" onclick="addFunc(2);">TS201801-003</a></td>
+                        <td>张三</td>
+                        <td>2018-01-24</td>
+                        <td>李木子</td>
+                        <td>医务科</td>
+                        <td>处理中</td>
+                        <td>李木子</td>
+                        <td>2018-01-24</td>
+                    </tr>
+                    <tr>
+                        <td><a title="详情" class="toggle-tooltip" href="#" onclick="addFunc(3);">TS201801-002</a></td>
+                        <td>齐先生</td>
+                        <td>2018-01-24</td>
+                        <td>李四</td>
+                        <td>神经外科</td>
+                        <td>处理中</td>
+                        <td>李木子</td>
+                        <td>2018-01-24</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <ul class="pagination">
+            <li>
+                <a href="#">
+                    <span>&laquo;</span>
+                </a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+                <a href="#">
+                    <span>&raquo;</span>
+                </a>
+            </li>
+            <li class="ml10 mr10">
+                向第
+                <input class="form-control page-num-input"></span>
+                / 9 页
+            </li>
+            <li class=" mr10">
+                <button type="button" class="btn btn-info  page-num-btn">跳转</button>
+            </li>
+            <li class=" mr10">
+                共 99 条记录
+            </li>
+        </ul>
+    </div><!-- main-frame -->
+
+</div><!-- div_rightside -->
+
+<div id="selectDivId"></div>
+<script type="text/javascript">
+
+    $(function () {
+        $('#myAddModal').on('hide.bs.modal', function () {
+            if (fileOpen) {
+                return false;
+            }
+        });
+
+        $('#fileModal').on('hide.bs.modal', function () {
+            fileOpen = false;
+        });
+    });
+</script>
+</body>
+</html>

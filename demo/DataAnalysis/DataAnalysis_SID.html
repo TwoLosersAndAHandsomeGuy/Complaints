@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Cache-Control" content="no-transform "/>
+    <title>数据分析</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="../../resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/dropkick/dropkick.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/easyui/easyui.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/css/themes.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/css/default.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/css/myCss.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/bootstrap/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet"
+          type="text/css"/>
+    <script type="text/javascript" src="../../resources/js/jquery.1.11.3.min.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../resources/dropkick/jquery.dropkick-min.js"></script>
+    <script type="text/javascript" src="../../resources/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/frame.js"></script>
+    <script type="text/javascript" src="../../resources/js/mySelectWin.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#collapseOne').collapse('show');
+            $('#collapseTwo').collapse('show');
+            $('#collapseThree').collapse('show');
+            $('.date').datepicker({
+                autoclose: true,
+                language: "zh-CN",
+                todayHighlight: true,
+                clearBtn: true //清除按钮
+            });
+        });
+
+        //部门选择---开始---
+        var deptTestDate =
+            [{
+                "id": "0",
+                "name": "住院部"
+            }, {
+                "id": "1",
+                "name": "医疗部"
+            }, {
+                "id": "2",
+                "name": "急诊部"
+            }, {
+                "id": "3",
+                "name": "护理部"
+            }, {
+                "id": "4",
+                "name": "科研教育部"
+            }, {
+                "id": "5",
+                "name": "公共关系部"
+            }, {
+                "id": "6",
+                "name": "物资部"
+            }];
+
+        function queryData(){
+            //设置 数据表格 title
+            $("#table_title_typeName").text($("input[name='optionsRadiosinline']:checked").val());
+            $("#table_title_countDate").text("统计时间:"+$("#startDate").val()+"~"+$("#endDate").val());
+        }
+        function openDeptSelect() {
+            SelectWindow.open("selectDivId", "部门选择", deptSelectCallBack, deptTestDate, null);
+        }
+        function deptSelectCallBack(nameStr, idStr, modalDivId) {
+            $("#deptSelId").val(idStr);
+            $("#deptSelName").val(nameStr);
+        }
+    </script>
+</head>
+<body>
+
+<div class="top">
+    <div class="logo">
+        <a id="head" href="#"><img src="../../resources/images/logo.png"></a>
+    </div>
+    <ul class="nav nav-pills top-ul">
+        <li><a href="../index__.html">首页</a></li>
+        <li><a href="../message__.html">消息传阅</a></li>
+        <li><a href="../PublicOpinionManage/PublicOpinionManage.html">舆情管理</a></li>
+        <li><a href="../ComplaintManage/ComplaintManage.html">投诉管理</a></li>
+        <li><a href="../LitigationManage/LitigationManage.html">诉讼管理</a></li>
+        <li><a href="../ReportForm/ReportForm.html">报表展示</a></li>
+        <li class="active"><a href="DataAnalysis.html">数据分析</a></li>
+        <li><a href="../xiTongGuanLi.html">系统管理</a></li>
+    </ul>
+</div>
+<div style="margin: auto;width: 1090px;">
+    <ul class="nav nav-tabs">
+        <li><a onclick="NavTab(this)" href="DataAnalysis.html">科别分析</a></li>
+        <li><a onclick="NavTab(this)" href="DataAnalysis_CY.html">成因分析</a></li>
+        <li><a onclick="NavTab(this)" href="DataAnalysis_CMN.html">CMN分析</a></li>
+        <li class="active"><a onclick="NavTab(this)" href="DataAnalysis_SID.html">SID分析</a></li>
+    </ul>
+
+    <div class="form-search" id="formSearchDiv">
+        <div class="form-horizontal search-normal">
+            <div class="form-group col-sm-4">
+                <label class="fg-text control-label">所属科室</label>
+                <div class="fg-input">
+                    <input type="hidden" id="CMN-Serch-Dept-Id">
+                    <input type="text" class="form-control" id="CMN-Serch-Dept" placeholder="---全部科室---"
+                           onClick="openDeptSelect();" readonly="true">
+                </div>
+            </div>
+            <div class="form-group col-sm-4">
+                <label class="fg-text control-label">时间类别</label>
+                <div class="fg-input">
+                    <select class="select-dropkick" style="width:80%">
+                        <option value="0">按事件发生时间统计</option>
+                        <option value="1">按投诉时间统计</option>
+                        <option value="2">按赔偿时间统计</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-sm-4">
+                <button type="button" class="btn btn-info" onclick="queryData();">
+                    <span class="glyphicon glyphicon-search"></span>查询
+                </button>
+            </div>
+            <div class="form-group col-sm-4">
+                <label class="fg-text control-label">分析方式</label>
+                <div class="fg-input">
+                    <select class="select-dropkick" style="width:80%">
+                        <option value="0">固定时间段SID分析</option>
+                        <option value="1">固定科别范围SID分析</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-md-9">
+                <label class="fg-text control-label">严重度</label>
+                <div>
+                    <label class="radio-inline">
+                        <input type="radio" name="S_Radiosinline" id="S_Radios1" value="不小于5" checked> 不小于5
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="S_Radiosinline" id="S_Radios2" value="不小于4" checked> 不小于4
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="S_Radiosinline" id="S_Radios3" value="不小于3" checked> 不小于3
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="S_Radiosinline" id="S_Radios4" value="不小于2" checked> 不小于2
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="S_Radiosinline" id="S_Radios5" value="不小于1" checked> 不小于1
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-md-9">
+                <label class="fg-text control-label">激烈度</label>
+                <div>
+                    <label class="radio-inline">
+                        <input type="radio" name="I_Radiosinline" id="I_Radios1" value="不小于5" checked> 不小于5
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="I_Radiosinline" id="I_Radios2" value="不小于4" checked> 不小于4
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="I_Radiosinline" id="I_Radios3" value="不小于3" checked> 不小于3
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="I_Radiosinline" id="I_Radios4" value="不小于2" checked> 不小于2
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="I_Radiosinline" id="I_Radios5" value="不小于1" checked> 不小于1
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-md-9">
+                <label class="fg-text control-label">滞留度</label>
+                <div>
+                    <label class="radio-inline">
+                        <input type="radio" name="D_Radiosinline" id="D_Radios1" value="不小于5" checked> 不小于5
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="D_Radiosinline" id="D_Radios2" value="不小于4" checked> 不小于4
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="D_Radiosinline" id="D_Radios3" value="不小于3" checked> 不小于3
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="D_Radiosinline" id="D_Radios4" value="不小于2" checked> 不小于2
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="D_Radiosinline" id="D_Radios5" value="不小于1" checked> 不小于1
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-sm-4">
+                <label class="fg-text control-label">开始日期</label>
+                <div class="fg-input">
+                    <input id="startDate" type="text" class="form-control date" placeholder="请选择">
+                </div>
+            </div>
+            <div class="form-group col-sm-4" style="margin-right: 20px;">
+                <label class="fg-text control-label">结束日期</label>
+                <div class="fg-input">
+                    <input id="endDate" type="text" class="form-control date" placeholder="请选择">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table-normal">
+        <div class="table-toolbar">
+            <div id="menuToolBar" class="btn-toolbar">
+                <ul>
+                    <li>
+                        <button type="button" class="btn btn-default">
+                            <span class="glyphicon glyphicon-cloud-download"></span> 导出数据
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th rowspan="2">科室</th>
+                <th colspan="3"><span id="table_title_countDate">统计时间</span></th>
+            </tr>
+            <tr>
+                <th>高严重度(S)</th>
+                <th>高激烈度(I)</th>
+                <th>高滞留度(D)</th>
+            </tr>
+            <tr>
+                <td>口腔科</td>
+                <td>0</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>眼科</td>
+                <td>0</td>
+                <td>0</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>脊柱外科</td>
+                <td>3</td>
+                <td>2</td>
+                <td>1</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div id="selectDivId"></div>
+</body>
+</html>
