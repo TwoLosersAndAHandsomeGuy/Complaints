@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="Cache-Control" content="no-transform "/>
-    <title>报表展示</title>
+    <title>第三方调解</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <link href="../../resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
@@ -12,44 +12,72 @@
     <link href="../../resources/css/themes.css" rel="stylesheet" type="text/css"/>
     <link href="../../resources/css/default.css" rel="stylesheet" type="text/css"/>
     <link href="../../resources/css/myCss.css" rel="stylesheet" type="text/css"/>
-
+    <link href="../../resources/bootstrap/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet"
+          type="text/css"/>
     <script type="text/javascript" src="../../resources/js/jquery.1.11.3.min.js"></script>
     <script type="text/javascript" src="../../resources/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../resources/dropkick/jquery.dropkick-min.js"></script>
     <script type="text/javascript" src="../../resources/easyui/jquery.easyui.min.js"></script>
-
+    <script type="text/javascript" src="../../resources/js/frame.js"></script>
+    <script type="text/javascript" src="../../resources/js/mySelectWin.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
     <script type="text/javascript">
+        $(function () {
+            $('#collapseOne').collapse('show');
+            $('#collapseTwo').collapse('show');
+            $('#collapseThree').collapse('show');
+            $('.date').datepicker({
+                autoclose: true,
+                language: "zh-CN",
+                todayHighlight: true,
+                clearBtn: true //清除按钮
+            });
+        });
 
-        function menuOpen() {
-            var nodes = $('#menuTable').treegrid('getSelections');
-            var s = '';
-            for (var i = 0; i < nodes.length; i++) {
-                if (s != '') s += ',';
-                s += nodes[i].id;
-            }
-            alert("选中数据:" + s);
+        //部门选择---开始---
+        var deptTestDate =
+            [{
+                "id": "0",
+                "name": "住院部"
+            }, {
+                "id": "1",
+                "name": "医疗部"
+            }, {
+                "id": "2",
+                "name": "急诊部"
+            }, {
+                "id": "3",
+                "name": "护理部"
+            }, {
+                "id": "4",
+                "name": "科研教育部"
+            }, {
+                "id": "5",
+                "name": "公共关系部"
+            }, {
+                "id": "6",
+                "name": "物资部"
+            }];
+
+
+        function openDeptSelect() {
+            SelectWindow.open("selectDivId", "部门选择", deptSelectCallBack, deptTestDate, null);
         }
-        function menuClose() {
-            var nodes = $('#menuTable').treegrid('getSelections');
-            var s = '';
-            for (var i = 0; i < nodes.length; i++) {
-                if (s != '') s += ',';
-                s += nodes[i].id;
-            }
-            alert("选中数据:" + s);
+        function deptSelectCallBack(nameStr, idStr, modalDivId) {
+            $("#deptSelId").val(idStr);
+            $("#deptSelName").val(nameStr);
         }
 
-        function formatEnable(value){
-            if(value == "true"){
-                return "可用";
-            }else{
-                return "不可用";
+        function conditionOnchang(obj) {
+            if (obj.value == 0) {
+                $('#conditionSelectDiv').hide();
+            } else {
+                $('#conditionSelectDiv').show();
             }
         }
     </script>
-    <style type="text/css">
 
-    </style>
 </head>
 <body>
 
@@ -77,50 +105,103 @@
         <li><a onclick="NavTab(this)" href="ReportForm_YZX.html">医责险记录</a></li>
     </ul>
 
+    <div class="form-search" id="formSearchDiv">
+        <div class="form-horizontal search-normal">
+            <div class="form-group col-sm-4">
+                <label class="fg-text control-label">所属科室</label>
+                <div class="fg-input">
+                    <input type="hidden" id="CMN-Serch-Dept-Id">
+                    <input type="text" class="form-control" id="CMN-Serch-Dept" placeholder="---全部科室---"
+                           onClick="openDeptSelect();" readonly="true">
+                </div>
+            </div>
+            <div class="form-group col-sm-4">
+                <label class="fg-text control-label">查询条件</label>
+                <div class="fg-input">
+                    <select class="select-dropkick" style="width:50%" onchange="conditionOnchang(this)">
+                        <option value="0">---请选择条件---</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-sm-4">
+                <button type="button" class="btn btn-info" onclick="queryData();">
+                    <span class="glyphicon glyphicon-search"></span>查询
+                </button>
+            </div>
+        </div>
+    </div>
     <div class="table-normal">
-        <div style="margin:20px 0;"></div>
         <div class="table-toolbar">
             <div id="menuToolBar" class="btn-toolbar">
                 <ul>
                     <li>
-                        <button type="button" class="btn btn-default" onclick="menuOpen();">
-                            <span class="glyphicon glyphicon-ok"></span>启用
-                        </button>
-                    </li>
-                    <li>
-                        <button type="button" class="btn btn-default" onclick="menuClose();">
-                            <span class="glyphicon glyphicon-remove" style="color: #f00;"></span>禁用
-                        </button>
-                    </li>
-                    <li>
                         <button type="button" class="btn btn-default">
-                            <span class="glyphicon glyphicon-save"></span> 导出数据
+                            <span class="glyphicon glyphicon-cloud-download"></span> 导出数据
                         </button>
                     </li>
                 </ul>
             </div>
         </div>
-        <table id="menuTable" class="easyui-treegrid table-bordered table-hover"
-               data-options="
-				url: 'data/menuTestData.json',
-				method: 'get',
-				idField: 'id',
-				treeField: 'menuName',
-				animate:true,
-                fitColumns: true,
-				autoRowHeight: false,
-                singleSelect: false
-			">
-            <thead>
+        <table class="table table-bordered table-hover">
             <tr>
-                <th data-options="field:'id',width:100,halign:'center',checkbox:true">ID</th>
-                <th data-options="field:'menuName',width:400">菜单名称</th>
-                <th data-options="field:'isEnabled',width:200,halign:'center',align:'center',formatter:formatEnable">是否可用</th>
+                <th>被投诉科室</th>
+                <th>调解开始时间</th>
+                <th>调解完成时间</th>
+                <th>调解机构</th>
+                <th>患者姓名</th>
+                <th>接待员</th>
+                <th>申请时间</th>
+                <th>调解员</th>
+                <th>调解事由</th>
+                <th>目前状态</th>
+                <th>结案时间</th>
+                <th>处理结果</th>
             </tr>
-            </thead>
+            <tr>
+                <td>放射科，财务科</td>
+                <td>2018-01-24</td>
+                <td>2018-01-24</td>
+                <td>北京市医疗纠纷人民调解委员会</td>
+                <td>张三</td>
+                <td>李木子</td>
+                <td>2017-06-27</td>
+                <td>王管事</td>
+                <td>见附件</td>
+                <td>已归档</td>
+                <td>2017-02-20</td>
+                <td>经过协商，已不在追究。</td>
+            </tr>
+            <tr>
+                <td>放射科，财务科</td>
+                <td>2018-01-24</td>
+                <td>2018-01-24</td>
+                <td>北京市医疗纠纷人民调解委员会</td>
+                <td>张三</td>
+                <td>李木子</td>
+                <td>2017-06-27</td>
+                <td>王管事</td>
+                <td>见附件</td>
+                <td>已归档</td>
+                <td>2017-02-20</td>
+                <td>经过协商，已不在追究。</td>
+            </tr>
+            <tr>
+                <td>放射科，财务科</td>
+                <td>2018-01-24</td>
+                <td>2018-01-24</td>
+                <td>北京市医疗纠纷人民调解委员会</td>
+                <td>张三</td>
+                <td>李木子</td>
+                <td>2017-06-27</td>
+                <td>王管事</td>
+                <td>见附件</td>
+                <td>已归档</td>
+                <td>2017-02-20</td>
+                <td>经过协商，已不在追究。</td>
+            </tr>
         </table>
     </div>
-</div><!-- main-frame -->
+</div>
 <div id="selectDivId">
 </div>
 </body>
