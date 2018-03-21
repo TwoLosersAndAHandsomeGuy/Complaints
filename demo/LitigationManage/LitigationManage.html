@@ -34,7 +34,8 @@
             $('#collapseThree').collapse('show');
 
             $("#infoDivId").load("LitigationManage_Info.html");
-            $("#infoDivId2").load("litigationProcess_doc.html");
+            $("#docDivId").load("litigationProcess_doc.html");
+            $("#fileDivId").load("InternalProcess_file.html");
 
             $('.date').datepicker({
                 autoclose: true,
@@ -150,6 +151,25 @@
                 $('#conditionInputDiv').hide();
                 $('#conditionDateDiv').show();
             }
+        }
+
+        function showInfoModal() {
+            $('#litInfoModal').modal();
+            $('#litDocModal').modal('hide');
+            $('#litFileModal').modal('hide');
+
+        }
+
+        function showDocModal() {
+            $('#litInfoModal').modal('hide');
+            $('#litDocModal').modal();
+            $('#litFileModal').modal('hide');
+        }
+
+        function showFileModal() {
+            $('#litInfoModal').modal('hide');
+            $('#litDocModal').modal('hide');
+            $('#litFileModal').modal();
         }
 
     </script>
@@ -357,7 +377,8 @@
 
 </div><!-- div_rightside -->
 <div id="infoDivId"></div>
-<div id="infoDivId2"></div>
+<div id="docDivId"></div>
+<div id="fileDivId"></div>
 <div id="selectDivId"></div>
 <script type="text/javascript">
 

@@ -1,13 +1,13 @@
-<div class="modal fade" id="litInfoModal" tabindex="-1" role="dialog" aria-labelledby="litInfoModalLabel"
+<div class="modal" id="litInfoModal" tabindex="-1" role="dialog" aria-labelledby="litInfoModalLabel"
      data-backdrop="static" style="overflow:scroll">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header" style="border-bottom-width: 1px;">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                 <ul class="nav nav-tabs">
-                    <li class="active"><a onclick="NavTab(this)" href="#">诉讼信息</a></li>
-                    <li><a onclick="NavTab()" href="#">诉讼过程文档</a></li>
-                    <li><a onclick="NavTab(this)" href="#">内部流程文件</a></li>
+                    <li class="active"><a onclick="showInfoModal()" href="#">诉讼信息</a></li>
+                    <li><a onclick="showDocModal()" href="#">诉讼过程文档</a></li>
+                    <li><a onclick="showFileModal()" href="#">内部流程文件</a></li>
                 </ul>
                 <h4 class="modal-title" id="litInfoModalLabel" style="padding-left: 10px;"></h4>
             </div>
@@ -406,7 +406,7 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div><!-- seven -->
+                    </div>
 
                 </div>
 
