@@ -1,13 +1,13 @@
-<div class="modal fade" id="compInfoModal" tabindex="-1" role="dialog" aria-labelledby="compInfoModalLabel"
+<div class="modal" id="compInfoModal" tabindex="-1" role="dialog" aria-labelledby="compInfoModalLabel"
      data-backdrop="static" style="overflow:scroll">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header" style="border-bottom-width: 1px;">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
                 <ul class="nav nav-tabs">
-                    <li class="active"><a onclick="NavTab(this)" href="#">投诉登记信息</a></li>
-                    <li><a onclick="NavTab(this)" href="#">按键事项记录</a></li>
-                    <li><a onclick="NavTab(this)" href="#">科室反馈记录</a></li>
+                    <li class="active"><a href="#">投诉登记信息</a></li>
+                    <li><a onclick="showCaseModal()" href="#">案件事项记录</a></li>
+                    <li><a onclick="showFeedModal()" href="#">科室反馈记录</a></li>
                     <li><a onclick="NavTab(this)" href="#">处理过程文档</a></li>
                     <li><a onclick="NavTab(this)" href="#">处理结果记录</a></li>
                     <li><a onclick="NavTab(this)" href="#">分析整改记录</a></li>

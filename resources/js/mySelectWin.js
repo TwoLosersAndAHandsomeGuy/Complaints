@@ -7,7 +7,7 @@
 */
 
 var SelectWindow = {
-	_openPageDivId:null,//弹出页面的divid
+	_openPageDivId:null,//弹出窗口的modal的id
 	_all_select_id:"",
 	_selected_select_id:"",
 
@@ -80,9 +80,9 @@ var SelectWindow = {
 		html += '		</table>';
 		html += '        </div>';
 		html += '        <div class="modal-footer">';
-		html += '          <button type="button" class="btn btn-default" data-dismiss="modal">';
+		html += '          <button type="button" class="btn btn-default" onclick="SelectWindow._close()">';
 		html += '          	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>';
-		html += '          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="SelectWindow._select_submit()">';
+		html += '          <button type="button" class="btn btn-primary" onclick="SelectWindow._select_submit()">';
 		html += '          	<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>确定</button>';
 		html += '        </div>';
 		html += '      </div>';
@@ -93,7 +93,7 @@ var SelectWindow = {
 		if (callback) {	
 			this._openPage_callback = callback;
 		}
-		this._open(_id);
+		this._open();
 	},
 	_select_all:function (){
             $("#"+ this._all_select_id +" option").appendTo("#" + this._selected_select_id);
@@ -124,6 +124,7 @@ var SelectWindow = {
 			idStr = idStr.substr(0, idStr.length - 1);
 			nameStr = nameStr.substr(0, nameStr.length - 1);
 		}
+        this._close();
 		this._openPage_callback(nameStr,idStr);
 	}
 }

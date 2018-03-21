@@ -32,6 +32,8 @@
             $('#collapseTwo').collapse('show');
             $('#collapseThree').collapse('show');
             $("#infoDivId").load("ComplaintManage_Info.html");
+            $("#caseDivId").load("ComplaintManage_Case.html");
+            $("#feedDivId").load("ComplaintManage_FeedBack.html");
 
             $('.date').datepicker({
                 autoclose: true,
@@ -45,11 +47,6 @@
             alert('ok');
         }
         function addFunc(id) {
-            if (id == null) {
-                $("#myAddModalLabel").text("新增");
-            } else {
-                $("#myAddModalLabel").text("详情:" + id);
-            }
             $('#compInfoModal').modal();
         }
 
@@ -139,7 +136,24 @@
             }
         }
 
+        function showInfoModal(){
+            $('#compInfoModal').modal();
+            $('#compCaseModal').modal('hide');
+            $('#compFeedModal').modal('hide');
 
+        }
+
+        function showCaseModal(){
+            $('#compInfoModal').modal('hide');
+            $('#compCaseModal').modal();
+            $('#compFeedModal').modal('hide');
+        }
+
+        function showFeedModal(){
+            $('#compInfoModal').modal('hide');
+            $('#compCaseModal').modal('hide');
+            $('#compFeedModal').modal();
+        }
     </script>
 </head>
 <body>
@@ -308,7 +322,10 @@
         </li>
     </ul>
 </div><!-- main-frame -->
-<div id="infoDivId"></div>
 <div id="selectDivId"></div>
+<div id="infoDivId"></div>
+<div id="caseDivId"></div>
+<div id="feedDivId"></div>
+
 </body>
 </html>
