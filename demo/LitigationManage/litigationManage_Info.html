@@ -1,0 +1,484 @@
+<div class="modal fade" id="litInfoModal" tabindex="-1" role="dialog" aria-labelledby="litInfoModalLabel"
+     data-backdrop="static" style="overflow:scroll">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom-width: 1px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <ul class="nav nav-tabs">
+                    <li class="active"><a onclick="NavTab(this)" href="#">诉讼信息</a></li>
+                    <li><a onclick="NavTab()" href="#">诉讼过程文档</a></li>
+                    <li><a onclick="NavTab(this)" href="#">内部流程文件</a></li>
+                </ul>
+                <h4 class="modal-title" id="litInfoModalLabel" style="padding-left: 10px;"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                投诉基本信息
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">诉讼编号</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" id="name" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">* 负责人员</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" readonly="true" placeholder="请选择">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label class="col-sm-2 control-label modal-label" style="width: 16%;">*相关投诉/纠纷：</label>
+                                <div class="col-sm-9">
+                                    <textarea name="" rows="4" cols="4" class="form-control"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                患方信息
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">* 患者姓名</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" readonly="true" placeholder="请选择">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-5 control-label modal-label"
+                                       style="padding-right: 0px;width: 35%;">
+                                    目前状态：
+                                </label>
+                                <div class="col-sm-7" style="padding-left: 6px;">
+                                    <select class="form-control">
+                                        <option value="0">---选取状态---</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">患者性别</label>
+                                <div class="col-sm-7">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optionsRadiosinline" value="option1">男
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optionsRadiosinline" value="option2">女
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optionsRadiosinline" value="option2">不详
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">患者年龄</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-5 control-label modal-label"
+                                       style="padding-right: 0px;width: 35%;">
+                                    证件分类：
+                                </label>
+                                <div class="col-sm-7" style="padding-left: 6px;">
+                                    <select class="form-control">
+                                        <option value="0">---选取状态---</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">证件号码</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">患者联系方式</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">家属性名</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-5 control-label modal-label"
+                                       style="padding-right: 0px;width: 35%;">
+                                    与患者关系：
+                                </label>
+                                <div class="col-sm-7" style="padding-left: 6px;">
+                                    <select class="form-control">
+                                        <option value="0">本人</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">家属联系方式</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" placeholder="请输入">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                医学信息
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">* 当事科室</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" readonly="true" placeholder="请选择">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">病区</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" readonly="true" placeholder="请选择">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">病历号</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">医疗事件发生时间</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">疾病诊断</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">争议手术(操作)名称</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">并发症名称</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" placeholder="请输入">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                责任人员
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="btn-toolbar">
+                                <ul>
+                                    <li>
+                                        <button type="button" class="btn btn-link" onclick="openFileUpload();">添加
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <table class="table table-bordered table-hover" style="border: 1px solid #ddd;"
+                                   id="fileTable">
+                                <thead>
+                                <tr>
+                                    <th>姓名</th>
+                                    <th>工号</th>
+                                    <th>性别</th>
+                                    <th>工作性质</th>
+                                    <th>职称</th>
+                                    <th>联系电话</th>
+                                    <th>执业年限</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>张三</td>
+                                    <td>A00001</td>
+                                    <td>男</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>15200000000</td>
+                                    <td>3</td>
+                                    <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                            class="glyphicon glyphicon-trash"></span></a></td>
+                                </tr>
+                                <tr>
+                                    <td>李四</td>
+                                    <td>A00002</td>
+                                    <td>男</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>15200000002</td>
+                                    <td>5</td>
+                                    <td>
+                                        <a title="删除" class="toggle-tooltip" href="#">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                                法律信息
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFive" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="form-group col-sm-6">
+                                <label class="fg-text control-label col-sm-4">审级：</label>
+                                <div class="col-sm-9">
+                                    <label class="radio-inline">
+                                        <input type="checkbox" name="optionsRadiosinline" id="optionsRadios1"
+                                               value="option1">一审
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="checkbox" name="optionsRadiosinline" id="optionsRadios2"
+                                               value="option1"> 二审
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="checkbox" name="optionsRadiosinline" id="optionsRadios3"
+                                               value="option1"> 三审
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">一审适用程序</label>
+                                <div class="col-sm-7">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optionsRadiosinline" value="option1">普通
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="optionsRadiosinline" value="option2">简易
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">* 原告姓名</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">与患者关系</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="modal-label control-label col-sm-4">* 起诉日期</label>
+                                <div class=" col-sm-7">
+                                    <input id="startDate" type="text" class="form-control date" placeholder="请选择">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="modal-label control-label col-sm-4">终审生效日期</label>
+                                <div class="col-sm-7" >
+                                    <input id="endDate" type="text" class="form-control date" placeholder="请选择">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label class="col-sm-2 control-label modal-label" style="width: 16%;">案由</label>
+                                <div class="col-sm-9">
+                                    <textarea name="" rows="4" cols="4" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label class="col-sm-2 control-label modal-label" style="width: 16%;">诉讼请求</label>
+                                <div class="col-sm-9">
+                                    <textarea name="" rows="4" cols="4" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">诉讼标的</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" placeholder="请输入">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label class="col-sm-2 control-label modal-label" style="width: 16%;">判决结果</label>
+                                <div class="col-sm-9">
+                                    <textarea name="" rows="4" cols="4" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label class="col-sm-4 control-label modal-label">赔偿金额</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" placeholder="请输入">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+                                附件列表
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseSix" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="btn-toolbar">
+                                <ul>
+                                    <li>
+                                        <button type="button" class="btn btn-link" onclick="openFileUpload('info');">
+                                            上传附件
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <table class="table table-bordered table-hover" style="border: 1px solid #ddd;"
+                                   id="infoFileTable">
+                                <thead>
+                                <tr>
+                                    <th>文件名称</th>
+                                    <th>大小</th>
+                                    <th>创建人</th>
+                                    <th>创建时间</th>
+                                    <th>备注</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>YQ201801-001</td>
+                                    <td>3M</td>
+                                    <td>张三</td>
+                                    <td>2018-3-13</td>
+                                    <td></td>
+                                    <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                            class="glyphicon glyphicon-trash"></span></a></td>
+                                </tr>
+                                <tr>
+                                    <td>YQ201801-002</td>
+                                    <td>4M</td>
+                                    <td>李四</td>
+                                    <td>2018-1-24</td>
+                                    <td></td>
+                                    <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                            class="glyphicon glyphicon-trash"></span></a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><!-- seven -->
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn_add_info_submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存退出
+                </button>
+                <button type="button" id="btn_add_info_save" class="btn btn-primary">
+                    <span class="glyphicon" aria-hidden="true"></span>保存草稿
+                </button>
+                <button type="button" id="btn_add_info_print" class="btn btn-primary">
+                    <span class="glyphicon" aria-hidden="true"></span>打印
+                </button>
+                <button type="button" id="btn_add_info_place" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-save" aria-hidden="true"></span>归档
+                </button>
+                <button type="button" id="btn_add_info_delete" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>删除
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="infoFileModal" tabindex="-1" role="dialog" aria-labelledby="infoFileModalLabel"
+     data-backdrop="static" style="overflow:scroll">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="infoFileModalLabel">上传附件</h4>
+            </div>
+            <div class="modal-body">
+                <input id="input-1a" type="file" class="file" data-show-preview="false">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="fileSubmit" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                </button>
+                <button type="button" id="btn_file_submit" class="btn btn-primary" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>上传
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    #litInfoModal {
+        top: 100px;
+        left: 270px;
+    }
+
+    #infoFileModal {
+        top: 250px;
+        left: 270px;
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+        $('.date').datepicker({
+            autoclose: true,
+            language: "zh-CN",
+            todayHighlight: true,
+            clearBtn: true //清除按钮
+        });
+    });
+    function openFileUpload(obj) {
+        $('#infoFileModal').modal();
+    }
+</script>

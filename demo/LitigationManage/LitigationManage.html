@@ -33,6 +33,8 @@
             $('#collapseTwo').collapse('show');
             $('#collapseThree').collapse('show');
 
+            $("#infoDivId").load("LitigationManage_Info.html");
+            $("#infoDivId2").load("litigationProcess_doc.html");
 
             $('.date').datepicker({
                 autoclose: true,
@@ -52,7 +54,7 @@
             } else {
                 $("#myAddModalLabel").text("详情:" + id);
             }
-            $('#myAddModal').modal();
+            $('#litInfoModal').modal();
         }
         function openFileUpload() {
             $('#fileModal').modal();
@@ -354,7 +356,8 @@
     </div><!-- main-frame -->
 
 </div><!-- div_rightside -->
-
+<div id="infoDivId"></div>
+<div id="infoDivId2"></div>
 <div id="selectDivId"></div>
 <script type="text/javascript">
 
