@@ -31,7 +31,7 @@
             $('#collapseOne').collapse('show');
             $('#collapseTwo').collapse('show');
             $('#collapseThree').collapse('show');
-
+            $("#infoDivId").load("ComplaintManage_Info.html");
 
             $('.date').datepicker({
                 autoclose: true,
@@ -39,8 +39,6 @@
                 todayHighlight: true,
                 clearBtn: true //清除按钮
             });
-
-            $("#selectDivId").load("ComplaintManage_Info.html");
         });
 
         function addCallBack() {
@@ -141,14 +139,8 @@
             }
         }
 
-    </script>
-    <style type="text/css">
-        #compInfoModal {
-            top: 100px;
-            left: 270px;
-        }
 
-    </style>
+    </script>
 </head>
 <body>
 
@@ -316,7 +308,7 @@
         </li>
     </ul>
 </div><!-- main-frame -->
-
+<div id="infoDivId"></div>
 <div id="selectDivId"></div>
 </body>
 </html>
