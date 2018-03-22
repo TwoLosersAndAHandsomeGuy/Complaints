@@ -1,0 +1,1201 @@
+<div class="modal" id="compProceModal" tabindex="-1" role="dialog" aria-labelledby="compProceModalLabel"
+     data-backdrop="static" style="overflow:scroll">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom-width: 1px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <ul class="nav nav-tabs" id="myProceTab">
+                    <li><a href="#" onclick="showInfoModal()">投诉登记信息</a></li>
+                    <li><a href="#" onclick="showCaseModal()">案件事项记录</a></li>
+                    <li><a href="#" onclick="showFeedModal()">科室反馈记录</a></li>
+                    <li class="active"><a onclick="NavTab(this)" href="#">处理过程文档</a></li>
+                    <li><a onclick="NavTab(this)" href="#">处理结果记录</a></li>
+                    <li><a onclick="NavTab(this)" href="#">分析整改记录</a></li>
+                </ul>
+                <h4 class="modal-title" id="compProceModalLabel" style="padding-left: 10px;"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#proceCollapse_One">
+                                内部讨论记录
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="proceCollapse_One" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="btn-toolbar">
+                                <ul>
+                                    <li>
+                                        <button type="button" class="btn btn-primary"
+                                                onclick="openProceAddModal(1);">
+                                            <span class="glyphicon glyphicon-plus"></span>添加
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <ul class="nav nav-tabs proceTab" id="proceTabOne">
+                                <li class="active"><a href="#proceDataListOne">数据列表</a></li>
+                                <li><a href="#proceFileListOne">附件汇总</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="proceDataListOne">
+                                    <table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
+                                        <thead>
+                                        <tr>
+                                            <th>序号</th>
+                                            <th>讨论时间</th>
+                                            <th>参与人员</th>
+                                            <th>地点</th>
+                                            <th>讨论主题</th>
+                                            <th>登记人</th>
+                                            <th>登记日期</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>2018-02-17</td>
+                                            <td>王老实，张老实</td>
+                                            <td>第二会议室</td>
+                                            <td>投诉问题调查</td>
+                                            <td>张三</td>
+                                            <td>2018-02-17</td>
+                                            <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                                    class="glyphicon glyphicon-trash"></span></a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="proceFileListOne">
+                                    <table class="table table-bordered table-hover" style="border: 1px solid #ddd;"
+                                           id="proceFileTableOne">
+                                        <thead>
+                                        <tr>
+                                            <th>序号</th>
+                                            <th>文件名称</th>
+                                            <th>大小</th>
+                                            <th>创建人</th>
+                                            <th>创建时间</th>
+                                            <th>备注</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>YQ201801-001</td>
+                                            <td>3M</td>
+                                            <td>张三</td>
+                                            <td>2018-3-13</td>
+                                            <td></td>
+                                            <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                                    class="glyphicon glyphicon-trash"></span></a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div><!-- tab-content -->
+                        </div>
+                    </div><!-- one -->
+
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#proceCollapse_Two">
+                                医患沟通记录
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="proceCollapse_Two" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="btn-toolbar">
+                                <ul>
+                                    <li>
+                                        <button type="button" class="btn btn-primary"
+                                                onclick="openProceAddModal(3);">
+                                            <span class="glyphicon glyphicon-plus"></span>添加
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <ul class="nav nav-tabs proceTab" id="proceTabTwo">
+                                <li class="active"><a href="#proceDataListTwo">数据列表</a></li>
+                                <li><a href="#proceFileListTwo">附件汇总</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="proceDataListTwo">
+                                    <table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
+                                        <thead>
+                                        <tr>
+                                            <th>序号</th>
+                                            <th>沟通时间</th>
+                                            <th>医方人员</th>
+                                            <th>沟通方式</th>
+                                            <th>沟通主题</th>
+                                            <th>登记人</th>
+                                            <th>登记日期</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>2018-02-17</td>
+                                            <td>王医生</td>
+                                            <td>面谈</td>
+                                            <td>赔偿问题商讨</td>
+                                            <td>张三</td>
+                                            <td>2018-02-17</td>
+                                            <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                                    class="glyphicon glyphicon-trash"></span></a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="proceFileListTwo">
+                                    <table class="table table-bordered table-hover" style="border: 1px solid #ddd;"
+                                           id="proceFileTableTwo">
+                                        <thead>
+                                        <tr>
+                                            <th>序号</th>
+                                            <th>文件名称</th>
+                                            <th>大小</th>
+                                            <th>创建人</th>
+                                            <th>创建时间</th>
+                                            <th>备注</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>YQ201801-001</td>
+                                            <td>3M</td>
+                                            <td>张三</td>
+                                            <td>2018-3-13</td>
+                                            <td></td>
+                                            <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                                    class="glyphicon glyphicon-trash"></span></a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div><!-- tab-content -->
+                        </div>
+                    </div><!-- two -->
+
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#proceCollapse_Three">
+                                第三方调解过程记录
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="proceCollapse_Three" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="btn-toolbar">
+                                <ul>
+                                    <li>
+                                        <button type="button" class="btn btn-primary"
+                                                onclick="openProceAddModal(3);">
+                                            <span class="glyphicon glyphicon-plus"></span>添加
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <ul class="nav nav-tabs proceTab" id="proceTabThree">
+                                <li class="active"><a href="#proceDataListThree">数据列表</a></li>
+                                <li><a href="#proceFileListThree">附件汇总</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="proceDataListThree">
+                                    <table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
+                                        <thead>
+                                        <tr>
+                                            <th>序号</th>
+                                            <th>事发时间</th>
+                                            <th>医方人员</th>
+                                            <th>第三方人员</th>
+                                            <th>事项主题</th>
+                                            <th>登记人</th>
+                                            <th>登记日期</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>2018-02-17</td>
+                                            <td>王医生</td>
+                                            <td>面谈</td>
+                                            <td>赔偿问题商讨</td>
+                                            <td>张三</td>
+                                            <td>2018-02-17</td>
+                                            <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                                    class="glyphicon glyphicon-trash"></span></a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="proceFileListThree">
+                                    <table class="table table-bordered table-hover" style="border: 1px solid #ddd;"
+                                           id="proceFileTableThree">
+                                        <thead>
+                                        <tr>
+                                            <th>序号</th>
+                                            <th>文件名称</th>
+                                            <th>大小</th>
+                                            <th>创建人</th>
+                                            <th>创建时间</th>
+                                            <th>备注</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>YQ201801-001</td>
+                                            <td>3M</td>
+                                            <td>张三</td>
+                                            <td>2018-3-13</td>
+                                            <td></td>
+                                            <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                                    class="glyphicon glyphicon-trash"></span></a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div><!-- tab-content -->
+                        </div>
+                    </div><!-- three -->
+
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#proceCollapse_Four">
+                                第三方调解结果记录
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="proceCollapse_Four" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="btn-toolbar">
+                                <ul>
+                                    <li>
+                                        <button type="button" class="btn btn-primary"
+                                                onclick="openProceAddModal(4);">
+                                            <span class="glyphicon glyphicon-plus"></span>添加
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <ul class="nav nav-tabs proceTab" id="proceTabFour">
+                                <li class="active"><a href="#proceDataListFour">数据列表</a></li>
+                                <li><a href="#proceFileListFour">附件汇总</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="proceDataListFour">
+                                    <table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
+                                        <thead>
+                                        <tr>
+                                            <th>序号</th>
+                                            <th>调节时间</th>
+                                            <th>调解人员</th>
+                                            <th>调解单位</th>
+                                            <th>调解结果</th>
+                                            <th>登记人</th>
+                                            <th>登记日期</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>2018-02-17</td>
+                                            <td>王律师</td>
+                                            <td>第二单位</td>
+                                            <td>投诉问题调查</td>
+                                            <td>张三</td>
+                                            <td>2018-02-17</td>
+                                            <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                                    class="glyphicon glyphicon-trash"></span></a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="proceFileListFour">
+                                    <table class="table table-bordered table-hover" style="border: 1px solid #ddd;"
+                                           id="proceFileTableFour">
+                                        <thead>
+                                        <tr>
+                                            <th>序号</th>
+                                            <th>文件名称</th>
+                                            <th>大小</th>
+                                            <th>创建人</th>
+                                            <th>创建时间</th>
+                                            <th>备注</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>YQ201801-001</td>
+                                            <td>3M</td>
+                                            <td>张三</td>
+                                            <td>2018-3-13</td>
+                                            <td></td>
+                                            <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                                    class="glyphicon glyphicon-trash"></span></a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div><!-- tab-content -->
+                        </div>
+                    </div><!-- four -->
+
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#proceCollapse_Five">
+                                鉴定过程记录
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="proceCollapse_Five" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="btn-toolbar">
+                                <ul>
+                                    <li>
+                                        <button type="button" class="btn btn-primary"
+                                                onclick="openProceAddModal(5);">
+                                            <span class="glyphicon glyphicon-plus"></span>添加
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <ul class="nav nav-tabs proceTab" id="proceTabFive">
+                                <li class="active"><a href="#proceDataListFive">数据列表</a></li>
+                                <li><a href="#proceFileListFive">附件汇总</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="proceDataListFive">
+                                    <table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
+                                        <thead>
+                                        <tr>
+                                            <th>序号</th>
+                                            <th>事发时间</th>
+                                            <th>医方人员</th>
+                                            <th>鉴方人员</th>
+                                            <th>事项名称</th>
+                                            <th>登记人</th>
+                                            <th>登记日期</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>2018-02-17</td>
+                                            <td>王医生</td>
+                                            <td>李先生</td>
+                                            <td>投诉问题调查</td>
+                                            <td>张三</td>
+                                            <td>2018-02-17</td>
+                                            <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                                    class="glyphicon glyphicon-trash"></span></a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="proceFileListFive">
+                                    <table class="table table-bordered table-hover" style="border: 1px solid #ddd;"
+                                           id="proceFileTableFive">
+                                        <thead>
+                                        <tr>
+                                            <th>序号</th>
+                                            <th>文件名称</th>
+                                            <th>大小</th>
+                                            <th>创建人</th>
+                                            <th>创建时间</th>
+                                            <th>备注</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>YQ201801-001</td>
+                                            <td>3M</td>
+                                            <td>张三</td>
+                                            <td>2018-3-13</td>
+                                            <td></td>
+                                            <td><a title="删除" class="toggle-tooltip" href="#">
+                                                <span class="glyphicon glyphicon-trash"></span></a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div><!-- tab-content -->
+                        </div>
+                    </div><!-- five -->
+
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#proceCollapse_Six">
+                                鉴定结果记录
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="proceCollapse_Six" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="btn-toolbar">
+                                <ul>
+                                    <li>
+                                        <button type="button" class="btn btn-primary"
+                                                onclick="openProceAddModal(6);">
+                                            <span class="glyphicon glyphicon-plus"></span>添加
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <ul class="nav nav-tabs proceTab" id="proceTabSix">
+                                <li class="active"><a href="#proceDataListSix">数据列表</a></li>
+                                <li><a href="#proceFileListSix">附件汇总</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="proceDataListSix">
+                                    <table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
+                                        <thead>
+                                        <tr>
+                                            <th>序号</th>
+                                            <th>鉴定时间</th>
+                                            <th>鉴定性质</th>
+                                            <th>鉴定机构</th>
+                                            <th>鉴定费用</th>
+                                            <th>登记人</th>
+                                            <th>登记日期</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>2018-02-17</td>
+                                            <td>医疗事故鉴定</td>
+                                            <td>7C</td>
+                                            <td>10000.00</td>
+                                            <td>张三</td>
+                                            <td>2018-02-17</td>
+                                            <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                                    class="glyphicon glyphicon-trash"></span></a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="proceFileListSix">
+                                    <table class="table table-bordered table-hover" style="border: 1px solid #ddd;"
+                                           id="proceFileTableSix">
+                                        <thead>
+                                        <tr>
+                                            <th>序号</th>
+                                            <th>文件名称</th>
+                                            <th>大小</th>
+                                            <th>创建人</th>
+                                            <th>创建时间</th>
+                                            <th>备注</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>YQ201801-001</td>
+                                            <td>3M</td>
+                                            <td>张三</td>
+                                            <td>2018-3-13</td>
+                                            <td></td>
+                                            <td><a title="删除" class="toggle-tooltip" href="#">
+                                                <span class="glyphicon glyphicon-trash"></span></a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div><!-- tab-content -->
+                        </div>
+                    </div><!-- six -->
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn_add_info_submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存退出
+                </button>
+                <button type="button" id="btn_add_info_save" class="btn btn-primary">
+                    <span class="glyphicon" aria-hidden="true"></span>保存草稿
+                </button>
+                <button type="button" id="btn_add_info_print" class="btn btn-primary">
+                    <span class="glyphicon" aria-hidden="true"></span>打印
+                </button>
+                <button type="button" id="btn_add_info_place" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-save" aria-hidden="true"></span>归档
+                </button>
+                <button type="button" id="btn_add_info_delete" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>删除
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- add one-->
+<div class="modal fade addModal" id="proceAddModal_One" tabindex="-1" role="dialog"
+     aria-labelledby="proceAddModalLabel_One"
+     data-backdrop="static" style="overflow:scroll">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="proceAddModalLabel_One">内部讨论记录</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">讨论时间</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control date" placeholder="请选择">
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">讨论主题</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">讨论地点</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">参与人员</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" placeholder="请选择">
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <label class="col-sm-2 control-label modal-label" style="width: 16%;">简要讨论内容</label>
+                    <div class="col-sm-9">
+                        <textarea name="" rows="3" cols="4" class="form-control"></textarea>
+                    </div>
+                </div>
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion">
+                        附件列表
+                    </a>
+                </h4>
+
+                <div class="btn-toolbar">
+                    <ul>
+                        <li>
+                            <button type="button" class="btn btn-link" onclick="openProceFileUpload(1);">上传附件
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>文件名称</th>
+                        <th>大小</th>
+                        <th>创建人</th>
+                        <th>创建时间</th>
+                        <th>备注</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>YQ201801-001</td>
+                        <td>3M</td>
+                        <td>张三</td>
+                        <td>2018-3-13</td>
+                        <td></td>
+                        <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                class="glyphicon glyphicon-trash"></span></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn_file_submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                </button>
+                <button type="button" class="btn btn-default" onclick="colseProceAddModal(1)">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- add one-->
+
+<!-- add two-->
+<div class="modal fade addModal" id="proceAddModal_Two" tabindex="-1" role="dialog"
+     aria-labelledby="proceAddModalLabel_Two"
+     data-backdrop="static" style="overflow:scroll">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="proceAddModalLabel_Two">医患记录</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">沟通时间</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control date" placeholder="请选择">
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">沟通方式</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">患方人员</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">医方人员</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" placeholder="请选择">
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <label class="col-sm-2 control-label modal-label" style="width: 16%;">沟通主题</label>
+                    <div class="col-sm-9">
+                        <textarea name="" rows="3" cols="4" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <label class="col-sm-2 control-label modal-label" style="width: 16%;">简要内容记录</label>
+                    <div class="col-sm-9">
+                        <textarea name="" rows="3" cols="4" class="form-control"></textarea>
+                    </div>
+                </div>
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion">
+                        附件列表
+                    </a>
+                </h4>
+
+                <div class="btn-toolbar">
+                    <ul>
+                        <li>
+                            <button type="button" class="btn btn-link" onclick="openProceFileUpload(2);">上传附件
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>文件名称</th>
+                        <th>大小</th>
+                        <th>创建人</th>
+                        <th>创建时间</th>
+                        <th>备注</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>YQ201801-001</td>
+                        <td>3M</td>
+                        <td>张三</td>
+                        <td>2018-3-13</td>
+                        <td></td>
+                        <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                class="glyphicon glyphicon-trash"></span></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn_submit_proceAddTwo" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                </button>
+                <button type="button" class="btn btn-default" onclick="colseProceAddModal(2)">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- add two-->
+
+<!-- add three-->
+<div class="modal fade addModal" id="proceAddModal_Three" tabindex="-1" role="dialog"
+     aria-labelledby="proceAddModalLabel_Three"
+     data-backdrop="static" style="overflow:scroll">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="proceAddModalLabel_Three">第三方调解过程记录</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">事项发生时间</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control date" placeholder="请选择">
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">事项名称</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">患方人员</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">医方人员</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" placeholder="请选择">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">第三方方人员</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <label class="col-sm-2 control-label modal-label" style="width: 16%;">简要内容记录</label>
+                    <div class="col-sm-9">
+                        <textarea name="" rows="3" cols="4" class="form-control"></textarea>
+                    </div>
+                </div>
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion">
+                        附件列表
+                    </a>
+                </h4>
+
+                <div class="btn-toolbar">
+                    <ul>
+                        <li>
+                            <button type="button" class="btn btn-link" onclick="openProceFileUpload(3);">上传附件
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>文件名称</th>
+                        <th>大小</th>
+                        <th>创建人</th>
+                        <th>创建时间</th>
+                        <th>备注</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>YQ201801-001</td>
+                        <td>3M</td>
+                        <td>张三</td>
+                        <td>2018-3-13</td>
+                        <td></td>
+                        <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                class="glyphicon glyphicon-trash"></span></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                </button>
+                <button type="button" class="btn btn-default" onclick="colseProceAddModal(2)">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- add three-->
+
+<!-- add four-->
+<div class="modal fade addModal" id="proceAddModal_Four" tabindex="-1" role="dialog"
+     aria-labelledby="proceAddModalLabel_Four"
+     data-backdrop="static" style="overflow:scroll">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="proceAddModalLabel_Four">第三方调解结果</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">调解机构</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">调解人员</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">联系电话</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">电子邮箱</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">调解开始时间</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control date" placeholder="请选择">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">调解结束时间</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control date" placeholder="请选择">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">传真</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <label class="col-sm-2 control-label modal-label" style="width: 16%;">案例分析意见</label>
+                    <div class="col-sm-9">
+                        <textarea name="" rows="3" cols="4" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-5 control-label modal-label"
+                           style="padding-right: 0px;width: 35%;">调解结果
+                    </label>
+                    <div class="col-sm-7" style="padding-left: 6px;">
+                        <select class="form-control">
+                            <option value="0">---请选择---</option>
+                            <option value="1">调解成功</option>
+                            <option value="2">患方撤回</option>
+                            <option value="3">医方撤回</option>
+                            <option value="4">调解失败</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">调解赔偿金额</label>
+                    <div class="col-sm-7">
+                        <input type="number" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <label class="col-sm-2 control-label modal-label" style="width: 16%;">调解结果描述</label>
+                    <div class="col-sm-9">
+                        <textarea name="" rows="3" cols="4" class="form-control"></textarea>
+                    </div>
+                </div>
+
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion">
+                        附件列表
+                    </a>
+                </h4>
+
+                <div class="btn-toolbar">
+                    <ul>
+                        <li>
+                            <button type="button" class="btn btn-link" onclick="openProceFileUpload(4);">上传附件
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>文件名称</th>
+                        <th>大小</th>
+                        <th>创建人</th>
+                        <th>创建时间</th>
+                        <th>备注</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>YQ201801-001</td>
+                        <td>3M</td>
+                        <td>张三</td>
+                        <td>2018-3-13</td>
+                        <td></td>
+                        <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                class="glyphicon glyphicon-trash"></span></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                </button>
+                <button type="button" class="btn btn-default" onclick="colseProceAddModal(4)">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- add four-->
+
+<!-- add five-->
+<div class="modal fade addModal" id="proceAddModal_Five" tabindex="-1" role="dialog"
+     aria-labelledby="proceAddModalLabel_Five"
+     data-backdrop="static" style="overflow:scroll">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="proceAddModalLabel_Five">鉴定过程记录</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">事项发生时间</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control date" placeholder="请选择">
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">事项名称</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">患方人员</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">医方人员</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" placeholder="请选择">
+                    </div>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="col-sm-4 control-label modal-label">鉴方方人员</label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" placeholder="请输入">
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <label class="col-sm-2 control-label modal-label" style="width: 16%;">简要内容记录</label>
+                    <div class="col-sm-9">
+                        <textarea name="" rows="3" cols="4" class="form-control"></textarea>
+                    </div>
+                </div>
+
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion">
+                        附件列表
+                    </a>
+                </h4>
+
+                <div class="btn-toolbar">
+                    <ul>
+                        <li>
+                            <button type="button" class="btn btn-link" onclick="openProceFileUpload(5);">上传附件
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>文件名称</th>
+                        <th>大小</th>
+                        <th>创建人</th>
+                        <th>创建时间</th>
+                        <th>备注</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>YQ201801-001</td>
+                        <td>3M</td>
+                        <td>张三</td>
+                        <td>2018-3-13</td>
+                        <td></td>
+                        <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                class="glyphicon glyphicon-trash"></span></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                </button>
+                <button type="button" class="btn btn-default" onclick="colseProceAddModal(5)">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- add five-->
+
+<!-- file upload-->
+<div class="modal fade" id="proceFileModal" tabindex="-1" role="dialog" aria-labelledby="proceFileModalLabel"
+     data-backdrop="static" style="overflow:scroll">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" aria-label="Close" onclick="closeProceFileUpload()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="proceFileModalLabel">上传附件</h4>
+            </div>
+            <div class="modal-body">
+                <input id="input-1a" type="file" class="file" data-show-preview="false">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>上传
+                </button>
+                <button type="button" class="btn btn-default" onclick="closeProceFileUpload()">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- file upload-->
+
+<style type="text/css">
+    #compProceModal {
+        top: 100px;
+        left: 270px;
+    }
+
+    .addModal {
+        top: 120px;
+        left: 280px;
+    }
+
+    #proceFileModal {
+        top: 250px;
+        left: 270px;
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+        $('.date').datepicker({
+            autoclose: true,
+            language: "zh-CN",
+            todayHighlight: true,
+            clearBtn: true //清除按钮
+        });
+    });
+
+    $('.proceTab a').click(function (e) {
+        $(this).tab('show');
+    })
+
+    function openProceAddModal(obj) {
+        if (1 == obj) {
+            $('#proceAddModal_One').modal();
+        } else if (2 == obj) {
+            $('#proceAddModal_Two').modal();
+        } else if (3 == obj) {
+            $('#proceAddModal_Three').modal();
+        } else if (4 == obj) {
+            $('#proceAddModal_Four').modal();
+        } else if (5 == obj) {
+            $('#proceAddModal_Five').modal();
+        } else if (6 == obj) {
+            $('#proceAddModal_Six').modal();
+        }
+
+    }
+
+    function colseProceAddModal(obj) {
+        if (1 == obj) {
+            $('#proceAddModal_One').modal('hide');
+        } else if (2 == obj) {
+            $('#proceAddModal_Two').modal('hide');
+        } else if (3 == obj) {
+            $('#proceAddModal_Three').modal('hide');
+        } else if (4 == obj) {
+            $('#proceAddModal_Four').modal('hide');
+        } else if (5 == obj) {
+            $('#proceAddModal_Five').modal('hide');
+        } else if (6 == obj) {
+            $('#proceAddModal_Six').modal('hide');
+        }
+    }
+
+    function openProceFileUpload(obj) {
+        $('#proceFileModal').modal();
+    }
+
+    function closeProceFileUpload(obj) {
+        $('#proceFileModal').modal('hide');
+    }
+</script>

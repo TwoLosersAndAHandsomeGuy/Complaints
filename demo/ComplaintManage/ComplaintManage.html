@@ -34,6 +34,8 @@
             $("#infoDivId").load("ComplaintManage_Info.html");
             $("#caseDivId").load("ComplaintManage_Case.html");
             $("#feedDivId").load("ComplaintManage_FeedBack.html");
+            $("#proceDivId").load("ComplaintManage_Proce.html");
+
 
             $('.date').datepicker({
                 autoclose: true,
@@ -140,6 +142,7 @@
             $('#compInfoModal').modal();
             $('#compCaseModal').modal('hide');
             $('#compFeedModal').modal('hide');
+            $('#compProceModal').modal('hide');
 
         }
 
@@ -147,12 +150,21 @@
             $('#compInfoModal').modal('hide');
             $('#compCaseModal').modal();
             $('#compFeedModal').modal('hide');
+            $('#compProceModal').modal('hide');
         }
 
         function showFeedModal(){
             $('#compInfoModal').modal('hide');
             $('#compCaseModal').modal('hide');
             $('#compFeedModal').modal();
+            $('#compProceModal').modal('hide');
+        }
+
+        function showProceModal(){
+            $('#compInfoModal').modal('hide');
+            $('#compCaseModal').modal('hide');
+            $('#compFeedModal').modal('hide');
+            $('#compProceModal').modal();
         }
     </script>
 </head>
@@ -221,7 +233,7 @@
                     <input id="endDate" type="text" class="form-control col-sm-3 date" placeholder="请选择">
                 </div>
             </div>
-            </br>
+            <br/>
         </div>
     </div><!-- form-search -->
 
@@ -311,7 +323,7 @@
         </li>
         <li class="ml10 mr10">
             向第
-            <input class="form-control page-num-input"></span>
+            <input class="form-control page-num-input">
             / 9 页
         </li>
         <li class=" mr10">
@@ -326,6 +338,6 @@
 <div id="infoDivId"></div>
 <div id="caseDivId"></div>
 <div id="feedDivId"></div>
-
+<div id="proceDivId"></div>
 </body>
 </html>
