@@ -1,0 +1,181 @@
+<div class="modal" id="litDiscussModal" tabindex="-1" role="dialog" aria-labelledby="litDiscussModalLabel"
+     data-backdrop="static" style="overflow:scroll">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom-width: 1px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <ul class="nav nav-tabs">
+                    <li><a onclick="showDetailModal('litBaseModal')" href="#">基本信息</a></li>
+                    <li><a onclick="showDetailModal('litPlaintiffModal')" href="#">原告证据</a></li>
+                    <li><a onclick="showDetailModal('litDefendantModal')" href="#">被告证据</a></li>
+                    <li class="active"><a onclick="showDetailModal('litDiscussModal')" href="#">内部讨论记录</a></li>
+                    <li><a onclick="showDetailModal('litProcessModal')" href="#">庭审过程记录</a></li>
+                    <li><a onclick="showDetailModal('litIdentifyModal')" href="#">医疗鉴定记录</a></li>
+                    <li><a onclick="showDetailModal('litAfterModal')" href="#">结案后讨论记录</a></li>
+                </ul>
+                <h4 class="modal-title" id="litDiscussModalLabel" style="padding-left: 10px;"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="panel panel-default">
+
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#proceCollapse_One">
+                                内部讨论记录
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="proceCollapse_One" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="btn-toolbar">
+                                <ul>
+                                    <li>
+                                        <button type="button" class="btn btn-primary"
+                                                onclick="openProceAddModal(1);">
+                                            <span class="glyphicon glyphicon-plus"></span>添加
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <ul class="nav nav-tabs proceTab" id="proceTabOne">
+                                <li class="active"><a href="#proceDataListOne">数据列表</a></li>
+                                <li><a href="#proceFileListOne">附件汇总</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="proceDataListOne">
+                                    <table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
+                                        <thead>
+                                        <tr>
+                                            <th>序号</th>
+                                            <th>讨论时间</th>
+                                            <th>参与人员</th>
+                                            <th>地点</th>
+                                            <th>讨论主题</th>
+                                            <th>登记人</th>
+                                            <th>登记日期</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>2018-02-17</td>
+                                            <td>王老实，张老实</td>
+                                            <td>第二会议室</td>
+                                            <td>投诉问题调查</td>
+                                            <td>张三</td>
+                                            <td>2018-02-17</td>
+                                            <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                                    class="glyphicon glyphicon-trash"></span></a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="proceFileListOne">
+                                    <table class="table table-bordered table-hover" style="border: 1px solid #ddd;"
+                                           id="proceFileTableOne">
+                                        <thead>
+                                        <tr>
+                                            <th>序号</th>
+                                            <th>文件名称</th>
+                                            <th>大小</th>
+                                            <th>创建人</th>
+                                            <th>创建时间</th>
+                                            <th>备注</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>YQ201801-001</td>
+                                            <td>3M</td>
+                                            <td>张三</td>
+                                            <td>2018-3-13</td>
+                                            <td></td>
+                                            <td><a title="删除" class="toggle-tooltip" href="#"><span
+                                                    class="glyphicon glyphicon-trash"></span></a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div><!-- tab-content -->
+                        </div>
+                    </div><!-- one -->
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btn_add_info_submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存退出
+                </button>
+                <button type="button" id="btn_add_info_save" class="btn btn-primary">
+                    <span class="glyphicon" aria-hidden="true"></span>保存草稿
+                </button>
+                <button type="button" id="btn_add_info_print" class="btn btn-primary">
+                    <span class="glyphicon" aria-hidden="true"></span>打印
+                </button>
+                <button type="button" id="btn_add_info_place" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-save" aria-hidden="true"></span>归档
+                </button>
+                <button type="button" id="btn_add_info_delete" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>删除
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="infoFileModal" tabindex="-1" role="dialog" aria-labelledby="infoFileModalLabel"
+     data-backdrop="static" style="overflow:scroll">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="infoFileModalLabel">上传附件</h4>
+            </div>
+            <div class="modal-body">
+                <input id="input-1a" type="file" class="file" data-show-preview="false">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="fileSubmit" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                </button>
+                <button type="button" id="btn_file_submit" class="btn btn-primary" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>上传
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    #litDiscussModal {
+        top: 100px;
+        left: 270px;
+    }
+
+    #infoFileModal {
+        top: 250px;
+        left: 270px;
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+        $('.date').datepicker({
+            autoclose: true,
+            language: "zh-CN",
+            todayHighlight: true,
+            clearBtn: true //清除按钮
+        });
+    });
+    function openFileUpload(obj) {
+        $('#infoFileModal').modal();
+    };
+    $('.proceTab a').click(function (e) {
+        $(this).tab('show');
+    });
+</script>
