@@ -37,6 +37,12 @@
             $("#docDivId").load("litigationProcess_doc.html");
             $("#fileDivId").load("InternalProcess_file.html");
             $("#baseDivId").load("LitigationDetail/litigationBase_Info.html");
+            $("#plaintiffDivId").load("LitigationDetail/litigationPlaintiff_Evidence.html");
+            $("#plaintiffDefendant").load("LitigationDetail/litigationDefendant_Evidence.html");
+            $("#plaintiffDiscuss").load("LitigationDetail/litigation_DiscussRecord.html");
+            $("#plaintiffProcess").load("LitigationDetail/litigation_ProcessRecord.html");
+            $("#plaintiffIdentify").load("LitigationDetail/litigation_IdentifyRecord.html");
+            $("#plaintiffAfter").load("LitigationDetail/litigation_AfterRecord.html");
 
             $('.date').datepicker({
                 autoclose: true,
@@ -158,21 +164,35 @@
             $('#litInfoModal').modal();
             $('#litDocModal').modal('hide');
             $('#litFileModal').modal('hide');
-
         }
-
         function showDocModal() {
             $('#litInfoModal').modal('hide');
             $('#litDocModal').modal();
             $('#litFileModal').modal('hide');
         }
-
         function showFileModal() {
             $('#litInfoModal').modal('hide');
             $('#litDocModal').modal('hide');
             $('#litFileModal').modal();
         }
 
+
+
+        function showDetailModal(modalId) {
+
+            var detailModalIdArray = [
+                'litBaseModal', 'litPlaintiffModal', 'litDefendantModal',
+                'litDiscussModal', 'litAfterModal', 'litIdentifyModal', 'litProcessModal'
+            ];
+
+            for (var i = 0; i < detailModalIdArray.length; i++) {
+                if (detailModalIdArray[i] == modalId) {
+                    $('#' + modalId).modal();
+                } else {
+                    $('#' + detailModalIdArray[i]).modal('hide');
+                }
+            }
+        }
     </script>
     <style type="text/css">
         #myAddModal {
@@ -381,6 +401,12 @@
 <div id="docDivId"></div>
 <div id="fileDivId"></div>
 <div id="baseDivId"></div>
+<div id="plaintiffDivId"></div>
+<div id="plaintiffDefendant"></div>
+<div id="plaintiffDiscuss"></div>
+<div id="plaintiffProcess"></div>
+<div id="plaintiffIdentify"></div>
+<div id="plaintiffAfter"></div>
 <div id="selectDivId"></div>
 <script type="text/javascript">
 
