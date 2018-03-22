@@ -35,6 +35,7 @@
             $("#caseDivId").load("ComplaintManage_Case.html");
             $("#feedDivId").load("ComplaintManage_FeedBack.html");
             $("#proceDivId").load("ComplaintManage_Proce.html");
+            $("#resultDivId").load("ComplaintManage_Result.html");
 
 
             $('.date').datepicker({
@@ -143,7 +144,7 @@
             $('#compCaseModal').modal('hide');
             $('#compFeedModal').modal('hide');
             $('#compProceModal').modal('hide');
-
+            $('#compResultModal').modal('hide');
         }
 
         function showCaseModal(){
@@ -151,6 +152,7 @@
             $('#compCaseModal').modal();
             $('#compFeedModal').modal('hide');
             $('#compProceModal').modal('hide');
+            $('#compResultModal').modal('hide');
         }
 
         function showFeedModal(){
@@ -158,6 +160,7 @@
             $('#compCaseModal').modal('hide');
             $('#compFeedModal').modal();
             $('#compProceModal').modal('hide');
+            $('#compResultModal').modal('hide');
         }
 
         function showProceModal(){
@@ -165,6 +168,15 @@
             $('#compCaseModal').modal('hide');
             $('#compFeedModal').modal('hide');
             $('#compProceModal').modal();
+            $('#compResultModal').modal('hide');
+        }
+
+        function showResultModal(){
+            $('#compInfoModal').modal('hide');
+            $('#compCaseModal').modal('hide');
+            $('#compFeedModal').modal('hide');
+            $('#compProceModal').modal('hide');
+            $('#compResultModal').modal();
         }
     </script>
 </head>
@@ -339,5 +351,7 @@
 <div id="caseDivId"></div>
 <div id="feedDivId"></div>
 <div id="proceDivId"></div>
+<div id="resultDivId"></div>
+
 </body>
 </html>

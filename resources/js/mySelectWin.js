@@ -10,7 +10,8 @@ var SelectWindow = {
 	_openPageDivId:null,//弹出窗口的modal的id
 	_all_select_id:"",
 	_selected_select_id:"",
-
+	_nameInputId:"",
+    _idInputId :"",
 	_openPage_callback: function(nameStr, idStr){ //保存回调函数
 
 	}, 
@@ -28,8 +29,8 @@ var SelectWindow = {
 		}
 		return html;
 	},
-	//divID,标题，回调函数，要选择的数据，已选择的数据
-	open:function(divId, title, callback, allData, selDate){
+	//divID,标题，回调函数，要选择的数据，已选择的数据 ,名称插入ID, ID插入框Id
+	open:function(divId, title, callback, allData, selDate ,nameInputId, idInputId){
 
 		//删除多余组件
 		if($("#" + divId + " div").length != 0){
@@ -40,6 +41,8 @@ var SelectWindow = {
 		}
 		var html = "";
 		var random = Math.round(Math.random() * 1000);
+        this._nameInputId = nameInputId;
+        this._idInputId = idInputId;
 		var _id = "_select_window_" + random;
 		this._all_select_id = "_all_select_" + random;
 		this._selected_select_id = "_selected_obj_" + random;
@@ -125,6 +128,6 @@ var SelectWindow = {
 			nameStr = nameStr.substr(0, nameStr.length - 1);
 		}
         this._close();
-		this._openPage_callback(nameStr,idStr);
+		this._openPage_callback(nameStr,idStr, this._nameInputId, this._idInputId);
 	}
 }
