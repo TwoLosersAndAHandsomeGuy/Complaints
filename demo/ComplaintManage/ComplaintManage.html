@@ -36,6 +36,7 @@
             $("#feedDivId").load("ComplaintManage_FeedBack.html");
             $("#proceDivId").load("ComplaintManage_Proce.html");
             $("#resultDivId").load("ComplaintManage_Result.html");
+            $("#rectifyDivId").load("ComplaintManage_Rectify.html");
 
 
             $('.date').datepicker({
@@ -145,6 +146,7 @@
             $('#compFeedModal').modal('hide');
             $('#compProceModal').modal('hide');
             $('#compResultModal').modal('hide');
+            $('#compRectifyModal').modal('hide');
         }
 
         function showCaseModal(){
@@ -153,6 +155,7 @@
             $('#compFeedModal').modal('hide');
             $('#compProceModal').modal('hide');
             $('#compResultModal').modal('hide');
+            $('#compRectifyModal').modal('hide');
         }
 
         function showFeedModal(){
@@ -161,6 +164,7 @@
             $('#compFeedModal').modal();
             $('#compProceModal').modal('hide');
             $('#compResultModal').modal('hide');
+            $('#compRectifyModal').modal('hide');
         }
 
         function showProceModal(){
@@ -169,6 +173,7 @@
             $('#compFeedModal').modal('hide');
             $('#compProceModal').modal();
             $('#compResultModal').modal('hide');
+            $('#compRectifyModal').modal('hide');
         }
 
         function showResultModal(){
@@ -177,6 +182,16 @@
             $('#compFeedModal').modal('hide');
             $('#compProceModal').modal('hide');
             $('#compResultModal').modal();
+            $('#compRectifyModal').modal('hide');
+        }
+
+        function showRectifyModal(){
+            $('#compInfoModal').modal('hide');
+            $('#compCaseModal').modal('hide');
+            $('#compFeedModal').modal('hide');
+            $('#compProceModal').modal('hide');
+            $('#compResultModal').modal('hide');
+            $('#compRectifyModal').modal();
         }
     </script>
 </head>
@@ -352,6 +367,6 @@
 <div id="feedDivId"></div>
 <div id="proceDivId"></div>
 <div id="resultDivId"></div>
-
+<div id="rectifyDivId"></div>
 </body>
 </html>
