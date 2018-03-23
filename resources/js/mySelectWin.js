@@ -23,9 +23,9 @@ var SelectWindow = {
 	},
 	_each:function(html,data){
 		if(data != null){
-			data.forEach(function(val, i){
-				html += '<option value="'+ val+'">'+val.name+'</option> ';
-			});
+			for(var i=0; i<data.length ;i++ ){
+                html += '<option value="'+ data[i].id+'">'+data[i].name+'</option> ';
+			}
 		}
 		return html;
 	},

@@ -58,6 +58,9 @@
                 return "不可用";
             }
         }
+        function formatUrl(value,obj) {
+            return '<a class="toggle-tooltip" href="#" onclick="openAddModal('+obj.id+');">' + value + '</a>';
+        }
     </script>
     <style type="text/css">
         #myAddModal {
@@ -149,7 +152,7 @@
             <thead>
             <tr>
                 <th data-options="field:'id',checkbox:true">ID</th>
-                <th data-options="field:'code',width:100,align:'center'">编码</th>
+                <th data-options="field:'code',width:100,align:'center',formatter:formatUrl">编码</th>
                 <th data-options="field:'name',width:80,align:'center'">名称</th>
                 <th data-options="field:'isEnabled',width:80,align:'center',formatter:formatEnable">是否可用</th>
             </tr>
