@@ -20,6 +20,10 @@
 
     <script type="text/javascript">
 
+        $(function () {
+            $("#page-foot").load("../../resources/layout/page_foot.html");
+        });
+
         function menuOpen() {
             var nodes = $('#menuTable').treegrid('getSelections');
             var s = '';
@@ -39,10 +43,10 @@
             alert("选中数据:" + s);
         }
 
-        function formatEnable(value){
-            if(value == "true"){
+        function formatEnable(value) {
+            if (value == "true") {
                 return "可用";
-            }else{
+            } else {
                 return "不可用";
             }
         }
@@ -102,26 +106,28 @@
         </div>
         <table id="menuTable" class="easyui-treegrid table-bordered table-hover"
                data-options="
-				url: '../data/menuTestData.json',
-				method: 'get',
-				idField: 'id',
-				treeField: 'menuName',
-				animate:true,
+                url: '../data/menuTestData.json',
+                method: 'get',
+                idField: 'id',
+                treeField: 'menuName',
+                animate:true,
                 fitColumns: true,
-				autoRowHeight: false,
+                autoRowHeight: false,
                 singleSelect: false
-			">
+            ">
             <thead>
             <tr>
                 <th data-options="field:'id',width:100,halign:'center',checkbox:true">ID</th>
                 <th data-options="field:'menuName',width:400">菜单名称</th>
-                <th data-options="field:'isEnabled',width:200,halign:'center',align:'center',formatter:formatEnable">是否可用</th>
+                <th data-options="field:'isEnabled',width:200,halign:'center',align:'center',formatter:formatEnable">
+                    是否可用
+                </th>
             </tr>
             </thead>
         </table>
     </div>
 </div><!-- main-frame -->
-<div id="selectDivId">
-</div>
+<div id="selectDivId"></div>
+<div id="page-foot"></div>
 </body>
 </html>
