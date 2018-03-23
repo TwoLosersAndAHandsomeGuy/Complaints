@@ -21,7 +21,7 @@
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#proceCollapse_One">
-                                内部讨论记录
+                                庭审过程记录
                             </a>
                         </h4>
                     </div>
@@ -37,20 +37,19 @@
                                     </li>
                                 </ul>
                             </div>
-                            <ul class="nav nav-tabs proceTab" id="proceTabOne">
-                                <li class="active"><a href="#proceDataListOne">数据列表</a></li>
-                                <li><a href="#proceFileListOne">附件汇总</a></li>
+                            <ul class="nav nav-tabs processTab">
+                                <li class="active"><a href="#processDataListOne">数据列表</a></li>
+                                <li><a href="#processFileListOne">附件汇总</a></li>
                             </ul>
                             <div class="tab-content">
-                                <div class="tab-pane active" id="proceDataListOne">
+                                <div class="tab-pane active" id="processDataListOne">
                                     <table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
                                         <thead>
                                         <tr>
                                             <th>序号</th>
-                                            <th>讨论时间</th>
-                                            <th>参与人员</th>
-                                            <th>地点</th>
-                                            <th>讨论主题</th>
+                                            <th>庭审时间</th>
+                                            <th>庭审地点</th>
+                                            <th>类型</th>
                                             <th>登记人</th>
                                             <th>登记日期</th>
                                             <th>操作</th>
@@ -60,9 +59,8 @@
                                         <tr>
                                             <td>1</td>
                                             <td>2018-02-17</td>
-                                            <td>王老实，张老实</td>
-                                            <td>第二会议室</td>
-                                            <td>投诉问题调查</td>
+                                            <td>昌平法院</td>
+                                            <td></td>
                                             <td>张三</td>
                                             <td>2018-02-17</td>
                                             <td><a title="删除" class="toggle-tooltip" href="#"><span
@@ -71,9 +69,8 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="tab-pane" id="proceFileListOne">
-                                    <table class="table table-bordered table-hover" style="border: 1px solid #ddd;"
-                                           id="proceFileTableOne">
+                                <div class="tab-pane" id="processFileListOne">
+                                    <table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
                                         <thead>
                                         <tr>
                                             <th>序号</th>
@@ -175,7 +172,7 @@
     function openFileUpload(obj) {
         $('#infoFileModal').modal();
     };
-    $('.proceTab a').click(function (e) {
+    $('.processTab a').click(function (e) {
         $(this).tab('show');
     });
 </script>

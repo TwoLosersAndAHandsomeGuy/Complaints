@@ -35,10 +35,10 @@
 
             $("#infoDivId").load("LitigationManage_Info.html");
             $("#docDivId").load("litigationProcess_doc.html");
-            $("#fileDivId").load("InternalProcess_file.html");
-            $("#baseDivId").load("LitigationDetail/litigationBase_Info.html");
-            $("#plaintiffDivId").load("LitigationDetail/litigationPlaintiff_Evidence.html");
-            $("#plaintiffDefendant").load("LitigationDetail/litigationDefendant_Evidence.html");
+            $("#fileDivId").load("LitigationManage_file.html");
+            $("#baseDivId").load("LitigationDetail/litigation_BaseInfo.html");
+            $("#plaintiffDivId").load("LitigationDetail/litigation_PlaintiffEvidence.html");
+            $("#plaintiffDefendant").load("LitigationDetail/litigation_DefendantEvidence.html");
             $("#plaintiffDiscuss").load("LitigationDetail/litigation_DiscussRecord.html");
             $("#plaintiffProcess").load("LitigationDetail/litigation_ProcessRecord.html");
             $("#plaintiffIdentify").load("LitigationDetail/litigation_IdentifyRecord.html");
@@ -176,8 +176,6 @@
             $('#litFileModal').modal();
         }
 
-
-
         function showDetailModal(modalId) {
 
             var detailModalIdArray = [
@@ -192,6 +190,9 @@
                     $('#' + detailModalIdArray[i]).modal('hide');
                 }
             }
+        }
+        function openModalById(modalId) {
+            $('#' + modalId).modal();
         }
     </script>
     <style type="text/css">

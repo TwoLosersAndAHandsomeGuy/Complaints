@@ -20,37 +20,37 @@
 
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#proceCollapse_One">
-                                内部讨论记录
+                            <a data-toggle="collapse" data-parent="#accordion" href="#identifyCollapse_One">
+                                医疗鉴定记录
                             </a>
                         </h4>
                     </div>
-                    <div id="proceCollapse_One" class="panel-collapse collapse in">
+                    <div id="identifyCollapse_One" class="panel-collapse collapse in">
                         <div class="panel-body">
                             <div class="btn-toolbar">
                                 <ul>
                                     <li>
                                         <button type="button" class="btn btn-primary"
-                                                onclick="openProceAddModal(1);">
+                                                onclick="openModalById('identifyFileModal');">
                                             <span class="glyphicon glyphicon-plus"></span>添加
                                         </button>
                                     </li>
                                 </ul>
                             </div>
-                            <ul class="nav nav-tabs proceTab" id="proceTabOne">
-                                <li class="active"><a href="#proceDataListOne">数据列表</a></li>
-                                <li><a href="#proceFileListOne">附件汇总</a></li>
+                            <ul class="nav nav-tabs IdentifyTab">
+                                <li class="active"><a href="#identifyDataListOne">数据列表</a></li>
+                                <li><a href="#identifyFileListOne">附件汇总</a></li>
                             </ul>
                             <div class="tab-content">
-                                <div class="tab-pane active" id="proceDataListOne">
+                                <div class="tab-pane active" id="identifyDataListOne">
                                     <table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
                                         <thead>
                                         <tr>
                                             <th>序号</th>
-                                            <th>讨论时间</th>
-                                            <th>参与人员</th>
-                                            <th>地点</th>
-                                            <th>讨论主题</th>
+                                            <th>鉴定时间</th>
+                                            <th>鉴定机构</th>
+                                            <th>鉴定性质</th>
+                                            <th>结果出具时间</th>
                                             <th>登记人</th>
                                             <th>登记日期</th>
                                             <th>操作</th>
@@ -60,9 +60,9 @@
                                         <tr>
                                             <td>1</td>
                                             <td>2018-02-17</td>
-                                            <td>王老实，张老实</td>
-                                            <td>第二会议室</td>
-                                            <td>投诉问题调查</td>
+                                            <td>昌平法院</td>
+                                            <td></td>
+                                            <td>2018-02-17</td>
                                             <td>张三</td>
                                             <td>2018-02-17</td>
                                             <td><a title="删除" class="toggle-tooltip" href="#"><span
@@ -71,9 +71,8 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="tab-pane" id="proceFileListOne">
-                                    <table class="table table-bordered table-hover" style="border: 1px solid #ddd;"
-                                           id="proceFileTableOne">
+                                <div class="tab-pane" id="identifyFileListOne">
+                                    <table class="table table-bordered table-hover" style="border: 1px solid #ddd;">
                                         <thead>
                                         <tr>
                                             <th>序号</th>
@@ -128,7 +127,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="infoFileModal" tabindex="-1" role="dialog" aria-labelledby="infoFileModalLabel"
+<div class="modal fade" id="identifyFileModal" tabindex="-1" role="dialog" aria-labelledby="infoFileModalLabel"
      data-backdrop="static" style="overflow:scroll">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -175,7 +174,7 @@
     function openFileUpload(obj) {
         $('#infoFileModal').modal();
     };
-    $('.proceTab a').click(function (e) {
+    $('.IdentifyTab a').click(function (e) {
         $(this).tab('show');
     });
 </script>
