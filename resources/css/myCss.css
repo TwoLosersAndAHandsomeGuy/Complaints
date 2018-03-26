@@ -34,10 +34,14 @@
 .myModal {
 	top: 100px;
 	left: 270px;
-	right: 270px;
+	right: 270px\0;
 }
 .myModalIn {
 	top: 250px;
 	left: 270px;
-	right: 270px;
+	right: 270px\0;
+}
+
+input[type="number"] {
+	text-align: right;
 }

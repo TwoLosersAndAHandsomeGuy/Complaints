@@ -1,4 +1,4 @@
-<div class="modal" id="compRectifyModal" tabindex="-1" role="dialog" aria-labelledby="compRectifyModalLabel"
+<div class="modal myModal" id="compRectifyModal" tabindex="-1" role="dialog" aria-labelledby="compRectifyModalLabel"
      data-backdrop="static" style="overflow:scroll">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -236,7 +236,7 @@
     <div id="rectifySelectDivId">
     </div>
 </div>
-<div class="modal fade" id="rectifyFileModal" tabindex="-1" role="dialog" aria-labelledby="rectifyFileModalLabel"
+<div class="modal fade myModalIn" id="rectifyFileModal" tabindex="-1" role="dialog" aria-labelledby="rectifyFileModalLabel"
      data-backdrop="static" style="overflow:scroll">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -259,20 +259,6 @@
         </div>
     </div>
 </div>
-
-<style type="text/css">
-    #compRectifyModal {
-        top: 100px;
-        left: 270px;
-    }
-    #rectifyFileModal {
-        top: 150px;
-        left: 270px;
-    }
-    input[type="number"] {
-        text-align: right;
-    }
-</style>
 <script type="text/javascript">
     function openFileUpload(obj) {
         $('#rectifyFileModal').modal();
