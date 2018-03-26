@@ -1,4 +1,4 @@
-<div class="modal" id="litFileModal" tabindex="-1" role="dialog" aria-labelledby="litFileModalLabel"
+<div class="modal myModal" id="litFileModal" tabindex="-1" role="dialog" aria-labelledby="litFileModalLabel"
      data-backdrop="static" style="overflow:scroll">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -224,7 +224,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="processFileModal" tabindex="-1" role="dialog" aria-labelledby="processFileModalLabel"
+<div class="modal fade myModalIn" id="processFileModal" tabindex="-1" role="dialog" aria-labelledby="processFileModalLabel"
      data-backdrop="static" style="overflow:scroll">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -248,17 +248,6 @@
         </div>
     </div>
 </div>
-<style type="text/css">
-    #litFileModal {
-        top: 100px;
-        left: 270px;
-    }
-
-    #processFileModal {
-        top: 250px;
-        left: 270px;
-    }
-</style>
 <script type="text/javascript">
     $(function () {
         $('.date').datepicker({

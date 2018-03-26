@@ -133,8 +133,8 @@
         }
 
         function userSelectCallBack(nameStr, idStr) {
-            $("#userSelId").val(idStr);
-            $("#userSelName").val(nameStr);
+            $("#info-principal").val(idStr);
+            $("#info-principal").val(nameStr);
         }
 
         //人员选择--结束--
@@ -201,11 +201,13 @@
         #myAddModal {
             top: 100px;
             left: 270px;
+            right: 270px;
         }
 
         #fileModal {
             top: 250px;
             left: 270px;
+            right: 270px;
         }
 
         .yqtj-label {
@@ -234,14 +236,14 @@
     <div class="main-frame2" style="margin: auto;width: 1090px;">
         <div class="form-search" id="divFormSearch3">
             <div class="form-horizontal search-normal">
-                <div class="form-group col-xs-6 col-md-4 col-lg-4">
+                <div class="form-group col-xs-5 col-md-4 col-lg-4">
                     <label class="fg-text control-label">编号：</label>
                     <div class="fg-input">
                         <input type="text" class="form-control" id="inputEmail3" placeholder="请输入编号，模糊查询">
                     </div>
                 </div>
 
-                <div class="form-group col-xs-6 col-md-4 col-lg-4">
+                <div class="form-group col-xs-5 col-md-4 col-lg-4">
                     <label class="fg-text control-label">被投诉科室：</label>
                     <div class="fg-input">
                         <input type="hidden" id="message-sender-id">
@@ -250,7 +252,7 @@
                     </div>
                 </div>
 
-                <div class="form-group col-xs-4">
+                <div class="form-group col-xs-2">
                     <button type="button" class="btn btn-info" onclick="alert('ok!')">
                         <span class="glyphicon glyphicon-search"></span>查询
                     </button>

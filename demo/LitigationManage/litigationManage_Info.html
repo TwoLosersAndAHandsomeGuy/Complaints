@@ -1,4 +1,4 @@
-<div class="modal" id="litInfoModal" tabindex="-1" role="dialog" aria-labelledby="litInfoModalLabel"
+<div class="modal myModal" id="litInfoModal" tabindex="-1" role="dialog" aria-labelledby="litInfoModalLabel"
      data-backdrop="static" style="overflow:scroll">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -31,7 +31,7 @@
                             <div class="form-group col-xs-6">
                                 <label class="col-xs-4 control-label modal-label">* 负责人员</label>
                                 <div class="col-xs-7">
-                                    <input type="text" class="form-control" readonly="true" placeholder="请选择">
+                                    <input id="info-principal" type="text" class="form-control" readonly="true" placeholder="请选择" onclick="openUserSelect()">
                                 </div>
                             </div>
                             <div class="form-group col-xs-12">
@@ -57,7 +57,7 @@
                             <div class="form-group col-xs-6">
                                 <label class="col-xs-4 control-label modal-label">* 患者姓名</label>
                                 <div class="col-xs-7">
-                                    <input type="text" class="form-control" readonly="true" placeholder="请选择">
+                                    <input type="text" class="form-control" placeholder="请输入">
                                 </div>
                             </div>
                             <div class="form-group col-xs-6">
@@ -152,13 +152,13 @@
                             <div class="form-group col-xs-6">
                                 <label class="col-xs-4 control-label modal-label">* 当事科室</label>
                                 <div class="col-xs-7">
-                                    <input type="text" class="form-control" readonly="true" placeholder="请选择">
+                                    <input type="text" class="form-control" readonly="true" placeholder="请选择" onclick="openDeptSelect()">
                                 </div>
                             </div>
                             <div class="form-group col-xs-6">
                                 <label class="col-xs-4 control-label modal-label">病区</label>
                                 <div class="col-xs-7">
-                                    <input type="text" class="form-control" readonly="true" placeholder="请选择">
+                                    <input type="text" class="form-control" readonly="true" placeholder="请选择" onclick="openDeptSelect()">
                                 </div>
                             </div>
                             <div class="form-group col-xs-6">
@@ -434,7 +434,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="infoFileModal" tabindex="-1" role="dialog" aria-labelledby="infoFileModalLabel"
+<div class="modal fade myModalIn" id="infoFileModal" tabindex="-1" role="dialog" aria-labelledby="infoFileModalLabel"
      data-backdrop="static" style="overflow:scroll">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -458,17 +458,6 @@
         </div>
     </div>
 </div>
-<style type="text/css">
-    #litInfoModal {
-        top: 100px;
-        left: 270px;
-    }
-
-    #infoFileModal {
-        top: 250px;
-        left: 270px;
-    }
-</style>
 <script type="text/javascript">
     $(function () {
         $('.date').datepicker({

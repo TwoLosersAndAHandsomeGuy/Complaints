@@ -1,4 +1,4 @@
-<div class="modal" id="litDocModal" tabindex="-1" role="dialog" aria-labelledby="litDocModalLabel"
+<div class="modal myModal" id="litDocModal" tabindex="-1" role="dialog" aria-labelledby="litDocModalLabel"
      data-backdrop="static" style="overflow:scroll">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -137,7 +137,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="infoFileModal" tabindex="-1" role="dialog" aria-labelledby="infoFileModalLabel"
+<div class="modal myModalIn" id="infoFileModal" tabindex="-1" role="dialog" aria-labelledby="infoFileModalLabel"
      data-backdrop="static" style="overflow:scroll">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -161,17 +161,6 @@
         </div>
     </div>
 </div>
-<style type="text/css">
-    #litDocModal {
-        top: 100px;
-        left: 270px;
-    }
-
-    #infoFileModal {
-        top: 250px;
-        left: 270px;
-    }
-</style>
 <script type="text/javascript">
     $(function () {
         $('.date').datepicker({
