@@ -56,7 +56,7 @@
         }
 
         //部门选择---开始---
-        var deptTestDate =
+        var deptMainTestDate =
             [{
                 "id": "0",
                 "name": "住院部"
@@ -81,12 +81,12 @@
             }];
 
         function openDeptSelect() {
-            SelectWindow.open("selectDivId", "部门选择", deptSelectCallBack, deptTestDate, null);
+            SelectWindow.open("selectDivId", "部门选择", deptMainSelectCallBack, deptMainTestDate, null);
         }
 
-        function deptSelectCallBack(nameStr, idStr, modalDivId) {
-            $("#deptSelId").val(idStr);
-            $("#deptSelName").val(nameStr);
+        function deptMainSelectCallBack(nameStr, idStr, modalDivId) {
+            $("#comp-dept-sel-id").val(idStr);
+            $("#comp-dept-sel-name").val(nameStr);
         }
 
         //部门选择---结束---
@@ -225,8 +225,8 @@
             <div class="form-group col-xs-4 col-md-4">
                 <label class="fg-text control-label">被投诉科室</label>
                 <div class="fg-input">
-                    <input type="hidden" id="message-sender-id">
-                    <input type="text" class="form-control" id="message-sender-name" placeholder="请选择"
+                    <input type="hidden" id="comp-dept-sel-id">
+                    <input type="text" class="form-control" id="comp-dept-sel-name" placeholder="请选择"
                            onClick="openDeptSelect()" readonly="true">
                 </div>
             </div>

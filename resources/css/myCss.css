@@ -30,3 +30,14 @@
 .modal-label {
 	margin-top: 5px;
 }
+
+.myModal {
+	top: 100px;
+	left: 270px;
+	right: 270px;
+}
+.myModalIn {
+	top: 250px;
+	left: 270px;
+	right: 270px;
+}
