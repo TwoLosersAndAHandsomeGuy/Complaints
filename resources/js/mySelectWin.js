@@ -47,7 +47,7 @@ var SelectWindow = {
 		this._all_select_id = "_all_select_" + random;
 		this._selected_select_id = "_selected_obj_" + random;
 
-		html += '<div class="modal fade" id="' + _id + '" tabindex="-1" role="dialog" aria-labelledby="'+ _id + 'Label" data-backdrop="static" style="top: 250px; left: 270px; overflow:scroll">';
+		html += '<div class="modal fade" id="' + _id + '" tabindex="-1" role="dialog" aria-labelledby="'+ _id + 'Label" data-backdrop="static" style="top: 100px; bottom: 200px;">';
 		html += '    <div class="modal-dialog modal-lg" role="document">';
 		html += '      <div class="modal-content">';
 		html += '        <div class="modal-header">';
