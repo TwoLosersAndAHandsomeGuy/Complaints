@@ -1,3 +1,32 @@
+<div class="dropdown page-person-info">
+    <a href="#" class="dropdown-toggle"
+       style="font-size: 15px;   margin-left: 80%; /*position: relative; top: -20px; right: 100px; */padding: 0px;"><span
+            class="glyphicon glyphicon-user"></span> 欢迎您：系统管理员</a>
+    <div class="dropdown-menu dropdown-user" style="top: 0px; left: -200px; margin-left: 80%; margin-top: 20px;">
+        <div class="pop-dropdown-apps user-tk">
+            <div class="pda_arr"></div>
+            <dl class="pda-list user_pda">
+                <!--<img src="../resources/images/moRenTouXiang.jpg">-->
+                <div class="userright-list">
+                    <h1>超级管理员&nbsp;&nbsp;|&nbsp;&nbsp;23326</h1>
+                    <h2>
+                        <b>单位/部门：</b>学科规划与建设办公室
+                        <br> <b>角&nbsp; &nbsp;色：</b>
+                    </h2>
+                </div>
+                <div class="clear"></div>
+                <div class="userexit">
+                    <button id="btn_FanHui2" type="button" class="btn btn-info addbtm" onclick="editUser();"
+                            style=" padding-top:4px;"><span class="glyphicon glyphicon-pencil"></span> 编辑信息
+                    </button>
+                    <button onclick="location.href='login.html'" type="button" class="btn btn-default">退出登录
+                    </button>
+                </div>
+                <div class="clear"></div>
+            </dl>
+        </div>
+    </div>
+</div>
 <div class="page-top">
     <div class="logo">
         <a id="head" href="#"><img src="../../resources/images/logo.png"></a>
@@ -12,44 +41,18 @@
         <li><a href="../DataAnalysis/DataAnalysis.html">数据分析</a></li>
         <li><a href="../SystemManager/SystemManager.html">系统管理</a></li>
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle"
-               style="font-size: 15px; position: relative; top: -20px; right: 100px; padding: 0px;"><span
-                    class="glyphicon glyphicon-user"></span> 欢迎您：系统管理员</a>
-            <div class="dropdown-menu dropdown-user" style="top: 0px; left: -200px;">
-                <div class="pop-dropdown-apps user-tk">
-                    <div class="pda_arr"></div>
-                    <dl class="pda-list user_pda">
-                        <!--<img src="../resources/images/moRenTouXiang.jpg">-->
-                        <div class="userright-list">
-                            <h1>超级管理员&nbsp;&nbsp;|&nbsp;&nbsp;23326</h1>
-                            <h2>
-                                <b>单位/部门：</b>学科规划与建设办公室
-                                <br> <b>角&nbsp; &nbsp;色：</b>
-                            </h2>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="userexit">
-                            <button id="btn_FanHui2" type="button" class="btn btn-info addbtm" onclick="editUser();"
-                                    style=" padding-top:4px;"><span class="glyphicon glyphicon-pencil"></span> 编辑信息
-                            </button>
-                            <button onclick="location.href='login.html'" type="button" class="btn btn-default">退出登录
-                            </button>
-                        </div>
-                        <div class="clear"></div>
-                    </dl>
-                </div>
-            </div>
+
         </li>
     </ul>
 </div>
 
-<div class="modal fade" id="myAddModal" tabindex="-1" role="dialog" aria-labelledby="myAddModalLabel"
+<div class="modal fade" id="person-info-modal" tabindex="-1" role="dialog" aria-labelledby="person-info-modalLabel"
      data-backdrop="static">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header" style="border-bottom-width: 1px;">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                <h4 class="modal-title" id="myAddModalLabel" style="padding-left: 10px;">个人信息</h4>
+                <h4 class="modal-title" id="person-info-modalLabel" style="padding-left: 10px;">个人信息</h4>
             </div>
             <div class="modal-body">
                 <div class="panel panel-default">
@@ -108,7 +111,8 @@
                                 <div class="form-group col-xs-6">
                                     <label for="defaultPosition" class="col-xs-3 control-label yqtj-label">默认岗位：</label>
                                     <div class="col-xs-8">
-                                        <input type="text" class="form-control date" id="defaultPosition" placeholder="请输入">
+                                        <input type="text" class="form-control date" id="defaultPosition"
+                                               placeholder="请输入">
                                     </div>
                                 </div>
                                 <div class="form-group col-xs-6">
@@ -151,12 +155,19 @@
 
 <script type="text/javascript">
     $(function () {
-        $(".page-top:eq(0)").on("mouseover", "li.dropdown", function () {
+//        $(".page-person-info a").on("mouseover", "div.dropdown", function () {
+//            debugger;
+//            $(this).addClass("open");
+//        });
+        $(".page-person-info").mouseover(function () {
             $(this).addClass("open");
         });
-        $(".page-top:eq(0)").on("mouseout", "li.dropdown", function () {
+        $(".page-person-info").mouseout(function () {
             $(this).removeClass("open");
         });
+//        $(".page-person-info a").on("mouseout", "li.dropdown", function () {
+//            $(this).removeClass("open");
+//        });
 
         $('.top-ul li').find('a').each(function () {
             if (this.href == document.location.href || document.location.href.search(this.href) >= 0) {
@@ -166,15 +177,16 @@
         });
     });
     function editUser() {
-        $('#myAddModal').modal();
+        $('#person-info-modal').modal();
     }
 
 </script>
 <style type="text/css">
     .page-top {
-        margin: 20px 200px 0px;
-        margin: 20px 300px 0px\0;
-        width: 1230px;
+        margin: 20px auto 20px;
+        /*margin: 20px 300px 0px\0;*/
+        /*width: 1230px;*/
+        width: 80%;
         height: 60px;
     }
 
