@@ -71,7 +71,7 @@
                             <div class="btn-toolbar">
                                 <ul>
                                     <li>
-                                        <button type="button" class="btn btn-link" onclick="openFileUpload();">添加
+                                        <button type="button" class="btn btn-link" onclick="openAddRecordModal()">添加
                                         </button>
                                     </li>
                                 </ul>
@@ -137,6 +137,47 @@
         </div>
     </div>
 </div>
+<div class="modal myModalIn" id="doc_addRecordModal" tabindex="-1" role="dialog" aria-labelledby="infoFileModalLabel"
+     data-backdrop="static" style="overflow:scroll">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">诉讼流程记录单</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group col-xs-6">
+                    <label class="col-xs-4 control-label modal-label">记录人</label>
+                    <div class="col-xs-7">
+                        <input id="info-principal" type="text" class="form-control" readonly="true" placeholder="请选择" onclick="openUserSelect()">
+                    </div>
+                </div>
+                <div class="form-group col-xs-6">
+                    <label class="modal-label control-label col-xs-4">记录时间</label>
+                    <div class=" col-xs-7">
+                        <input id="startDate" type="text" class="form-control date" placeholder="请选择">
+                    </div>
+                </div>
+                <div class="form-group col-xs-12">
+                    <label class="col-xs-2 control-label modal-label" style="width: 16%;">事项记录</label>
+                    <div class="col-xs-9">
+                        <textarea name="" rows="4" cols="2" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                </button>
+                <button type="button" id="" class="btn btn-primary" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal myModalIn" id="infoFileModal" tabindex="-1" role="dialog" aria-labelledby="infoFileModalLabel"
      data-backdrop="static" style="overflow:scroll">
     <div class="modal-dialog modal-lg" role="document">
@@ -175,5 +216,8 @@
     }
     function openLitigationDetail() {
         $('#litBaseModal').modal();
+    }
+    function openAddRecordModal() {
+        $('#doc_addRecordModal').modal();
     }
 </script>
