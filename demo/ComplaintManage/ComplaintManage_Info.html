@@ -179,9 +179,9 @@
                             <div class="form-group col-xs-6">
                                 <label class="col-xs-4 control-label modal-label">被投诉病区</label>
                                 <div class="col-xs-7">
-                                    <input type="text" class="form-control" id="InfoInpaSelName" placeholder="请选择"
+                                    <input type="text" class="form-control" id="infoInpaSelName" placeholder="请选择"
                                            onClick="openInfoInpaSelect()" readonly="true">
-                                    <input type="hidden" id="InfoInpaSelId">
+                                    <input type="hidden" id="infoInpaSelId">
                                 </div>
                             </div>
                             <div class="btn-toolbar">
@@ -340,13 +340,17 @@
                             <div class="form-group col-xs-6">
                                 <label class="col-xs-4 control-label modal-label">接收部门</label>
                                 <div class="col-xs-7" style="padding-left: 12px;padding-right: 10px;">
-                                    <input type="text" class="form-control" readonly="true">
+                                    <input type="text" class="form-control" id="infoReceiveDeptSelName"
+                                           placeholder="请选择" readonly="true" onclick="openInfoReceiveDeptSel()">
+                                    <input type="hidden" id="infoReceiveDeptSelId">
                                 </div>
                             </div>
                             <div class="form-group col-xs-6">
                                 <label class="col-xs-4 control-label modal-label">接待人员</label>
                                 <div class="col-xs-7" style="padding-left: 12px;padding-right: 10px;">
-                                    <input type="text" class="form-control" readonly="true">
+                                    <input type="text" class="form-control" id="infoReceivePersionSelName"
+                                           placeholder="请选择" readonly="true" onclick="openInfoReceivePersionSel()">
+                                    <input type="hidden" id="infoReceivePersionSelId">
                                 </div>
                             </div>
                             <div class="form-group col-xs-6">
@@ -459,13 +463,17 @@
                             <div class="form-group col-xs-6">
                                 <label class="col-xs-4 control-label modal-label">出险科室</label>
                                 <div class="col-xs-7" style="padding-left: 12px;padding-right: 10px;">
-                                    <input type="text" class="form-control" readonly="true" placeholder="请选择">
+                                    <input type="text" class="form-control" readonly="true" id="infoDangerDeptSelName"
+                                           placeholder="请选择" onClick="openInfoDangerDeptSelect()">
+                                    <input type="hidden" id="infoDangerDeptSelId">
                                 </div>
                             </div>
                             <div class="form-group col-xs-6">
                                 <label class="col-xs-4 control-label modal-label">出险人员</label>
                                 <div class="col-xs-7" style="padding-left: 12px;padding-right: 10px;">
-                                    <input type="text" class="form-control" readonly="true" placeholder="请选择">
+                                    <input type="text" class="form-control" readonly="true" id="infoDangerPersiontSelName"
+                                           placeholder="请选择" onClick="openInfoDangerPersionSelect()">
+                                    <input type="hidden" id="infoDangerPersiontSelId">
                                 </div>
                             </div>
                             <div class="form-group col-xs-12">
@@ -578,6 +586,7 @@
         </div>
     </div>
 </div>
+<div id="infoSelectDivId"></div>
 <script type="text/javascript">
     $(function(){
         $('.date').datepicker({
@@ -589,5 +598,90 @@
     });
     function openFileUpload(obj) {
         $('#infoFileModal').modal();
+    }
+
+    //部门选择---开始---
+    var deptInfoTestDate =
+        [{
+            "id": "0",
+            "name": "住院部"
+        }, {
+            "id": "1",
+            "name": "医疗部"
+        }, {
+            "id": "2",
+            "name": "急诊部"
+        }];
+
+    function openInfoDeptSelect() {
+        SelectWindow.open("infoSelectDivId", "部门选择", deptInfoSelectCallBack, deptInfoTestDate, null);
+    }
+
+    function deptInfoSelectCallBack(nameStr, idStr) {
+        $("#infoDeptSelId").val(idStr);
+        $("#infoDeptSelName").val(nameStr);
+    }
+
+    //病区选择
+    var inpaInfoTestDate =
+        [{
+            "id": "0",
+            "name": "A病区"
+        }, {
+            "id": "1",
+            "name": "B病区"
+        }, {
+            "id": "2",
+            "name": "C病区"
+        }];
+
+    function openInfoInpaSelect() {
+        SelectWindow.open("infoSelectDivId", "病区选择", inpaInfoSelectCallBack, inpaInfoTestDate, null);
+    }
+
+    function inpaInfoSelectCallBack(nameStr, idStr) {
+        $("#infoInpaSelId").val(idStr);
+        $("#infoInpaSelName").val(nameStr);
+    }
+
+
+    //出险科室选择
+    function openInfoDangerDeptSelect() {
+        SelectWindow.open("infoSelectDivId", "出险科室", dangerDeptInfoSelectCallBack, deptInfoTestDate, null);
+    }
+
+    function dangerDeptInfoSelectCallBack(nameStr, idStr) {
+        $("#infoDangerDeptSelId").val(idStr);
+        $("#infoDangerDeptSelName").val(nameStr);
+    }
+
+
+    //出险人员选择
+    function openInfoDangerPersionSelect() {
+        SelectWindow.open("infoSelectDivId", "出险科室", dangerPersionInfoSelectCallBack, userTestDate, null);
+    }
+
+    function dangerPersionInfoSelectCallBack(nameStr, idStr) {
+        $("#infoDangerPersiontSelId").val(idStr);
+        $("#infoDangerPersiontSelName").val(nameStr);
+    }
+
+    //接收部门
+    function openInfoReceiveDeptSel() {
+        SelectWindow.open("infoSelectDivId", "接收部门", infoReceiveDeptSelCallback, deptInfoTestDate, null);
+    }
+
+    function infoReceiveDeptSelCallback(nameStr, idStr) {
+        $("#infoReceiveDeptSelId").val(idStr);
+        $("#infoReceiveDeptSelName").val(nameStr);
+    }
+    //接待人员
+    function openInfoReceivePersionSel() {
+        SelectWindow.open("infoSelectDivId", "接待人员", dangerPersionInfoSelectCallBack, userTestDate, null);
+    }
+
+    function dangerPersionInfoSelectCallBack(nameStr, idStr) {
+        $("#infoReceivePersionSelId").val(idStr);
+        $("#infoReceivePersionSelName").val(nameStr);
     }
 </script>
