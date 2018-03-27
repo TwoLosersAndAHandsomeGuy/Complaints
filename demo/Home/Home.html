@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>投诉</title>
+    <link href="../../resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/dropkick/dropkick.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/easyui/easyui.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/css/default.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/css/themes.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/css/myCss.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript" src="../../resources/js/jquery.1.11.3.min.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../resources/dropkick/jquery.dropkick-min.js"></script>
+    <script type="text/javascript" src="../../resources/easyui/jquery.easyui.min.js"></script>
+    <!--     <script type="text/javascript" src="../resources/js/pop.js"></script> -->
+    <script type="text/javascript" src="../../resources/js/myfunctions.js"></script>
+    <script type="text/javascript" src="../../resources/js/frame.js"></script>
+    <script type="text/javascript" src="../../resources/js/mySelectWin.js"></script>
+    <link href="../../resources/bootstrap/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet"
+          type="text/css"/>
+    <script type="text/javascript"
+            src="../../resources/bootstrap/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript"
+            src="../../resources/bootstrap/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var complaintURL = "ComplaintManage/ComplaintManage.html";
+            var litigationURL = "LitigationManage/LitigationManage.html";
+            var messageCenterURL = "MessageCenter/MessageCenter.html";
+
+            $("#complaint").find("a").each(function () {
+                $(this).attr("href", complaintURL);
+            });
+            $("#litigation").find("a").each(function () {
+                $(this).attr("href", litigationURL);
+            });
+            $("#messageCenter_PX").find("a").each(function () {
+                $(this).attr("href", messageCenterURL + "?type=1");
+            });
+            $("#messageCenter_AL").find("a").each(function () {
+                $(this).attr("href", messageCenterURL + "?type=2");
+            });
+            $("#messageCenter_ZD").find("a").each(function () {
+                $(this).attr("href", messageCenterURL + "?type=3");
+            });
+
+            $("#page-foot").load("../../resources/layout/page_foot.html");
+            $("#page-top").load("../../resources/layout/page_top.html");
+        });
+
+
+    </script>
+    <style type="text/css">
+        .message-page {
+            width: 1130px;
+            height: 400px;
+            margin: auto;
+        }
+
+        .home-panel {
+            height: 230px;
+        }
+
+        .table tr {
+            background-color: #fff;
+        }
+
+
+        .panel-title {
+            line-height: 0px;
+        }
+
+        .panel-heading {
+            padding: 20px 10px;
+        }
+
+        .panel-body {
+            padding-top: 10px;
+        }
+    </style>
+    <!--[if IE 8 ]>
+    <style type="text/css">
+        .message-page > div {
+            float: left;
+        }
+    </style>
+
+    <![endif]-->
+</head>
+
+<body>
+
+<div id="page-top"></div>
+<div class="message-page">
+    <div class="col-xs-6 col-md-6">
+        <div class="home-panel">
+            <div class="hp-more" id="complaint">
+                <a>更多… &nbsp;&nbsp;</a>
+            </div>
+            <div class="hp-title">投诉与纠纷信息</div>
+            <table class="table">
+                <tr>
+                    <td><a href="#">[被投诉科室：后勤部][患者姓名：齐先生]</a></td>
+                    <td><a href="#">李木子</a></td>
+                    <td><a href="#">2018-01-23</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#">[被投诉科室：心外科][患者姓名：王女士]</a></td>
+                    <td><a href="#">李木子</a></td>
+                    <td><a href="#">2018-02-01</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#">[被投诉科室：急诊科][患者姓名：齐先生]</a></td>
+                    <td><a href="#">李木子</a></td>
+                    <td><a href="#">2018-02-01</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#">[被投诉科室：医学美容中心][患者姓名：李先生]</a></td>
+                    <td><a href="#">李木子</a></td>
+                    <td><a href="#">2018-02-01</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#">[被投诉科室：泌尿外科][患者姓名：李先生]</a></td>
+                    <td><a href="#">李木子</a></td>
+                    <td><a href="#">2018-02-01</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col-xs-6 col-md-6">
+        <div class="home-panel">
+            <div class="hp-more" id="litigation">
+                <a>更多… &nbsp;&nbsp;</a>
+            </div>
+            <div class="hp-title">投诉信息</div>
+            <table class="table">
+                <tr>
+                    <td><a href="#">[当事科室：心外科][患者姓名：刘先生]</a></td>
+                    <td><a href="#">李木子</a></td>
+                    <td><a href="#">2018-01-23</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#">[当事科室：后勤部][患者姓名：齐先生]</a></td>
+                    <td><a href="#">李木子</a></td>
+                    <td><a href="#">2018-02-01</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#">[当事科室：医学美容中心][患者姓名：王女士]</a></td>
+                    <td><a href="#">李木子</a></td>
+                    <td><a href="#">2018-02-01</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#">[当事科室：急诊科][患者姓名：李先生]</a></td>
+                    <td><a href="#">李木子</a></td>
+                    <td><a href="#">2018-02-01</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#">[当事科室：泌尿外科][患者姓名：王先生]</a></td>
+                    <td><a href="#">李木子</a></td>
+                    <td><a href="#">2018-02-01</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col-xs-4 col-md-4">
+        <div class="home-panel" id="messageCenter_PX">
+            <div class="hp-more">
+                <a>更多… &nbsp;&nbsp;</a>
+            </div>
+            <div class="hp-title">培训与预警</div>
+            <table class="table">
+                <tr>
+                    <td><a>和谐医患关系与医患沟通培训</a></td>
+                    <td><a>李木子</a></td>
+                    <td><a>2018-01-23</a></td>
+                </tr>
+                <tr>
+                    <td><a>如何处理好医患关系</a></td>
+                    <td><a>李木子</a></td>
+                    <td><a>2018-02-01</a></td>
+                </tr>
+                <tr>
+                    <td><a>医患关系与医德医风培训</a></td>
+                    <td><a>李木子</a></td>
+                    <td><a>2018-02-01</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col-xs-4 col-md-4">
+        <div class="home-panel" id="messageCenter_AL">
+            <div class="hp-more">
+                <a>更多… &nbsp;&nbsp;</a>
+            </div>
+            <div class="hp-title">案例分析</div>
+            <table class="table">
+                <tr>
+                    <td><a href="#">医疗纠纷案例分析</a></td>
+                    <td><a href="#">李木子</a></td>
+                    <td><a href="#">2018-01-23</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#">医疗纠纷案例分析</a></td>
+                    <td><a href="#">李木子</a></td>
+                    <td><a href="#">2018-02-01</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#">医疗纠纷案例分析</a></td>
+                    <td><a href="#">李木子</a></td>
+                    <td><a href="#">2018-02-01</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col-xs-4 col-md-4">
+        <div class="home-panel" id="messageCenter_ZD">
+            <div class="hp-more">
+                <a>更多… &nbsp;&nbsp;</a>
+            </div>
+            <div class="hp-title">规章制度及常用法律法规</div>
+            <table class="table">
+                <tr>
+                    <td><a href="#">医患关系办公室工作职责.docx</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#">鉴定案件材料归档.xls</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#">患方申请调解书.doc</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#"> 再次医疗事故技术鉴定申请书（存根）.doc</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#">鉴定案件材料归档.xls</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div id="page-foot"></div>
+</body>
+</html>

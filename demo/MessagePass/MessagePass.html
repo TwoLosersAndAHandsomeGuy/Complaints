@@ -39,10 +39,10 @@
 
             //弹出新增页面
             $("#btn_add").click(
-                function () {
-                    $("#myModalLabel").text("传阅信息");
-                    $('#myModalAdd').modal();
-                });
+                    function () {
+                        $("#myModalLabel").text("传阅信息");
+                        $('#myModalAdd').modal();
+                    });
 
             $('#myModalAdd').on('hide.bs.modal', function () {
                 if (fileOpen) {
@@ -54,6 +54,7 @@
                 fileOpen = false;
             });
 
+            $("#page-top").load("../../resources/layout/page_top.html");
             $("#page-foot").load("../../resources/layout/page_foot.html");
         });
 
@@ -105,39 +106,14 @@
         //人员选择--结束--
     </script>
     <style type="text/css">
-        .top {
-            margin: 20px auto 0px;
-            width: 1100px;
-            height: 70px;
-        }
-
-        .logo {
-            margin-right: 70px;
-            float: left;
-        }
-
-        .glyphicon-remove{
+        .glyphicon-remove {
             color: #f00;
         }
     </style>
 </head>
 
 <body>
-<div class="top">
-    <div class="logo">
-        <a id="head" href="#"><img src="../../resources/images/logo.png"></a>
-    </div>
-    <ul class="nav nav-pills top-ul">
-        <li><a href="../index__.html">首页</a></li>
-        <li class="active"><a href="MessagePass.html">消息传阅</a></li>
-        <li><a href="../PublicOpinionManage/PublicOpinionManage.html">舆情管理</a></li>
-        <li><a href="../ComplaintManage/ComplaintManage.html">投诉管理</a></li>
-        <li><a href="../LitigationManage/LitigationManage.html">诉讼管理</a></li>
-        <li><a href="../ReportForm/ReportForm.html">报表展示</a></li>
-        <li><a href="../DataAnalysis/DataAnalysis.html">数据分析</a></li>
-        <li><a href="../SystemManager/SystemManager.html">系统管理</a></li>
-    </ul>
-</div>
+<div id="page-top"></div>
 <div class="message-page">
     <div class="form-search">
         <div class="form-horizontal">
@@ -324,11 +300,12 @@
     </div>
 </div>
 <div class="modal fade myModal" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     data-backdrop="static" >
+     data-backdrop="static">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title" id="myModalLabel">传阅信息</h4>
             </div>
@@ -498,11 +475,12 @@
     </div>
 </div>
 <div class="modal fade myModalIn" id="fileModal" tabindex="-1" role="dialog" aria-labelledby="fileModalLabel"
-     data-backdrop="static" >
+     data-backdrop="static">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title" id="fileModalLabel">上传附件</h4>
             </div>

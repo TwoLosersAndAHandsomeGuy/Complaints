@@ -44,6 +44,7 @@
             $("#plaintiffIdentify").load("LitigationDetail/litigation_IdentifyRecord.html");
             $("#plaintiffAfter").load("LitigationDetail/litigation_AfterRecord.html");
 
+            $("#page-top").load("../../resources/layout/page_top.html");
             $("#page-foot").load("../../resources/layout/page_foot.html");
 
             $('.date').datepicker({
@@ -198,40 +199,14 @@
         }
     </script>
     <style type="text/css">
-        #myAddModal {
-            top: 100px;
-            left: 270px;
-            right: 270px;
-        }
-
-        #fileModal {
-            top: 250px;
-            left: 270px;
-            right: 270px;
-        }
-
-        .yqtj-label {
-            margin-top: 5px;
-        }
+        /*.yqtj-label {*/
+            /*margin-top: 5px;*/
+        /*}*/
     </style>
 </head>
 <body>
 
-<div class="top">
-    <div class="logo">
-        <a id="head" href="#"><img src="../../resources/images/logo.png"></a>
-    </div>
-    <ul class="nav nav-pills top-ul">
-        <li><a href="../index__.html">首页</a></li>
-        <li><a href="../MessagePass/MessagePass.html">消息传阅</a></li>
-        <li><a href="../PublicOpinionManage/PublicOpinionManage.html">舆情管理</a></li>
-        <li><a href="../ComplaintManage/ComplaintManage.html">投诉管理</a></li>
-        <li class="active"><a href="../ComplaintManage/ComplaintManage.html">诉讼管理</a></li>
-        <li><a href="../ReportForm/ReportForm.html">报表展示</a></li>
-        <li><a href="../DataAnalysis/DataAnalysis.html">数据分析</a></li>
-        <li><a href="../SystemManager/SystemManager.html">系统管理</a></li>
-    </ul>
-</div>
+<div id="page-top"></div>
 <div>
     <div class="main-frame2" style="margin: auto;width: 1090px;">
         <div class="form-search" id="divFormSearch3">

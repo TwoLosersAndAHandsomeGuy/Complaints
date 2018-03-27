@@ -38,6 +38,7 @@
             $("#resultDivId").load("ComplaintManage_Result.html");
             $("#rectifyDivId").load("ComplaintManage_Rectify.html");
 
+            $("#page-top").load("../../resources/layout/page_top.html");
             $("#page-foot").load("../../resources/layout/page_foot.html");
 
             $('.date').datepicker({
@@ -57,28 +58,28 @@
 
         //部门选择---开始---
         var deptMainTestDate =
-            [{
-                "id": "0",
-                "name": "住院部"
-            }, {
-                "id": "1",
-                "name": "医疗部"
-            }, {
-                "id": "2",
-                "name": "急诊部"
-            }, {
-                "id": "3",
-                "name": "护理部"
-            }, {
-                "id": "4",
-                "name": "科研教育部"
-            }, {
-                "id": "5",
-                "name": "公共关系部"
-            }, {
-                "id": "6",
-                "name": "物资部"
-            }];
+                [{
+                    "id": "0",
+                    "name": "住院部"
+                }, {
+                    "id": "1",
+                    "name": "医疗部"
+                }, {
+                    "id": "2",
+                    "name": "急诊部"
+                }, {
+                    "id": "3",
+                    "name": "护理部"
+                }, {
+                    "id": "4",
+                    "name": "科研教育部"
+                }, {
+                    "id": "5",
+                    "name": "公共关系部"
+                }, {
+                    "id": "6",
+                    "name": "物资部"
+                }];
 
         function openDeptSelect() {
             SelectWindow.open("selectDivId", "部门选择", deptMainSelectCallBack, deptMainTestDate, null);
@@ -95,22 +96,22 @@
         //人员选择--开始--
 
         var userTestDate =
-            [{
-                "id": "0",
-                "name": "张老实"
-            }, {
-                "id": "1",
-                "name": "王老实"
-            }, {
-                "id": "2",
-                "name": "郑老实"
-            }, {
-                "id": "3",
-                "name": "周老实"
-            }, {
-                "id": "4",
-                "name": "吴老实"
-            }];
+                [{
+                    "id": "0",
+                    "name": "张老实"
+                }, {
+                    "id": "1",
+                    "name": "王老实"
+                }, {
+                    "id": "2",
+                    "name": "郑老实"
+                }, {
+                    "id": "3",
+                    "name": "周老实"
+                }, {
+                    "id": "4",
+                    "name": "吴老实"
+                }];
 
         function openUserSelect() {
             SelectWindow.open("selectDivId", "人员选择", userSelectCallBack, userTestDate, null);
@@ -141,7 +142,7 @@
             }
         }
 
-        function showInfoModal(){
+        function showInfoModal() {
             $('#compInfoModal').modal();
             $('#compCaseModal').modal('hide');
             $('#compFeedModal').modal('hide');
@@ -150,7 +151,7 @@
             $('#compRectifyModal').modal('hide');
         }
 
-        function showCaseModal(){
+        function showCaseModal() {
             $('#compInfoModal').modal('hide');
             $('#compCaseModal').modal();
             $('#compFeedModal').modal('hide');
@@ -159,7 +160,7 @@
             $('#compRectifyModal').modal('hide');
         }
 
-        function showFeedModal(){
+        function showFeedModal() {
             $('#compInfoModal').modal('hide');
             $('#compCaseModal').modal('hide');
             $('#compFeedModal').modal();
@@ -168,7 +169,7 @@
             $('#compRectifyModal').modal('hide');
         }
 
-        function showProceModal(){
+        function showProceModal() {
             $('#compInfoModal').modal('hide');
             $('#compCaseModal').modal('hide');
             $('#compFeedModal').modal('hide');
@@ -177,7 +178,7 @@
             $('#compRectifyModal').modal('hide');
         }
 
-        function showResultModal(){
+        function showResultModal() {
             $('#compInfoModal').modal('hide');
             $('#compCaseModal').modal('hide');
             $('#compFeedModal').modal('hide');
@@ -186,7 +187,7 @@
             $('#compRectifyModal').modal('hide');
         }
 
-        function showRectifyModal(){
+        function showRectifyModal() {
             $('#compInfoModal').modal('hide');
             $('#compCaseModal').modal('hide');
             $('#compFeedModal').modal('hide');
@@ -198,21 +199,7 @@
 </head>
 <body>
 
-<div class="top">
-    <div class="logo">
-        <a id="head" href="#"><img src="../../resources/images/logo.png"></a>
-    </div>
-    <ul class="nav nav-pills top-ul">
-        <li><a href="../index__.html">首页</a></li>
-        <li><a href="../MessagePass/MessagePass.html">消息传阅</a></li>
-        <li><a href="../PublicOpinionManage/PublicOpinionManage.html">舆情管理</a></li>
-        <li class="active"><a href="ComplaintManage.html">投诉管理</a></li>
-        <li><a href="../LitigationManage/LitigationManage.html">诉讼管理</a></li>
-        <li><a href="../ReportForm/ReportForm.html">报表展示</a></li>
-        <li><a href="../DataAnalysis/DataAnalysis.html">数据分析</a></li>
-        <li><a href="../SystemManager/SystemManager.html">系统管理</a></li>
-    </ul>
-</div>
+<div id="page-top"></div>
 <div class="main-frame2" style="margin: auto;width: 1090px;">
     <div class="form-search" id="divFormSearch3">
         <div class="form-horizontal search-normal">
