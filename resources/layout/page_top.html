@@ -1,5 +1,5 @@
-<div class="dropdown page-person-info">
-    <a href="#" class="dropdown-toggle"
+<div class="dropdown">
+    <a href="#" class="dropdown-toggle page-person-info"
        style="font-size: 15px;   margin-left: 80%; /*position: relative; top: -20px; right: 100px; */padding: 0px;"><span
             class="glyphicon glyphicon-user"></span> 欢迎您：系统管理员</a>
     <div class="dropdown-menu dropdown-user" style="top: 0px; left: -200px; margin-left: 80%; margin-top: 20px;">
@@ -155,19 +155,12 @@
 
 <script type="text/javascript">
     $(function () {
-//        $(".page-person-info a").on("mouseover", "div.dropdown", function () {
-//            debugger;
-//            $(this).addClass("open");
-//        });
         $(".page-person-info").mouseover(function () {
-            $(this).addClass("open");
+            $(this).parent().addClass("open");
         });
         $(".page-person-info").mouseout(function () {
-            $(this).removeClass("open");
+            $(this).parent().removeClass("open");
         });
-//        $(".page-person-info a").on("mouseout", "li.dropdown", function () {
-//            $(this).removeClass("open");
-//        });
 
         $('.top-ul li').find('a').each(function () {
             if (this.href == document.location.href || document.location.href.search(this.href) >= 0) {
