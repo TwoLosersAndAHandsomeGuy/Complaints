@@ -83,3 +83,8 @@ input[type="number"] {
 .modal-lg {
     width: 900px;
 }
+
+.fileModal{
+    top: 100px;
+    bottom: 400px;
+}
