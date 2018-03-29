@@ -187,7 +187,7 @@
                             <div class="btn-toolbar">
                                 <ul>
                                     <li>
-                                        <button type="button" class="btn btn-link" onclick="openFileUpload();">添加
+                                        <button type="button" class="btn btn-link" onclick="openInfoComlUserSelect();">添加
                                         </button>
                                     </li>
                                 </ul>
@@ -683,5 +683,10 @@
     function dangerPersionInfoSelectCallBack(nameStr, idStr) {
         $("#infoReceivePersionSelId").val(idStr);
         $("#infoReceivePersionSelName").val(nameStr);
+    }
+
+    //被投诉人员
+    function openInfoComlUserSelect() {
+        SelectWindow.open("infoSelectDivId", "被投诉人员", dangerPersionInfoSelectCallBack, userTestDate, null);
     }
 </script>
