@@ -11,7 +11,7 @@ var InpaSelectWindow = {
     _leftTableId: "",
     _rightTableId: "",
     _isRadio: false,		//是否单选
-    _leftueryParams : {},
+    _leftueryParams: {},
     _openPage_callback: function (val) { //保存回调函数
 
     },
@@ -39,11 +39,11 @@ var InpaSelectWindow = {
         var $rightTable = $('#' + _this._rightTableId).bootstrapTable();
         var leftData = $leftTable.bootstrapTable('getData');
         var rightData = $rightTable.bootstrapTable('getData');
-        var ids=[];
-        if(leftData.length > 0 && rightData.length > 0){
-            for(var i=0; i< leftData.length; i++){
-                for(var j=0; j< rightData.length; j++){
-                    if(leftData[i].id == rightData[j].id){
+        var ids = [];
+        if (leftData.length > 0 && rightData.length > 0) {
+            for (var i = 0; i < leftData.length; i++) {
+                for (var j = 0; j < rightData.length; j++) {
+                    if (leftData[i].id == rightData[j].id) {
                         ids.push(leftData[i].id)
                         continue;
                     }
@@ -70,7 +70,7 @@ var InpaSelectWindow = {
                 sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
                 clickToSelect: true,                //是否启用点击选中行
                 height: 400,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
-                queryParams : _this._leftueryParams,
+                queryParams: _this._leftueryParams,
                 columns: [{
                     checkbox: true
                 }, {
@@ -100,7 +100,7 @@ var InpaSelectWindow = {
                 sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
                 clickToSelect: true,                //是否启用点击选中行
                 height: 400,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
-                onLoadSuccess:function(data){
+                onLoadSuccess: function (data) {
                     _this._onLeftLoadSuccess();
                 },
                 columns: [{
@@ -140,7 +140,7 @@ var InpaSelectWindow = {
 
 
     //divID,标题，回调函数,radio是否单选,查询参数
-    open: function (title, callback, isRadio,leftparams) {
+    open: function (title, callback, isRadio, leftparams) {
         this._leftueryParams = leftparams;
         if ($("#inpaSelectDivId").length == 0) {
             $(document.body).append('<div id="inpaSelectDivId"></div>');
@@ -226,11 +226,6 @@ var InpaSelectWindow = {
         var $rightTable = $('#' + _this._rightTableId).bootstrapTable();
         var selectContent = $leftTable.bootstrapTable('getData');
 
-        if (this._isRadio && selectContent.length > 1) {
-            $("#_inpa_select_err_alert").show();
-            return false;
-        }
-
         $rightTable.bootstrapTable("append", selectContent);
         $leftTable.bootstrapTable('removeAll');
     },
@@ -244,6 +239,8 @@ var InpaSelectWindow = {
             if (selectContent.length > 1 || rightData.length > 0) {
                 $("#_inpa_select_err_alert").show();
                 return false;
+            }else{
+                $("#_inpa_select_err_alert").hide();
             }
         }
 
@@ -275,7 +272,6 @@ var InpaSelectWindow = {
         var selectContent = $rightTable.bootstrapTable('getSelections');
         $leftTable.bootstrapTable("append", selectContent);
         var ids = $.map(selectContent, function (row) {
-            row[0] = false;
             return row.id;
         });
 
@@ -296,7 +292,7 @@ var InpaSelectWindow = {
         this._openPage_callback(rightData);
     },
 
-    _selectSearch : function(){
+    _selectSearch: function () {
         this._leftueryParams.nameStr = $('#selectSearchName').val();
         var $leftTable = $('#' + this._leftTableId).bootstrapTable();
         $leftTable.bootstrapTable("refresh");

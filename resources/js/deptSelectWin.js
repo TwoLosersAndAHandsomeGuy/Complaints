@@ -226,11 +226,6 @@ var DeptSelectWindow = {
         var $rightTable = $('#' + _this._rightTableId).bootstrapTable();
         var selectContent = $leftTable.bootstrapTable('getData');
 
-        if (this._isRadio && selectContent.length > 1) {
-            $("#_dept_select_err_alert").show();
-            return false;
-        }
-
         $rightTable.bootstrapTable("append", selectContent);
         $leftTable.bootstrapTable('removeAll');
     },
@@ -244,6 +239,8 @@ var DeptSelectWindow = {
             if (selectContent.length > 1 || rightData.length > 0) {
                 $("#_dept_select_err_alert").show();
                 return false;
+            } else {
+                $("#_dept_select_err_alert").hide();
             }
         }
 
@@ -275,7 +272,6 @@ var DeptSelectWindow = {
         var selectContent = $rightTable.bootstrapTable('getSelections');
         $leftTable.bootstrapTable("append", selectContent);
         var ids = $.map(selectContent, function (row) {
-            row[0] = false;
             return row.id;
         });
 

@@ -11,7 +11,7 @@ var UserSelectWindow = {
     _leftTableId: "",
     _rightTableId: "",
     _isRadio: false,		//是否单选
-    _leftueryParams : {},
+    _leftueryParams: {},
     _openPage_callback: function (val) { //保存回调函数
 
     },
@@ -39,11 +39,11 @@ var UserSelectWindow = {
         var $rightTable = $('#' + _this._rightTableId).bootstrapTable();
         var leftData = $leftTable.bootstrapTable('getData');
         var rightData = $rightTable.bootstrapTable('getData');
-        var ids=[];
-        if(leftData.length > 0 && rightData.length > 0){
-            for(var i=0; i< leftData.length; i++){
-                for(var j=0; j< rightData.length; j++){
-                    if(leftData[i].id == rightData[j].id){
+        var ids = [];
+        if (leftData.length > 0 && rightData.length > 0) {
+            for (var i = 0; i < leftData.length; i++) {
+                for (var j = 0; j < rightData.length; j++) {
+                    if (leftData[i].id == rightData[j].id) {
                         ids.push(leftData[i].id)
                         continue;
                     }
@@ -70,13 +70,13 @@ var UserSelectWindow = {
                 sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
                 clickToSelect: true,                //是否启用点击选中行
                 height: 400,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
-                queryParams : _this._leftueryParams,
+                queryParams: _this._leftueryParams,
                 columns: [{
                     checkbox: true
                 }, {
                     field: 'id',
                     visible: false
-                },  {
+                }, {
                     field: 'userCode',
                     title: '人员工号'
                 }, {
@@ -103,7 +103,7 @@ var UserSelectWindow = {
                 sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
                 clickToSelect: true,                //是否启用点击选中行
                 height: 400,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
-                onLoadSuccess:function(data){
+                onLoadSuccess: function (data) {
                     _this._onLeftLoadSuccess();
                 },
                 columns: [{
@@ -146,8 +146,8 @@ var UserSelectWindow = {
 
 
     //divID,标题，回调函数,radio是否单选,查询参数
-    open: function (title, callback, isRadio,leftparams) {
-        if(leftparams){
+    open: function (title, callback, isRadio, leftparams) {
+        if (leftparams) {
             this._leftueryParams = leftparams;
         }
         if ($("#userSelectDivId").length == 0) {
@@ -228,16 +228,33 @@ var UserSelectWindow = {
         }
         this._open();
     },
+
+    _radioAlert: function () {
+        var $leftTable = $('#' + this._leftTableId).bootstrapTable();
+        var $rightTable = $('#' + this._rightTableId).bootstrapTable();
+        var selectContent = $leftTable.bootstrapTable('getSelections');
+        if (this._isRadio) {
+            var rightData = $rightTable.bootstrapTable('getData');
+            if (selectContent.length > 1 || rightData.length > 0) {
+                $("#_user_select_err_alert").show();
+                return false;
+            } else {
+                $("#_user_select_err_alert").hide();
+                return true;
+            }
+        }
+        return true;
+    },
+
     _select_all: function () {
         var _this = this;
         var $leftTable = $('#' + _this._leftTableId).bootstrapTable();
         var $rightTable = $('#' + _this._rightTableId).bootstrapTable();
         var selectContent = $leftTable.bootstrapTable('getData');
 
-        if (this._isRadio && selectContent.length > 1) {
-            $("#_user_select_err_alert").show();
+        if(!this._radioAlert()){
             return false;
-        }
+        };
 
         $rightTable.bootstrapTable("append", selectContent);
         $leftTable.bootstrapTable('removeAll');
@@ -247,13 +264,9 @@ var UserSelectWindow = {
         var $leftTable = $('#' + _this._leftTableId).bootstrapTable();
         var $rightTable = $('#' + _this._rightTableId).bootstrapTable();
         var selectContent = $leftTable.bootstrapTable('getSelections');
-        if (this._isRadio) {
-            var rightData = $rightTable.bootstrapTable('getData');
-            if (selectContent.length > 1 || rightData.length > 0) {
-                $("#_user_select_err_alert").show();
-                return false;
-            }
-        }
+        if(!this._radioAlert()){
+            return false;
+        };
 
         $rightTable.bootstrapTable("append", selectContent);
         var ids = $.map(selectContent, function (row) {
@@ -265,6 +278,7 @@ var UserSelectWindow = {
             values: ids
         });
     },
+
     _remove_all: function () {
         var _this = this;
         var $leftTable = $('#' + _this._leftTableId).bootstrapTable();
@@ -283,7 +297,6 @@ var UserSelectWindow = {
         var selectContent = $rightTable.bootstrapTable('getSelections');
         $leftTable.bootstrapTable("append", selectContent);
         var ids = $.map(selectContent, function (row) {
-            row[0] = false;
             return row.id;
         });
 
@@ -303,7 +316,7 @@ var UserSelectWindow = {
         this._close();
         this._openPage_callback(rightData);
     },
-    _selectSearch : function(){
+    _selectSearch: function () {
         this._leftueryParams.nameStr = $('#userSelectName').val();
         var $leftTable = $('#' + this._leftTableId).bootstrapTable();
         $leftTable.bootstrapTable("refresh");
