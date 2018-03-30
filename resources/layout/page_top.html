@@ -155,10 +155,10 @@
 
 <script type="text/javascript">
     $(function () {
-        $(".page-person-info").mouseover(function () {
+        $(".page-person-info,.dropdown-user").mouseover(function () {
             $(this).parent().addClass("open");
         });
-        $(".page-person-info").mouseout(function () {
+        $(".page-person-info,.dropdown-user").mouseout(function () {
             $(this).parent().removeClass("open");
         });
 
@@ -177,8 +177,6 @@
 <style type="text/css">
     .page-top {
         margin: 20px auto 20px;
-        /*margin: 20px 300px 0px\0;*/
-        /*width: 1230px;*/
         width: 80%;
         height: 60px;
     }
@@ -188,11 +186,4 @@
         float: left;
     }
 
-    .top-personal-info {
-        font-size: 15px;
-        position: relative;
-        top: -20px;
-        right: 100px;
-        padding: 0px;
-    }
 </style>
