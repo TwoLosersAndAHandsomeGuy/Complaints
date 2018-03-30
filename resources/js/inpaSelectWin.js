@@ -1,12 +1,12 @@
 /* 中文UTF-8 */
 
 /*
- 函数名称：DeptSelectWindow
+ 函数名称：InpaSelectWindow
  创建时间：2018-03-30
  实现功能：选择框
  */
 
-var DeptSelectWindow = {
+var InpaSelectWindow = {
     _openPageDivId: null,//弹出窗口的modal的id
     _leftTableId: "",
     _rightTableId: "",
@@ -25,8 +25,8 @@ var DeptSelectWindow = {
             $("#" + _this._rightTableId).bootstrapTable("resetView");
         });
         if (this._isRadio) {
-            $("#_btn_dept_win_select_all_").hide();
-            $("#_btn_dept_win_remove_all_").hide();
+            $("#_btn_inpa_win_select_all_").hide();
+            $("#_btn_inpa_win_remove_all_").hide();
         }
     },
     _close: function () {
@@ -63,7 +63,7 @@ var DeptSelectWindow = {
         var leftTable = new Object();
         leftTable.Init = function () {
             $('#' + _this._leftTableId).bootstrapTable({
-                url: '../../demo/data/deptTestData.json',         //请求后台的URL（*）
+                url: '../../demo/data/inpatientTestData.json',         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
                 striped: true,                      //是否显示行间隔色
                 pagination: true,                   //是否显示分页（*）
@@ -77,11 +77,11 @@ var DeptSelectWindow = {
                     field: 'id',
                     visible: false
                 }, {
-                    field: 'deptCode',
-                    title: '部门编号'
+                    field: 'code',
+                    title: '病区编号'
                 }, {
-                    field: 'deptName',
-                    title: '部门名称'
+                    field: 'name',
+                    title: '病区名称'
                 }]
             });
         }
@@ -110,11 +110,11 @@ var DeptSelectWindow = {
                     field: 'id',
                     visible: false
                 }, {
-                    field: 'deptCode',
-                    title: '部门编号'
+                    field: 'code',
+                    title: '病区编号'
                 }, {
-                    field: 'deptName',
-                    title: '部门名称'
+                    field: 'name',
+                    title: '病区名称'
                 }]
             });
         }
@@ -142,13 +142,13 @@ var DeptSelectWindow = {
     //divID,标题，回调函数,radio是否单选,查询参数
     open: function (title, callback, isRadio,leftparams) {
         this._leftueryParams = leftparams;
-        if ($("#deptSelectDivId").length == 0) {
-            $(document.body).append('<div id="deptSelectDivId"></div>');
+        if ($("#inpaSelectDivId").length == 0) {
+            $(document.body).append('<div id="inpaSelectDivId"></div>');
         }
 
         //删除多余组件
-        if ($("#deptSelectDivId div").length != 0) {
-            $("#deptSelectDivId" + " div").remove();
+        if ($("#inpaSelectDivId div").length != 0) {
+            $("#inpaSelectDivId" + " div").remove();
         }
         if (title == null) {
             title = "选择";
@@ -174,12 +174,12 @@ var DeptSelectWindow = {
         html += '                <div class="col-xs-8">';
         html += '                    <input type="text" class="form-control" id="selectSearchName" placeholder="单位名">';
         html += '                </div>';
-        html += '                <button type="button" class="btn btn-info" onclick="DeptSelectWindow._selectSearch()">';
+        html += '                <button type="button" class="btn btn-info" onclick="InpaSelectWindow._selectSearch()">';
         html += '                    <span class="glyphicon glyphicon-search"></span>查询';
         html += '                </button>';
         html += '            </div>';
         html += '            <div class="col-xs-7">';
-        html += '                <div class="alert alert-danger" id="_dept_select_err_alert" style="padding: 5px;margin-bottom: 0px;display:none;">错误！只能单选！</div>';
+        html += '                <div class="alert alert-danger" id="_inpa_select_err_alert" style="padding: 5px;margin-bottom: 0px;display:none;">错误！只能单选！</div>';
         html += '            </div>';
         html += '			<table class="table table-bordered dchannel-table">';
         html += '				<tbody>';
@@ -188,13 +188,13 @@ var DeptSelectWindow = {
         html += '						<table id="' + this._leftTableId + '"></table>';
         html += '					</td>';
         html += '					<td style="width: 50px;" valign="middle">';
-        html += '						<button type="button" class="btn btn-default btn-small" id="_btn_dept_win_select_all_" onclick="DeptSelectWindow._select_all()">';
+        html += '						<button type="button" class="btn btn-default btn-small" id="_btn_inpa_win_select_all_" onclick="InpaSelectWindow._select_all()">';
         html += '							<span class="glyphicon glyphicon-forward"></span></button>';
-        html += '						<button type="button" class="btn btn-default btn-small" id="_btn_dept_win_select_" onclick="DeptSelectWindow._select()">';
+        html += '						<button type="button" class="btn btn-default btn-small" id="_btn_inpa_win_select_" onclick="InpaSelectWindow._select()">';
         html += '							<span class="glyphicon glyphicon-chevron-right"></span></button>';
-        html += '						<button type="button" class="btn btn-default btn-small" id="_btn_dept_win_remove_selected_" onclick="DeptSelectWindow._remove()">';
+        html += '						<button type="button" class="btn btn-default btn-small" id="_btn_inpa_win_remove_selected_" onclick="InpaSelectWindow._remove()">';
         html += '							<span class="glyphicon glyphicon-chevron-left"></span></button>';
-        html += '						<button type="button" class="btn btn-default btn-small" id="_btn_dept_win_remove_all_" onclick="DeptSelectWindow._remove_all()">';
+        html += '						<button type="button" class="btn btn-default btn-small" id="_btn_inpa_win_remove_all_" onclick="InpaSelectWindow._remove_all()">';
         html += '							<span class="glyphicon glyphicon-backward"></span></button>';
         html += '					</td>';
         html += '					<td style="width: 50%;">';
@@ -205,15 +205,15 @@ var DeptSelectWindow = {
         html += '		</table>';
         html += '        </div>';
         html += '        <div class="modal-footer">';
-        html += '          <button type="button" class="btn btn-default" onclick="DeptSelectWindow._close()">';
+        html += '          <button type="button" class="btn btn-default" onclick="InpaSelectWindow._close()">';
         html += '          	<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>';
-        html += '          <button type="button" class="btn btn-primary" onclick="DeptSelectWindow._submit()">';
+        html += '          <button type="button" class="btn btn-primary" onclick="InpaSelectWindow._submit()">';
         html += '          	<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>确定</button>';
         html += '        </div>';
         html += '      </div>';
         html += '    </div>';
         html += '</div>';
-        $('#deptSelectDivId').append(html);
+        $('#inpaSelectDivId').append(html);
         this._openPageDivId = _id;
         if (callback) {
             this._openPage_callback = callback;
@@ -227,7 +227,7 @@ var DeptSelectWindow = {
         var selectContent = $leftTable.bootstrapTable('getData');
 
         if (this._isRadio && selectContent.length > 1) {
-            $("#_dept_select_err_alert").show();
+            $("#_inpa_select_err_alert").show();
             return false;
         }
 
@@ -242,7 +242,7 @@ var DeptSelectWindow = {
         if (this._isRadio) {
             var rightData = $rightTable.bootstrapTable('getData');
             if (selectContent.length > 1 || rightData.length > 0) {
-                $("#_dept_select_err_alert").show();
+                $("#_inpa_select_err_alert").show();
                 return false;
             }
         }
