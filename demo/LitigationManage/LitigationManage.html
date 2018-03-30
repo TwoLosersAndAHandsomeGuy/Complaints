@@ -138,6 +138,13 @@
             $("#info-principal").val(nameStr);
         }
 
+        function openDutyUserSelect() {
+            SelectWindow.open("selectDivId", "人员选择", dutyUserSelectCallBack, userTestDate, null);
+        }
+        function dutyUserSelectCallBack() {
+
+        }
+
         //人员选择--结束--
 
         function conditionOnchang(obj) {
@@ -200,7 +207,7 @@
     </script>
     <style type="text/css">
         /*.yqtj-label {*/
-            /*margin-top: 5px;*/
+        /*margin-top: 5px;*/
         /*}*/
     </style>
 </head>
