@@ -1,0 +1,30 @@
+{
+  "total": 5,
+  "rows": [
+    {
+      "id": 1,
+      "deptCode": "01",
+      "deptName": "国际医院"
+    },
+    {
+      "id": 2,
+      "deptCode": "02",
+      "deptName": "急诊部"
+    },
+    {
+      "id": 3,
+      "deptCode": "03",
+      "deptName": "住院部"
+    },
+    {
+      "id": 4,
+      "deptCode": "04",
+      "deptName": "信息部"
+    },
+    {
+      "id": 5,
+      "deptCode": "05",
+      "deptName": "后勤部"
+    }
+  ]
+}

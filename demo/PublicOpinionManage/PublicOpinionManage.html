@@ -13,6 +13,7 @@
     <link href="../../resources/css/themes.css" rel="stylesheet" type="text/css"/>
     <link href="../../resources/bootstrap/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet"
           type="text/css"/>
+    <link href="../../resources/bootstrap/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css"/>
     <link href="../../resources/css/myCss.css" rel="stylesheet" type="text/css"/>
 
     <script type="text/javascript" src="../../resources/js/jquery.1.11.3.min.js"></script>
@@ -20,11 +21,17 @@
     <script type="text/javascript" src="../../resources/dropkick/jquery.dropkick-min.js"></script>
     <script type="text/javascript" src="../../resources/easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="../../resources/js/frame.js"></script>
-    <script type="text/javascript" src="../../resources/js/mySelectWin.js"></script>
+    <script type="text/javascript" src="../../resources/js/userSelectWin.js"></script>
+    <script type="text/javascript" src="../../resources/js/deptSelectWin.js"></script>
     <script type="text/javascript"
             src="../../resources/bootstrap/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript"
             src="../../resources/bootstrap/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap/bootstrap-table/bootstrap-table.min.js"></script>
+    <script type="text/javascript"
+            src="../../resources/bootstrap/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+
+
 
     <script type="text/javascript">
         var fileOpen = false;
@@ -125,6 +132,28 @@
         function userSelectCallBack(nameStr, idStr) {
             $("#userSelId").val(idStr);
             $("#userSelName").val(nameStr);
+        }
+
+
+        function openUserSelect2() {
+            //标题，回调函数,radio是否单选(默认多选)
+            UserSelectWindow.open("人员选择", userSelectCallBack2);
+        }
+
+        function userSelectCallBack2(vals) {
+            $("#userSelId").val(vals[0].id);
+            $("#userSelName").val(vals[0].userName);
+        }
+
+
+        function openDeptSelect2() {
+            //标题，回调函数,是否单选(true/false),queryParam
+            DeptSelectWindow.open("人员选择", deptSelectCallBack2,true,null);
+        }
+
+        function deptSelectCallBack2(vals) {
+            $("#deptSelId").val(vals[0].id);
+            $("#deptSelName").val(vals[0].deptName);
         }
 
         //人员选择--结束--
@@ -419,7 +448,7 @@
                                 <label class="col-xs-4 control-label modal-label">相关人员</label>
                                 <div class="col-xs-7">
                                     <input type="text" class="form-control" id="userSelName" placeholder="请选择"
-                                           onClick="openUserSelect()" readonly="true">
+                                           onClick="openUserSelect2()" readonly="true">
                                     <input type="hidden" id="userSelId">
                                 </div>
                             </div>
@@ -427,7 +456,7 @@
                                 <label class="col-xs-4 control-label modal-label">相关科室</label>
                                 <div class="col-xs-7">
                                     <input type="text" class="form-control" id="deptSelName" placeholder="请选择"
-                                           readonly="true">
+                                           readonly="true" onClick="openDeptSelect2()">
                                     <input type="hidden" id="deptSelId">
                                 </div>
                             </div>
