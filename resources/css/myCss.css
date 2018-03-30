@@ -88,3 +88,11 @@ input[type="number"] {
     top: 100px;
     height: 250px;
 }
+.pagination-info {
+    float: left;
+}
+
+.page-list{
+    font-size: 12px;
+}
+

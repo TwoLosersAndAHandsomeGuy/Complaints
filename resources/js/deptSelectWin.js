@@ -163,8 +163,8 @@ var DeptSelectWindow = {
         }
 
         html += '<div class="modal fade" id="' + _id + '" tabindex="-1" role="dialog" aria-labelledby="' + _id + 'Label" data-backdrop="static">';
-        html += '    <div class="modal-dialog modal-lg" role="document">';
-        html += '      <div class="modal-content">';
+        html += '    <div class="modal-dialog modal-lg" role="document" style="width: 1000px;">';
+        html += '      <div class="modal-content" style="width: 1000px;">';
         html += '        <div class="modal-header">';
         html += '          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
         html += '          <h4 class="modal-title" id="' + _id + 'Label">' + title + '</h4>';
