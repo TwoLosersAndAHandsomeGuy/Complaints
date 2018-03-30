@@ -226,7 +226,7 @@
                             <div class="btn-toolbar">
                                 <ul>
                                     <li>
-                                        <button type="button" class="btn btn-link" onclick="openFileUpload('info');">
+                                        <button type="button" class="btn btn-link" onclick="openBaseFileUpload();">
                                             上传附件
                                         </button>
                                     </li>
@@ -289,7 +289,7 @@
     </div>
 </div>
 <div class="modal myModalIn" id="baseInfo_addAgentModal" tabindex="-1" role="dialog" aria-labelledby="infoFileModalLabel"
-     data-backdrop="static" style="top: 60px; bottom: 350px;">
+     data-backdrop="static" style="top: 60px; height: 300px;">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -329,7 +329,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade fileModal" id="infoFileModal" tabindex="-1" role="dialog" aria-labelledby="infoFileModalLabel"
+<div class="modal fade fileModal" id="baseInfoFileModal" tabindex="-1" role="dialog" aria-labelledby="baseInfoFileModalLabel"
      data-backdrop="static" >
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -337,7 +337,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="infoFileModalLabel">上传附件</h4>
+                <h4 class="modal-title" id="baseInfoFileModalLabel">上传附件</h4>
             </div>
             <div class="modal-body">
                 <input id="input-1a" type="file" class="file" data-show-preview="false">
@@ -362,8 +362,8 @@
             clearBtn: true //清除按钮
         });
     });
-    function openFileUpload() {
-        $('#infoFileModal').modal();
+    function openBaseFileUpload() {
+        $('#baseInfoFileModal').modal();
     }
     function addAgentModal() {
         $('#baseInfo_addAgentModal').modal();

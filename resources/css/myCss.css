@@ -86,5 +86,5 @@ input[type="number"] {
 
 .fileModal{
     top: 100px;
-    bottom: 400px;
+    height: 250px;
 }

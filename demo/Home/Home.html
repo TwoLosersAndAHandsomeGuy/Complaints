@@ -30,11 +30,12 @@
             $("#page-top").load("../../resources/layout/page_top.html");
             $("#page-foot").load("../../resources/layout/page_foot.html");
 
-            var complaintURL = "ComplaintManage/ComplaintManage.html";
-            var litigationURL = "LitigationManage/LitigationManage.html";
-            var messageCenterURL = "MessageCenter/MessageCenter.html";
+            var complaintURL = "../ComplaintManage/ComplaintManage.html";
+            var litigationURL = "../LitigationManage/LitigationManage.html";
+            var messageCenterURL = "../MessageCenter/MessageCenter.html";
 
             $("#complaint").find("a").each(function () {
+
                 $(this).attr("href", complaintURL);
             });
             $("#litigation").find("a").each(function () {
