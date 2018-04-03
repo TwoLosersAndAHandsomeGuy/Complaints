@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Cache-Control" content="no-transform "/>
+    <title>系统管理</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="../../resources/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/dropkick/dropkick.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/css/themes.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/css/default.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/css/myCss.css" rel="stylesheet" type="text/css"/>
+    <link href="../../resources/bootstrap/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" type="text/css"/>
+
+
+    <script type="text/javascript" src="../../resources/js/jquery.1.11.3.min.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../resources/dropkick/jquery.dropkick-min.js"></script>
+    <script type="text/javascript" src="../../resources/easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/mySelectWin.js"></script>
+
+    <script type="text/javascript" src="../../resources/bootstrap/bootstrap-table/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="../../resources/bootstrap/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+
+    <script type="text/javascript" src="../../resources/js/patientSelectWin.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#collapseOne').collapse('show');
+            $('#collapseTwo').collapse('show');
+            $('#userSelect').on('shown.bs.modal', function () {
+                $("#allDataGrid").datagrid("resize");
+                $("#selectedDataGrid").datagrid("resize");
+            });
+
+            //1.初始化Table
+            var oTable = new TableInit();
+            oTable.Init();
+
+        });
+
+
+
+
+        function openUserSelectNew() {
+
+//            $('#userSelect').modal('show');
+//            //1.初始化Table
+//            var leftTable = new selectLeftTableInit();
+//            leftTable.Init();
+//
+//
+//            $('#userSelect').on('shown.bs.modal', function () {
+//                $("#select_leftTable").bootstrapTable("resetView");
+//            });
+
+            PatientSelectWindow.open('01',userCallBackNew);
+
+        }
+
+        function userCallBackNew(vals){
+            var aa = vals[0];
+        }
+
+
+
+        var TableInit = function () {
+            var oTableInit = new Object();
+            //初始化Table
+            oTableInit.Init = function () {
+                $('#tb_departments').bootstrapTable({
+                    url: '../data/userTestData.json',         //请求后台的URL（*）
+                    method: 'get',                      //请求方式（*）
+                    toolbar: '#toolbar',                //工具按钮用哪个容器
+                    striped: true,                      //是否显示行间隔色
+                    cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+                    pagination: true,                   //是否显示分页（*）
+                    sortable: false,                     //是否启用排序
+                    sortOrder: "asc",                   //排序方式
+                    queryParams: oTableInit.queryParams,//传递参数（*）
+                    sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+                    pageNumber: 1,                       //初始化加载第一页，默认第一页
+                    pageSize: 10,                       //每页的记录行数（*）
+                    pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+                    search: true,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
+                    strictSearch: true,
+                    showColumns: true,                  //是否显示所有的列
+                    showRefresh: true,                  //是否显示刷新按钮
+                    minimumCountColumns: 2,             //最少允许的列数
+                    clickToSelect: true,                //是否启用点击选中行
+                    height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+                    uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
+                    showToggle: false,                    //是否显示详细视图和列表视图的切换按钮
+                    cardView: false,                    //是否显示详细视图
+                    detailView: false,                   //是否显示父子表
+                    radio:true,
+                    columns: [{
+                        checkbox: true
+                    }, {
+                        field: 'userCode',
+                        title: '人员工号'
+                    }, {
+                        field: 'userName',
+                        title: '人员名称'
+                    }, {
+                        field: 'deptName',
+                        title: '部门名称'
+                    }]
+                });
+            };
+
+            //得到查询的参数
+            oTableInit.queryParams = function (params) {
+                var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+                    limit: params.limit,   //页面大小
+                    offset: params.offset,  //页码
+                    departmentname: $("#txt_search_departmentname").val(),
+                    statu: $("#txt_search_statu").val()
+                };
+                return temp;
+            };
+            return oTableInit;
+        };
+
+
+        var selectLeftTableInit = function () {
+            var leftTable = new Object();
+            leftTable.Init = function () {
+                $('#select_leftTable').bootstrapTable({
+                    url: '../data/userTestData.json',         //请求后台的URL（*）
+                    method: 'get',                      //请求方式（*）
+                    toolbar: '#toolbar',                //工具按钮用哪个容器
+                    striped: true,                      //是否显示行间隔色
+                    pagination: true,                   //是否显示分页（*）
+                    sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+                    clickToSelect: true,                //是否启用点击选中行
+                    height: 400,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+                    queryParams: leftTable.queryParams,//传递参数（*）
+                    singleSelect:true,
+                    columns: [{
+                        checkbox: true
+                    }, {
+                        field: 'userCode',
+                        title: '人员工号'
+                    }, {
+                        field: 'userName',
+                        title: '人员名称'
+                    }, {
+                        field: 'deptName',
+                        title: '部门名称'
+                    }, {
+                        field: 'userName',
+                        title: '人员名称2'
+                    }, {
+                        field: 'userName',
+                        title: '人员名称3'
+                    }, {
+                        field: 'userName',
+                        title: '人员名称4'
+                    }, {
+                        field: 'userName',
+                        title: '人员名称5'
+                    }, {
+                        field: 'userName',
+                        title: '人员名称6'
+                    }, {
+                        field: 'userName',
+                        title: '人员名称7'
+                    }, {
+                        field: 'userName',
+                        title: '人员名称8'
+                    }, {
+                        field: 'userName',
+                        title: '人员名称9'
+                    }, {
+                        field: 'userName',
+                        title: '人员名称10'
+                    }, {
+                        field: 'userName',
+                        title: '人员名称11'
+                    }]
+                });
+            }
+
+            //得到查询的参数
+            leftTable.queryParams = function (params) {
+                var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+                    limit: params.limit,   //页面大小
+                    offset: params.offset,  //页码
+                    IndexFrom: (params.offset *  (params.limit - 1)) + 1,//起始行数
+                    IndexTo: (params.offset *  params.limit),
+                    patientName: $("#userSelectName").val()
+                };
+                return temp;
+            };
+
+            return leftTable;
+        }
+
+
+        function _select() {
+            var $tableLeft = $('#select_leftTable').bootstrapTable();
+            var $tableRight = $('#select_rightTable').bootstrapTable();
+
+            var selectContent = $tableLeft.bootstrapTable('getSelections');
+            $tableRight.bootstrapTable("append", selectContent);
+            var selects = $tableLeft.bootstrapTable('getSelections');
+            var ids = $.map(selects, function (row) {
+                return row.id;
+            });
+
+            $tableLeft.bootstrapTable('remove', {
+                field: 'id',
+                values: ids
+            });
+        }
+    </script>
+</head>
+<body>
+
+<div class="top">
+    <div class="logo">
+        <a id="head" href="#"><img src="../../resources/images/logo.png"></a>
+    </div>
+    <ul class="nav nav-pills top-ul">
+        <li><a href="../index__.html">首页</a></li>
+        <li><a href="../MessagePass/MessagePass.html">消息传阅</a></li>
+        <li><a href="../PublicOpinionManage/PublicOpinionManage.html">舆情管理</a></li>
+        <li><a href="../ComplaintManage/ComplaintManage.html">投诉管理</a></li>
+        <li><a href="../LitigationManage/LitigationManage.html">诉讼管理</a></li>
+        <li><a href="../ReportForm/ReportForm.html">报表展示</a></li>
+        <li><a href="../DataAnalysis/DataAnalysis.html">数据分析</a></li>
+        <li class="active"><a href="SystemManager.html">系统管理</a></li>
+    </ul>
+</div>
+<div style="margin: auto;width: 1090px;">
+    <div class="form-search" id="formSearchDiv">
+        <div class="form-horizontal search-normal">
+            <div class="form-group col-xs-3">
+                <label class="col-xs-4 control-label">人员</label>
+                <div class="col-xs-8">
+                    <input type="text" class="form-control" id="userSelName" placeholder="请选择"
+                           onClick="openUserSelectNew()" readonly="true">
+                    <input type="hidden" id="userSelId">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table-normal">
+        <div class="table-toolbar">
+            <div id="menuToolBar" class="btn-toolbar">
+                <ul>
+                </ul>
+            </div>
+        </div>
+        <table id="tb_departments"></table>
+    </div>
+</div>
+
+<div class="modal fade" id="userSelect" tabindex="-1" role="dialog" aria-labelledby="userSelectLabel"
+     data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document" style="width: 900px;">
+        <div class="modal-content" style="width: 900px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="userSelectLabel">患者选择</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-xs-5" style="padding-bottom: 15px;">
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control" id="patientSelect-name" placeholder="姓名/单位名">
+                    </div>
+                    <button type="button" class="btn btn-info" onclick="alert('ok!')">
+                        <span class="glyphicon glyphicon-search"></span>查询
+                    </button>
+                </div>
+                    <table id="select_leftTable"></table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="SelectWindow._close()">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+                </button>
+                <button type="button" class="btn btn-primary" onclick="SelectWindow._select_submit()">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>确定
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+<div id="selectDivId"></div>
+</body>
+</html>
