@@ -44,6 +44,12 @@ var PatientSelectWindow = {
                 clickToSelect: true,                //是否启用点击选中行
                 height: 400,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
                 queryParams: _this._leftueryParams,
+                onLoadSuccess: function (data) {
+                    var a = data;
+                },
+                onLoadError : function(data){
+                    var b = data;
+                },
                 columns: [{
                     checkbox: true
                 }, {
